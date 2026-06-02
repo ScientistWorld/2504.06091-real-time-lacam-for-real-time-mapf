@@ -19,5 +19,6 @@ DFS tree at the new current configuration by reversing the executed tree edge.
 This reproduction implements the paper's computational structure: lazy
 joint-configuration DFS, constrained successor generation, persistent search
 state, and re-rooting. The one-step generator is a deterministic constrained
-PIBT-style greedy generator; fully constrained attempts enumerate valid joint
-actions, preserving the lazy constrained search behavior needed by LaCAM.
+PIBT-style recursive priority-inheritance planner; fully constrained attempts
+enumerate valid joint actions, preserving the lazy constrained search behavior
+needed by LaCAM.

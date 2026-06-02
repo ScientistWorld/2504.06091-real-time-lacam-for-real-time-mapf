@@ -11,7 +11,7 @@
 
 ## Results
 
-Verified compute job:
+Previously verified compute jobs:
 
 - Job `c3151de9-ae4` exited 0.
 - It ran `scripts/run.sh`, regenerated scores, and passed
@@ -26,18 +26,17 @@ bash scripts/reproduce.sh
 python validate.py --compare
 ```
 
-Current `scaled_small_mapf` scores with one expansion per real-time iteration:
+Current local `scaled_small_mapf` scores with one expansion per real-time iteration after the PIBT-style generator update:
 
-- `rt_lacam`: success_rate 1.000, valid_rate 1.000, mean_normalized_cost 1.842, mean_expansions 14.5.
-- `full_lacam`: success_rate 1.000, valid_rate 1.000, mean_normalized_cost 1.211, mean_expansions 14.5.
-- `naive_rt_lacam`: success_rate 0.667, valid_rate 0.667, mean_normalized_cost 1.114, mean_expansions 40.333.
+- `rt_lacam`: success_rate 1.000, valid_rate 1.000, mean_normalized_cost 2.972, mean_expansions 28.167.
+- `full_lacam`: success_rate 1.000, valid_rate 1.000, mean_normalized_cost 1.417, mean_expansions 28.167.
+- `naive_rt_lacam`: success_rate 0.167, valid_rate 0.167, mean_normalized_cost 1.000, mean_expansions 7.333.
 
-Current `scaled_small_mapf_budget3` scores with three expansions per real-time
-iteration:
+Current local `scaled_small_mapf_budget3` scores with three expansions per real-time iteration:
 
-- `rt_lacam`: success_rate 1.000, valid_rate 1.000, mean_normalized_cost 1.378, mean_expansions 14.5.
-- `full_lacam`: success_rate 1.000, valid_rate 1.000, mean_normalized_cost 1.211, mean_expansions 14.5.
-- `naive_rt_lacam`: success_rate 0.667, valid_rate 0.667, mean_normalized_cost 1.114, mean_expansions 118.5.
+- `rt_lacam`: success_rate 1.000, valid_rate 1.000, mean_normalized_cost 1.643, mean_expansions 28.167.
+- `full_lacam`: success_rate 1.000, valid_rate 1.000, mean_normalized_cost 1.417, mean_expansions 28.167.
+- `naive_rt_lacam`: success_rate 0.167, valid_rate 0.167, mean_normalized_cost 1.000, mean_expansions 219.000.
 
 This supports the paper's core claim at scaled size: Real-Time LaCAM preserves
 full-horizon success and search effort, while naive restart replanning can fail.
@@ -46,7 +45,7 @@ full-horizon success and search effort, while naive restart replanning can fail.
 
 - Optional future work: add larger standard MAPF benchmark maps and reproduce
   the learned-policy wrapper experiment from Figure 3.
-- The current environment is complete enough for `core_claim_plus`.
+- Awaiting compute-container verification for the PIBT-style generator patch.
 
 ## Issues
 
@@ -63,7 +62,7 @@ full-horizon success and search effort, while naive restart replanning can fail.
 - Paper time budget: millisecond wall-clock per-iteration cutoffs and 60-second
   cumulative timeout. This reproduction uses per-iteration successor expansion
   budgets and total expansion budgets as hardware-independent equivalents.
-- Paper implementation: full PIBT as the one-step generator. This reproduction
-  uses a deterministic constrained PIBT-style greedy generator with exhaustive
-  fully constrained attempts, preserving the LaCAM lazy constrained DFS
-  computation while reducing implementation complexity.
+- Paper implementation: PIBT as the one-step generator. This reproduction uses
+  deterministic constrained PIBT-style recursive priority inheritance and
+  backtracking with exhaustive fully constrained attempts, preserving the LaCAM
+  lazy constrained DFS computation while keeping the environment compact.

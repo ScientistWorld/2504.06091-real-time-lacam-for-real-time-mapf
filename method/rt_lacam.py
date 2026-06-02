@@ -80,30 +80,59 @@ class LazyLaCAM:
         return self.nodes[self.cursor]
 
     def _candidate_from_forced(self, config: Config, forced: dict[int, Coord]) -> Config | None:
+        """Generate one constrained successor with PIBT-style priority inheritance.
+
+        LaCAM only requires a one-step MAPF generator that can honor fixed
+        actions for a prefix of agents. PIBT assigns agents in priority order;
+        when an agent wants a currently occupied cell, the occupant inherits
+        priority and is recursively moved out of the way, with backtracking if
+        no collision-free continuation exists.
+        """
+        current_owner = {cell: i for i, cell in enumerate(config)}
+        assigned: dict[int, Coord] = {}
+        used: set[Coord] = set()
+        visiting: set[int] = set()
+
+        def edge_conflicts(agent: int, target: Coord) -> bool:
+            for other, other_target in assigned.items():
+                if config[agent] == other_target and config[other] == target:
+                    return True
+            return False
+
+        def assign(agent: int) -> bool:
+            if agent in assigned:
+                return True
+            if agent in visiting:
+                return False
+            visiting.add(agent)
+            choices = [forced[agent]] if agent in forced else self._ordered_actions(agent, config[agent])
+            for target in choices:
+                if target not in self.instance.neighbors(config[agent]) or target in used:
+                    continue
+                if edge_conflicts(agent, target):
+                    continue
+
+                displaced = current_owner.get(target)
+                if displaced is not None and displaced != agent and displaced not in assigned:
+                    if not assign(displaced):
+                        continue
+                    if target in used or edge_conflicts(agent, target):
+                        continue
+
+                assigned[agent] = target
+                used.add(target)
+                visiting.remove(agent)
+                return True
+
+            visiting.remove(agent)
+            return False
+
         order = sorted(
             range(self.instance.n_agents),
             key=lambda i: (config[i] == self.goals[i], self.h_tables[i].get(config[i], 10**6), i),
         )
-        assigned: dict[int, Coord] = {}
-        used: set[Coord] = set()
-        for i in order:
-            choices = [forced[i]] if i in forced else self._ordered_actions(i, config[i])
-            placed = False
-            for nb in choices:
-                if nb not in self.instance.neighbors(config[i]) or nb in used:
-                    continue
-                bad_edge = False
-                for j, other_nb in assigned.items():
-                    if config[i] == other_nb and config[j] == nb:
-                        bad_edge = True
-                        break
-                if bad_edge:
-                    continue
-                assigned[i] = nb
-                used.add(nb)
-                placed = True
-                break
-            if not placed:
+        for agent in order:
+            if not assign(agent):
                 return None
         nxt = tuple(assigned[i] for i in range(self.instance.n_agents))
         return nxt if self._valid_transition(config, nxt) else None

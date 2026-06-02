@@ -5,22 +5,22 @@
         "rt_lacam": {
           "success_rate": 1.0,
           "valid_rate": 1.0,
-          "mean_normalized_cost": 1.8421855921855923,
-          "mean_expansions": 14.5,
+          "mean_normalized_cost": 2.9716117216117217,
+          "mean_expansions": 28.166666666666668,
           "instances": 6
         },
         "full_lacam": {
           "success_rate": 1.0,
           "valid_rate": 1.0,
-          "mean_normalized_cost": 1.2112332112332111,
-          "mean_expansions": 14.5,
+          "mean_normalized_cost": 1.4165140415140416,
+          "mean_expansions": 28.166666666666668,
           "instances": 6
         },
         "naive_rt_lacam": {
-          "success_rate": 0.6666666666666666,
-          "valid_rate": 0.6666666666666666,
-          "mean_normalized_cost": 1.1144688644688645,
-          "mean_expansions": 40.333333333333336,
+          "success_rate": 0.16666666666666666,
+          "valid_rate": 0.16666666666666666,
+          "mean_normalized_cost": 1.0,
+          "mean_expansions": 7.333333333333333,
           "instances": 6
         }
       }
@@ -30,22 +30,22 @@
         "rt_lacam": {
           "success_rate": 1.0,
           "valid_rate": 1.0,
-          "mean_normalized_cost": 1.377899877899878,
-          "mean_expansions": 14.5,
+          "mean_normalized_cost": 1.6427045177045176,
+          "mean_expansions": 28.166666666666668,
           "instances": 6
         },
         "full_lacam": {
           "success_rate": 1.0,
           "valid_rate": 1.0,
-          "mean_normalized_cost": 1.2112332112332111,
-          "mean_expansions": 14.5,
+          "mean_normalized_cost": 1.4165140415140416,
+          "mean_expansions": 28.166666666666668,
           "instances": 6
         },
         "naive_rt_lacam": {
-          "success_rate": 0.6666666666666666,
-          "valid_rate": 0.6666666666666666,
-          "mean_normalized_cost": 1.1144688644688645,
-          "mean_expansions": 118.5,
+          "success_rate": 0.16666666666666666,
+          "valid_rate": 0.16666666666666666,
+          "mean_normalized_cost": 1.0,
+          "mean_expansions": 219,
           "instances": 6
         }
       }
