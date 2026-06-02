@@ -17,7 +17,7 @@
           "success_rate": 0.3333333333333333,
           "valid_rate": 1.0,
           "coverage_rate": 1.0,
-          "mean_normalized_cost": 1.0,
+          "mean_normalized_cost": 9.904761904761905,
           "mean_expansions": 7,
           "duplicate_results": 0,
           "instances": 3
@@ -49,7 +49,7 @@
           "success_rate": 0.3333333333333333,
           "valid_rate": 1.0,
           "coverage_rate": 1.0,
-          "mean_normalized_cost": 1.0,
+          "mean_normalized_cost": 9.904761904761905,
           "mean_expansions": 216,
           "duplicate_results": 0,
           "instances": 3
@@ -81,7 +81,7 @@
           "success_rate": 0.5,
           "valid_rate": 1.0,
           "coverage_rate": 1.0,
-          "mean_normalized_cost": 1.0,
+          "mean_normalized_cost": 34.27319587628866,
           "mean_expansions": 105,
           "duplicate_results": 0,
           "instances": 2

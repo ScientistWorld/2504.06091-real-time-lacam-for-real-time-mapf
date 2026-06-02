@@ -17,7 +17,7 @@
           "success_rate": 0.0,
           "valid_rate": 1.0,
           "coverage_rate": 1.0,
-          "mean_normalized_cost": null,
+          "mean_normalized_cost": 14.8998778998779,
           "mean_expansions": 7.666666666666667,
           "duplicate_results": 0,
           "instances": 3
@@ -49,7 +49,7 @@
           "success_rate": 0.0,
           "valid_rate": 1.0,
           "coverage_rate": 1.0,
-          "mean_normalized_cost": null,
+          "mean_normalized_cost": 14.8998778998779,
           "mean_expansions": 222,
           "duplicate_results": 0,
           "instances": 3
