@@ -1,78 +1,36 @@
 # Scientist Constraints
 
-<!-- Do not edit this unless you decide to stop -->
+## Problem Formulation
+The benchmark must remain standard grid MAPF with synchronous discrete timesteps. Agents may move to the four cardinal neighboring cells or wait. Evaluation must reject vertex collisions and edge-swap collisions. All actions have unit cost except waiting at an already reached goal, matching the paper's cost convention.
 
-<!--
-A scientist agent will attempt to improve on your reproduced results.
-These constraints define what the scientist must hold fixed, so that
-any improvement reflects genuine methodological innovation — not just
-throwing more resources at the problem.
+## Real-Time Protocol
+Methods must plan and execute iteratively. At each iteration, the method may use only the configured per-iteration planning cutoff before choosing the next joint action. A method may not precompute a full-horizon plan and then reveal one action at a time while claiming real-time performance. Cumulative planning timeout accounting must count timed-out runs as 60 seconds.
 
-CONTEXT: Your reproduction becomes a benchmark environment. The scientist
-gets your code, data, evaluation pipeline, and these constraints. They
-must beat your scores while respecting every constraint listed here.
-Without good constraints, a scientist can trivially "improve" by swapping
-in a larger model, using a richer dataset that is simply publicly avaliable, or more 
-— none of which demonstrate real scientific insight.
+## Benchmark Data
+Use the same standard MAPF benchmark family and the same scene-count convention as the paper: 25 scenes per map for the Figure 2-style evaluation. Do not add easier custom maps, remove congested scenarios, or change starts/goals to improve apparent success. If a reduced benchmark is needed for resource reasons, it must preserve congested random and warehouse-style settings.
 
-Your job is to act as a judge: distinguish between flexible innovation
-and non-genuine improvement. Constraints should block trivial gains
-(e.g. just swapping in a bigger model) while leaving room for creative
-methodology (e.g. a clever augmentation strategy, a better loss
-function, a novel use of existing tools). When in doubt, ask: "does
-this require insight, or just more resources?" Lock down the resources,
-leave the insight open. Do not block innovation.
+## Baseline Comparisons
+Full-horizon LaCAM is the parity reference for success rate and cumulative planning time. Real-time/windowed comparisons must use the same maps, scenes, movement model, cumulative timeout, and per-iteration cutoff settings. The naive real-time baseline must use the same underlying one-step configuration-generation capabilities as the proposed real-time planner, differing only in whether planning state is preserved across iterations.
 
-For example, if a scientist downloads online IMDB reviews to supplement a
-sentiment dataset, that's resource scaling. But if they use an LLM to
-augment the existing training data, that's methodology — they designed
-that pipeline. This is just an example, but keep this kind of distinction 
-in mind when writing constraints.
-
-Be SPECIFIC to this paper. Generic constraints are useless. Name the
-exact model, the exact dataset, the exact splits. Explain the reasoning
-so the scientist understands the intent behind each constraint, not
-just the rule — this helps them judge edge cases on their own.
-
-Think about at least:
-- Model: architecture, size, pretrained weights
-- Data: which datasets, which splits, whether external data is allowed
-
-You may add other constraint categories if relevant to this paper
-(e.g. training procedure, evaluation protocol, problem formulation).
-
-Example for a sentiment analysis paper:
-
-## Model
-The scientist must use BERT-base-uncased (110M parameters, HuggingFace
-`bert-base-uncased`). The paper's contribution is a novel fine-tuning
-strategy, not architecture design. Switching to a larger model (e.g.
-DeBERTa-v3-large, 304M params) would improve accuracy but would not
-demonstrate any methodological insight. The scientist may modify the
-fine-tuning procedure, add adapter layers, change the classification
-head, or alter the training loop — but the base encoder must remain
-BERT-base-uncased with its standard pretrained weights.
-
-## Data
-The scientist must use only the provided SST-2 binary sentiment
-dataset (67,349 training examples, 872 validation, 1,821 test).
-No external sentiment corpora or additional human-labeled data.
-The test split must not be used for training or validation.
-
-Delete this comment block and fill in your actual constraints below.
-
-At the very end, write a compliance checklist for the scientist agent.
-Each item should be a concrete, verifiable condition the scientist can
-check off before submitting. These should mirror your constraints above
-but phrased as yes/no checks.
-
-Example checklist (for the sentiment analysis example above):
+## Learned-Policy Setting
+For the secondary learned-policy experiment, the pretrained single-step MAPF policy must be fixed across compared methods. Do not improve the policy weights, train on additional data, or replace the policy with a stronger model when measuring whether the real-time wrapper improves the policy baseline.
 
 ## Compliance Checklist
-- [ ] Model is BERT-base-uncased (110M params), not a larger variant
-- [ ] No external sentiment datasets used beyond SST-2
-- [ ] Test split not used for training or validation
+- [ ] Evaluation uses synchronous grid MAPF with cardinal moves plus wait.
+- [ ] Vertex and edge-swap collisions are counted as invalid.
+- [ ] Per-iteration planning cutoffs are enforced before each executed action.
+- [ ] No method precomputes a full-horizon plan for a real-time result.
+- [ ] Timed-out runs are counted as 60 seconds in cumulative planning time.
+- [ ] The Figure 2-style benchmark uses 25 scenes per map or a documented resource-reduced subset that keeps congested maps.
+- [ ] Full-horizon LaCAM, real-time methods, and naive real-time baselines use identical maps, starts, goals, and timeout accounting.
+- [ ] Learned-policy comparisons use the same fixed pretrained policy for every method.
+# Constraints
 
-ONLY WRITE ABOUT WHAT TO RESTRICT. NEVER WRITE ABOUT WHAT REMAINS OPEN.
+Methods must solve the same MAPF instances from `data/mapf_benchmarks.py` and
+must emit explicit joint-configuration paths. Evaluation rejects paths with
+illegal moves, vertex collisions, or edge-swap collisions.
 
--->
+Do not improve scores by changing the benchmark, increasing the number of
+instances selectively, hiding invalid paths, or replacing the metric with
+wall-clock speed. Expansion counts are used as the hardware-independent search
+effort constraint.

@@ -1,59 +1,21 @@
 # Experiment Overview
 
-<!-- Do not edit this unless you decide to stop -->
+## realtime_mapf_benchmark
+Tests whether the real-time system achieves the paper's central benchmark goal: solving the same MAPF instances as the full-horizon reference while operating under strict per-step planning budgets. This experiment also tracks total planning time and path quality so that a method cannot score well by solving instances slowly or with extreme detours.
 
-<!--
-Describe, at a high level, what each experiment in `scores.json` is trying to
-establish.
+## realtime_validity_and_budget
+Checks that the evaluation is genuinely real-time and that the produced executions are valid MAPF solutions. This experiment exists to guard the benchmark constraints: every action must be chosen within the per-step cutoff, the cumulative timeout must be enforced consistently, and any collision invalidates the run.
 
-This file is for future scientist agents. They should be able to read it and
-understand what each experiment is about WITHOUT learning the paper's method.
+## naive_replanning_baseline
+Tests whether a real-time planner benefits from retaining useful information between planning iterations. The comparison uses the same problem instances and budgets as the main benchmark, but measures a baseline that starts each planning iteration fresh.
 
-Rules:
-- This must correspond EXACTLY to the experiments in `scores.json`
-- The section heading for each experiment must be the exact experiment name from the keys in `scores.json`
-- Describe the experiment's scientific purpose, not the implementation
-- Do NOT describe the method, architecture, algorithm, loss, or training recipe
-- Do NOT include numerical results from the paper or your reproduction
-- If an experiment is not in `scores.json`, do not list it here
+## learned_policy_wrapper
+Tests the paper's secondary claim that a real-time planning wrapper can improve a fixed single-step MAPF policy. The purpose is to evaluate whether the policy becomes more reliable under the same random-map setting without changing the policy itself.
+# Experiments
 
-Good examples (these should be fuller and more specific than a one-line label,
-but still stay method-agnostic):
-
-## main_benchmark
-Tests whether the reproduced system succeeds on the paper's central evaluation
-task under the main benchmark setting used to support the headline claim. This
-should make clear that the experiment exists to measure overall task success in
-the paper's standard evaluation setup, not to describe the internal mechanism
-used to obtain that result.
-
-## robustness_shift
-Tests whether the main claimed effect still holds when the evaluation setting is
-made harder or shifted away from the paper's primary benchmark condition. This
-should explain what kind of robustness question is being asked at a high level:
-whether the paper's conclusion remains valid outside the narrow default
-evaluation case.
-
-## wrong_key_security
-Tests whether the protected or hidden signal remains inaccessible under the
-incorrect-access condition used in the paper's evaluation. This should explain
-that the purpose is to validate the paper's security or privacy claim at a high
-level, without describing the concrete mechanism used to protect the signal.
-
-## component_ablation
-Tests whether the paper's reported improvement is actually attributable to the
-claimed source of benefit, rather than to unrelated aspects of the overall
-system or evaluation setup. This should explain that the experiment exists to
-separate the claimed causal contribution from generic confounders, without
-describing the implementation details of the component being varied.
-
-Bad examples:
-- "Runs the 8-layer transformer with contrastive loss and cosine scheduler"
-- "Uses the paper's memory module to improve retrieval"
-
-Delete this comment block and fill in your actual experiments below.
--->
-
-<!-- This is high-level only. Explain WHAT the experiment is trying to show, NOT HOW the method works. -->
-
-<!-- The experiment headings here should EXACTLY match the experiment-name keys in your scores.json. -->
+`scaled_small_mapf` evaluates whether a real-time MAPF solver can keep solving
+congested instances under tiny per-iteration planning budgets. It compares a
+persistent real-time solver, a full-horizon solver, and a restart-from-scratch
+real-time baseline. The experiment establishes both the benefit metric
+(successful completion) and constraints (valid paths, normalized cost, and
+search expansions).

@@ -1,94 +1,26 @@
 # Research Direction
 
-<!-- Do not edit this unless you decide to stop -->
-
-<!--
-Define the research direction a scientist must follow when trying to
-improve on the paper's results. This is NOT about resource constraints
-(model size, dataset — those go in CONSTRAINTS.md). This is about
-the methodological scope: what research question is being pursued,
-and what approaches are in-bounds vs out-of-bounds.
-
-WHY THIS MATTERS: Without direction constraints, a scientist evaluate on this
-can trivially "beat" a paper by switching paradigms entirely. As a general
-example: if a paper proposes a novel Mamba variant and benchmarks it
-against prior Mamba models, switching to a Transformer would likely
-beat the numbers — but that tells us nothing about Mamba research.
-The scientist must work within the paper's problem space so that
-improvement demonstrates genuine insight in that area.
-
-THE RIGHT LEVEL OF SPECIFICITY: The direction should be scoped to the
-paper's actual contribution — not so broad that anything goes, but not
-so narrow that it dictates the exact technique. Think of it as: the
-scientist must work on the SAME PROBLEM and improve the SAME KIND OF
-THING the paper contributed, but they have full freedom in HOW they
-improve it.
-
-In the same example: 
-Too broad:  "Must use SSMs" — lets the scientist work on any SSM
-            problem, ignoring what this paper actually contributed.
-Too narrow: "Must use selective scan with input-dependent A matrices"
-            — dictates the technique, leaving no room for creativity.
-Right:      "Must improve input-dependent state dynamics for SSM
-            language modeling" — scoped to the contribution, open on
-            how to achieve it.
-
-WHAT TO WRITE:
-1. Research Problem — what question the paper addresses (one paragraph)
-2. Core Contribution — what specific thing the paper introduced or
-   improved (this is the area the scientist must work within)
-3. Approach Scope — what approach family and what aspects the scientist
-   can modify
-4. Out of Bounds — paradigm switches and scope violations
-
-Be specific to this paper. Explain the reasoning so the scientist
-understands the intent, not just the rule.
-
-Example for a paper proposing a new Mamba variant for language modeling:
-
 ## Research Problem
-This paper improves state-space models (SSMs) for language modeling.
-The core question is whether input-dependent state dynamics can close
-the quality gap between SSMs and Transformers on language tasks. ...
+This benchmark is about real-time multi-agent path finding: choosing the next collision-free joint action for many agents under a strict bounded planning interval, then repeating until all agents reach their goals. The scientific question is how to make this iterative real-time regime reliable in congested settings without giving up the practical latency benefits that motivate real-time planning.
 
 ## Core Contribution
-The paper's novelty is a selective scan mechanism that adapts the
-state transition matrices to the input, replacing the fixed dynamics
-of prior SSMs (S4, H3). The scientist must work on improving this
-kind of contribution: how the SSM processes sequences with
-input-dependent dynamics. ...
+The paper's contribution is a complete real-time search framework for MAPF that preserves useful search information across execution steps. Future improvements should stay focused on real-time MAPF completeness, robustness, runtime, and solution quality under repeated bounded planning.
 
 ## Approach Scope
-The scientist should focus on the scan / state-dynamics component
-of the SSM. They may:
-- Redesign the selection mechanism (different parameterization,
-  gating, conditioning)
-- Change the state representation (different dimensions, structure,
-  initialization)
-- Modify how input signals interact with the state (mixing,
-  normalization, discretization)
-- Alter the training procedure for the SSM components (loss,
-  scheduling, curriculum)
- - ...
-
-The scientist may also make architectural changes around the core
-SSM block (normalization, skip connections, mixing layers) as long
-as the SSM with input-dependent dynamics remains the central
-sequence-processing component. ...
+Scientist agents may modify the real-time search strategy, the one-step joint-action generator, tie-breaking, constraint ordering, partial-plan selection, cutoff scheduling, or search-state reuse policy. They may also improve the learned-policy wrapper experiment if the pretrained policy itself remains fixed for that comparison. The improvement should still be a real-time MAPF method that produces one executed joint action per planning iteration.
 
 ## Out of Bounds
-- Replacing the SSM backbone with a Transformer or attention-based
-  architecture. The paper's thesis is that SSMs can be competitive
-  — switching to attention sidesteps that thesis entirely.
-- Hybrid architectures that are majority-attention (e.g., Transformer
-  with one SSM layer). A small attention component used as a tool
-  within an SSM-first design is acceptable if justified.
-- Ensemble methods that combine an SSM with a separate Transformer.
-  The goal is a single-model SSM contribution.
-- Working on a different SSM problem (e.g., improving SSM efficiency
-  or hardware utilization) rather than the quality of input-dependent
-  dynamics. Stay on the paper's research question.
- - ...
+- Replacing the task with full-horizon offline MAPF planning without a real-time execution loop.
+- Reporting a method that violates the per-iteration cutoff and only satisfies the cumulative timeout.
+- Using a stronger learned policy, extra training data, or a larger model to improve the learned-policy experiment.
+- Changing the benchmark maps, starts, goals, collision rules, or cost convention to make instances easier.
+- Optimizing only path cost while allowing deadlock, livelock, collision invalidity, or substantially worse success rate.
+# Direction
 
-Delete this comment block and fill in your actual direction below.
--->
+Future work should stay within real-time MAPF and incremental/windowed search.
+Reasonable improvements include better constrained one-step generators,
+priority ordering, heuristic ordering, or LaCAM-family engineering changes.
+
+Switching to a different problem formulation that ignores real-time execution
+or returns only full-horizon plans without bounded per-iteration decisions is
+outside the intended direction for this gym.

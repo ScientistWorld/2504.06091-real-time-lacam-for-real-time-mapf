@@ -1,50 +1,37 @@
 # Evaluation Targets
 
-<!-- Do not edit this unless you decide to stop -->
+## Primary: realtime_mapf_benchmark
+Tests whether a real-time MAPF system solves the standard benchmark scenes under strict per-iteration planning budgets.
+- **Metric**: success_rate_gap_vs_full_horizon (lower is better)
+- **Metric**: cumulative_planning_time_ratio_vs_full_horizon (lower is better, with parity as the target)
+- **Metric**: normalized_solution_cost_factor_vs_full_horizon (lower is better)
+- **How to run**: evaluate the same benchmark maps/scenes and agent-count settings as the paper, with the same cumulative timeout and per-iteration cutoffs.
 
-<!--
-Describe what a scientist could optimize and how to measure it.
+## Constraint: realtime_validity_and_budget
+Checks that the reported success is achieved under the real-time protocol rather than by planning full-horizon paths before execution or exceeding the per-step budget.
+- **Metric**: cumulative_timeout_s (fixed-condition metric)
+- **Metric**: min_cutoff_ms (fixed-condition metric)
+- **Metric**: max_cutoff_ms (fixed-condition metric)
+- **Metric**: collision_failures (lower is better)
+- **How to run**: enforce the configured cutoff at every planning/execution iteration, count timed-out runs as failures, and reject any execution trace with vertex or edge collisions.
 
-If a paper claims "we get X without sacrificing Y." Your targets must
-capture BOTH sides. Without constraint targets, a scientist can trivially
-"improve" by breaking the property the paper was designed to satisfy.
+## Ablation: naive_replanning_baseline
+Tests whether preserving useful planning state across real-time iterations matters, by comparing against a real-time baseline that restarts its search each step.
+- **Metric**: success_rate_gap_vs_full_horizon (lower is better)
+- **Metric**: cumulative_planning_time_ratio_vs_full_horizon (lower is better)
+- **How to run**: run the restarted-search baseline under the same maps, scenes, cutoffs, and cumulative timeout as the primary benchmark.
 
-Three kinds of targets:
+## Secondary: learned_policy_wrapper
+Tests whether the real-time planning framework can improve a pretrained single-step MAPF policy in the random-32-32-20 setting.
+- **Metric**: success_rate_improvement_vs_policy_baseline (higher is better)
+- **Metric**: normalized_solution_cost_factor_vs_policy_baseline (lower is better)
+- **How to run**: evaluate the same pretrained policy and collision-shielded baseline on random-32-32-20, using the paper's real-time execution protocol.
+# Targets
 
-  PRIMARY    — the main thing the paper optimizes (accuracy, PSNR, etc.)
-  CONSTRAINT — what the paper must maintain (security, fairness, param count,
-               baseline comparison). Constraint metrics guard against cheating:
-               a scientist who ignores the constraint should score WORSE.
-  ABLATION   — what breaks when the key idea is removed (wrong-key test,
-               no-module test). Proves the method actually does something. 
-               This can be ignored if truly not important.
+Optimize `success_rate` first on `scaled_small_mapf`. A valid improvement must
+also preserve `valid_rate` and should not inflate `mean_expansions` by simply
+doing much more search.
 
-For each target, write:
-- What the experiment tests (one sentence)
-- The primary metric and direction (higher/lower is better)
-- How to run evaluation
-
-Every target here MUST appear in both reference.json and scores.json.
-Do not list targets you cannot measure — phantom targets are worse than
-missing targets.
-
-Example for a steganography paper:
-
-## Primary: reconstruction_quality
-Cover and hidden scene PSNR on Blender Synthetic.
-- **Metric**: psnr (higher is better)
-
-## Constraint: key_security
-Wrong-key rendering must produce incoherent output.
-- **Metric**: wrong_key_psnr (lower is better — high means security is broken)
-
-## Ablation: vs_standalone_baseline
-Cover quality should match standalone model (no hidden scene embedded).
-- **Metric**: psnr_gap (lower is better — large gap means hiding costs quality)
-
-Delete this comment block and fill in your actual targets below.
--->
-
-<!-- This is high-level. IT IS ABOUT CONCEPT, NOT NUMBERS. DO NOT INCLUDE ANY ACTUAL VALUES FROM THE PAPER OR YOUR EXPERIMENTS HERE. -->
-
-<!-- This should EXACTLY corresponds to the structure in your scores.json. -->
+Every submitted method should write path artifacts that `scripts/evaluate.sh`
+can score. The primary comparison is against `rt_lacam`, `full_lacam`, and
+`naive_rt_lacam` in `scoring/scores.json`.

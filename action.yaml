@@ -27,8 +27,8 @@
 #   milestone: core_claim
 #   notes: "Reproduced the core claim. Environment packaged."
 
-action: pending
-gpus: 1
+action: done
+gpus: 0
 test: false
 milestone: none
-notes: ""
+notes: "Completed documentation/scoring slice for paper 2504.06091; no job submitted."

@@ -16,6 +16,7 @@
 ## Progress Log
 
 <!-- Write your progress here -->
+- Drafted documentation and scoring target/reference files for paper 2504.06091. No method or evaluation implementation has been performed in this slice, so the milestone remains `none`.
 
 ## Stop Justification
-- Completed at milestone `none`.
+- Completed documentation/scoring slice at milestone `none`; method execution and reproduced scores remain for later agents.
