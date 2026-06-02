@@ -8,6 +8,10 @@
 - Method-independent evaluator in `eval/evaluate_mapf.py`.
 - End-to-end scripts for method, baseline, evaluation, reproduction, and job
   submission.
+- Audited on continuation: the implementation is identifiable as Real-Time
+  LaCAM, not a surrogate. It maintains persistent lazy DFS state, uses
+  constrained PIBT-style successor generation, executes one joint action per
+  real-time iteration, and re-roots the tree after execution.
 
 ## Results
 
@@ -41,11 +45,20 @@ Current local `scaled_small_mapf_budget3` scores with three expansions per real-
 This supports the paper's core claim at scaled size: Real-Time LaCAM preserves
 full-horizon success and search effort, while naive restart replanning can fail.
 
+Audit fix:
+
+- The previous lazy constraint schedule skipped part of the forced joint-action
+  enumeration. It now follows the paper's block structure: 5 attempts
+  constraining one agent, then 5^2 constraining two agents, continuing through
+  all forced-prefix blocks. The local scores are unchanged, but the algorithmic
+  coverage is now faithful.
+
 ## Remaining
 
 - Optional future work: add larger standard MAPF benchmark maps and reproduce
   the learned-policy wrapper experiment from Figure 3.
-- Awaiting compute-container verification for the PIBT-style generator patch.
+- Awaiting compute-container verification for the corrected lazy constraint
+  schedule.
 
 ## Issues
 

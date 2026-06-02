@@ -51,7 +51,7 @@ class LazyLaCAM:
         self.root = self.start
         self.cursor = self.start
         self.expansions = 0
-        self.max_attempts = 5 ** instance.n_agents
+        self.max_attempts = sum(5 ** k for k in range(1, instance.n_agents + 1))
 
     def is_goal(self, config: Config) -> bool:
         return config == self.goals
@@ -65,19 +65,35 @@ class LazyLaCAM:
         """Map a lazy attempt counter to LaCAM-style agent action constraints."""
         if attempt == 0:
             return {}
-        value = attempt - 1
-        prefix = min(self.instance.n_agents, value.bit_length() // 3 + 1)
+        prefix, value = self._constraint_block(attempt)
         forced = {}
         for agent in range(prefix):
             digit = value % 5
             value //= 5
-            actions = self._ordered_actions(agent, self.cursor_node.config[agent])
+            actions = self._ordered_actions(agent, self.nodes[self.cursor].config[agent])
             forced[agent] = actions[digit % len(actions)]
         return forced
 
     @property
     def cursor_node(self) -> Node:
         return self.nodes[self.cursor]
+
+    def _constraint_block(self, attempt: int) -> tuple[int, int]:
+        """Return (forced-prefix length, block-local index) for an attempt.
+
+        Attempt 0 is unconstrained. Attempts after that follow the LaCAM lazy
+        schedule: 5 attempts constraining agent 0, then 5^2 attempts
+        constraining agents 0..1, and so on. Keeping the block-local index
+        separate is important; otherwise some joint-action combinations are
+        skipped and the lazy DFS no longer covers the intended search space.
+        """
+        value = attempt - 1
+        for prefix in range(1, self.instance.n_agents + 1):
+            block_size = 5 ** prefix
+            if value < block_size:
+                return prefix, value
+            value -= block_size
+        return self.instance.n_agents, (5 ** self.instance.n_agents) - 1
 
     def _candidate_from_forced(self, config: Config, forced: dict[int, Coord]) -> Config | None:
         """Generate one constrained successor with PIBT-style priority inheritance.
@@ -156,12 +172,7 @@ class LazyLaCAM:
             if attempt == 0:
                 forced = {}
             else:
-                value = attempt - 1
-                prefix = 1
-                cap = 5
-                while value >= cap and prefix < self.instance.n_agents:
-                    prefix += 1
-                    cap *= 5
+                prefix, value = self._constraint_block(attempt)
                 forced = {}
                 for agent in range(prefix):
                     digit = value % 5
