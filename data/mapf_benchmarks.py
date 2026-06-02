@@ -1,4 +1,4 @@
-"""Small MAPF benchmark instances for Real-Time LaCAM reproduction.
+"""Small MAPF benchmark instances for bounded real-time MAPF evaluation.
 
 The instances are intentionally compact so they can run in CPU smoke tests, but
 they include narrow passages and opposing traffic to expose deadlock/livelock in
