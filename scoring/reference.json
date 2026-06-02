@@ -139,7 +139,7 @@
     "movingai_random32_4agent": {
       "description": "MovingAI MAPF benchmark subset on random-32-32-20 random scenarios with 4 agents, matching the paper's standard-benchmark setting at reduced agent count. Real-Time LaCAM should match full-horizon LaCAM success while naive restart replanning can fail.",
       "weight": 0.33,
-      "primary_metric": "mean_expansions",
+      "primary_metric": "success_rate",
       "metrics": {
         "success_rate": {
           "higher_is_better": true,

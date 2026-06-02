@@ -10,7 +10,7 @@ import sys
 sys.path.append(str(Path(__file__).resolve().parents[1]))
 
 from data.mapf_benchmarks import benchmark_suite, individual_optimal_cost, movingai_suite, path_is_legal, path_cost  # noqa: E402
-from method.rt_lacam import LazyLaCAM  # noqa: E402
+from baseline.lacam_core import LazyLaCAM  # noqa: E402
 
 
 def run_naive(instance, per_iter_expansions: int, total_expansion_budget: int, max_steps: int) -> dict:
