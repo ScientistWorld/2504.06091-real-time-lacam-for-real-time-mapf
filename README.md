@@ -80,14 +80,15 @@ evaluator independently checks path validity and computes:
 - `success_rate`: fraction of instances ending at all goals with a valid path.
 - `valid_rate`: fraction of instances with legal moves and no collisions.
 - `mean_normalized_cost`: mean sum-of-costs divided by the sum of individual
-  shortest path lengths, over solved instances.
+  shortest path lengths; failed, invalid, or omitted instances receive a
+  deterministic instance-size penalty.
 - `mean_expansions`: mean generated-successor expansion count, used as a
   hardware-independent search effort constraint.
 - `instances`: number of benchmark instances scored.
 
-The core claim is supported when Real-Time LaCAM matches full-horizon LaCAM on
-success while using bounded per-iteration expansions, and the naive real-time
-restart baseline has lower success on the same instances.
+The core claim is supported when a bounded real-time solver matches a
+full-horizon comparator on success and search effort, while a restart-from-
+scratch real-time baseline has lower success on the same instances.
 
 The packaged score file includes two scaled deterministic settings and one
 public MovingAI random-32-32-20 four-agent setting.
@@ -246,6 +247,25 @@ public MovingAI random-32-32-20 four-agent setting.
 ### Iteration 7: gpt-5.5 (packager)
 - **Milestone**: `core_claim_plus` | **Status**: done
 - **Working time**: 2m | **GPU**: 0.0h
+- **Jobs**: 6 total (6 completed, 0 failed)
+
+<details>
+<summary>Progress Log</summary>
+
+### [2026-06-02 15:57] - core_claim
+- Implemented Real-Time LaCAM with persistent lazy DFS, constrained one-step successor generation, and tree re-rooting.
+- Verified the scaled benchmark core claim: Real-Time LaCAM matched full-horizon LaCAM success while naive restart replanning failed on congested cases.
+
+### [2026-06-02 16:00] - core_claim_plus
+- Added a public MovingAI MAPF random-32-32-20 four-agent subset and self-contained download script.
+- Verified an additional benchmark-backed setting in compute job `96b00c84-d41`: Real-Time LaCAM and full-horizon LaCAM solved all three MovingAI instances, while naive restart replanning solved two of three.
+- Fixed the audit issue where `valid_rate` incorrectly required reaching the goal; it now measures legal/collision-free execution separately from `success_rate`.
+
+</details>
+
+### Iteration 8: gpt-5.5 (verifier)
+- **Milestone**: `core_claim_plus` | **Status**: done
+- **Working time**: 5m | **GPU**: 0.0h
 - **Jobs**: 6 total (6 completed, 0 failed)
 
 <details>
