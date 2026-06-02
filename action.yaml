@@ -4,4 +4,4 @@ action: done
 gpus: 0
 test: false
 milestone: core_claim_plus
-notes: "Core RT-LaCAM claim reproduced: method/full solve scaled and MovingAI artifacts while naive restart fails on scaled and one MovingAI case. Split scores regenerated after calibration; scaled primary remains success, MovingAI primary uses expansion effort because one-instance held-out success is too quantized."
+notes: "Packaging audit passed: MovingAI download commands are executable public fetches, paths line up, URLs resolve, and validation passes."
