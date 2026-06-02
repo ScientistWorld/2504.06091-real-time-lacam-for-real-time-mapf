@@ -4,4 +4,4 @@ action: done
 gpus: 0
 test: false
 milestone: core_claim_plus
-notes: "Validation failure fixed: MovingAI test slice now matches the scored aggregate and python validate.py passes."
+notes: "Core-claim-plus reproduction is packaged and validated. Local audit re-ran python validate.py --compare, confirmed eval/method separation and artifact scoring, and recorded the independent paper cross-check in PROGRESS.md."
