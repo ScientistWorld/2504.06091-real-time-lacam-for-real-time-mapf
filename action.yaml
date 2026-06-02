@@ -1,6 +1,7 @@
 # The system reads this file after the turn ends.
 # Do NOT sleep, poll, or wait for the submitted job.
-action: done
+action: submit
 gpus: 0
 test: false
-notes: "Independent train/test artifact-rescoring split; 63 train metric values and 63 test metric values across 3 experiments and 3 methods. RT-LaCAM keeps 1.0 success on train/test scaled and MovingAI slices; naive drops on scaled test but MovingAI test has only one easy held-out instance where all methods solve. No null metrics remain; cost is failure-penalized."
+milestone: core_claim_plus
+notes: "Rerun actual RT-LaCAM method, baselines, full scoring, split scoring, and validation; explicit milestone for external gate."

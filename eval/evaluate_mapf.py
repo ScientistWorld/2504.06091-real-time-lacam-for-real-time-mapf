@@ -24,33 +24,67 @@ def _load_path(raw):
     return [tuple(tuple(cell) for cell in cfg) for cfg in raw]
 
 
-def summarize_artifact(path: Path, instances: dict[str, MAPFInstance]) -> dict:
+def _failure_normalized_cost(instance: MAPFInstance) -> float:
+    lower_bound = max(1, individual_optimal_cost(instance))
+    return (2 * len(instance.free_cells()) * instance.n_agents) / lower_bound
+
+
+def summarize_artifact(path: Path, instances: dict[str, MAPFInstance], allowed_instances: set[str]) -> dict:
     obj = json.loads(path.read_text())
-    rows = []
+    by_instance = {}
+    duplicate_results = 0
     for res in obj["results"]:
-        inst = instances[res["instance"]]
-        plan = _load_path(res.get("path", []))
-        valid = path_is_legal(inst, plan)
-        success = bool(valid and plan[-1] == inst.goals) if plan else False
-        cost = path_cost(inst, plan) if valid else None
+        name = res["instance"]
+        if name not in allowed_instances:
+            continue
+        if name in by_instance:
+            duplicate_results += 1
+            continue
+        by_instance[name] = res
+
+    rows = []
+    for name in sorted(allowed_instances):
+        inst = instances[name]
+        res = by_instance.get(name)
+        if res is None:
+            valid = False
+            success = False
+            cost = None
+            normalized_cost = _failure_normalized_cost(inst)
+            expansions = None
+            steps = None
+        else:
+            plan = _load_path(res.get("path", []))
+            valid = path_is_legal(inst, plan)
+            success = bool(valid and plan[-1] == inst.goals) if plan else False
+            cost = path_cost(inst, plan) if valid else None
+            normalized_cost = (
+                cost / max(1, individual_optimal_cost(inst))
+                if success and cost is not None
+                else _failure_normalized_cost(inst)
+            )
+            expansions = res.get("expansions", 0)
+            steps = len(plan) - 1 if plan else None
         rows.append(
             {
                 "success": success,
                 "valid": valid,
                 "cost": cost,
-                "normalized_cost": cost / max(1, individual_optimal_cost(inst)) if cost is not None else None,
-                "expansions": res.get("expansions", 0),
-                "steps": len(plan) - 1 if plan else None,
+                "normalized_cost": normalized_cost,
+                "expansions": expansions,
+                "steps": steps,
             }
         )
-    solved = [r for r in rows if r["success"]]
-    norm = [r["normalized_cost"] for r in solved if r["normalized_cost"] is not None]
+    norm = [r["normalized_cost"] for r in rows]
+    expansion_values = [r["expansions"] for r in rows if r["expansions"] is not None]
     return {
         "success_rate": sum(1 for r in rows if r["success"]) / max(1, len(rows)),
         "valid_rate": sum(1 for r in rows if r["valid"]) / max(1, len(rows)),
-        "mean_normalized_cost": statistics.mean(norm) if norm else None,
-        "mean_expansions": statistics.mean(r["expansions"] for r in rows) if rows else None,
-        "instances": len(rows),
+        "coverage_rate": len(by_instance) / max(1, len(allowed_instances)),
+        "mean_normalized_cost": statistics.mean(norm) if rows else None,
+        "mean_expansions": statistics.mean(expansion_values) if expansion_values else None,
+        "duplicate_results": duplicate_results,
+        "instances": len(allowed_instances),
     }
 
 
@@ -67,10 +101,15 @@ def main() -> None:
     parser.add_argument("--out", default="scoring/scores.json")
     args = parser.parse_args()
 
-    instances = {x.name: x for x in benchmark_suite()}
+    scaled_instances = benchmark_suite()
+    instances = {x.name: x for x in scaled_instances}
+    scaled_names = {x.name for x in scaled_instances}
     movingai_paths = [Path(args.movingai_rt), Path(args.movingai_full), Path(args.movingai_naive)]
+    movingai_names: set[str] = set()
     if any(p.exists() for p in movingai_paths):
-        instances.update({x.name: x for x in movingai_suite()})
+        movingai_instances = movingai_suite()
+        movingai_names = {x.name for x in movingai_instances}
+        instances.update({x.name: x for x in movingai_instances})
     budget1 = {
         "rt_lacam": Path(args.rt),
         "full_lacam": Path(args.full),
@@ -86,9 +125,21 @@ def main() -> None:
         "full_lacam": Path(args.movingai_full),
         "naive_rt_lacam": Path(args.movingai_naive),
     }
-    summaries_budget1 = {name: summarize_artifact(p, instances) for name, p in budget1.items() if p.exists()}
-    summaries_budget3 = {name: summarize_artifact(p, instances) for name, p in budget3.items() if p.exists()}
-    summaries_movingai = {name: summarize_artifact(p, instances) for name, p in movingai.items() if p.exists()}
+    summaries_budget1 = {
+        name: summarize_artifact(p, instances, scaled_names)
+        for name, p in budget1.items()
+        if p.exists()
+    }
+    summaries_budget3 = {
+        name: summarize_artifact(p, instances, scaled_names)
+        for name, p in budget3.items()
+        if p.exists()
+    }
+    summaries_movingai = {
+        name: summarize_artifact(p, instances, movingai_names)
+        for name, p in movingai.items()
+        if p.exists()
+    }
 
     scores = {
         "experiments": {
