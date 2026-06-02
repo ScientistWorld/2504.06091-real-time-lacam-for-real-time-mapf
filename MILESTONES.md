@@ -14,4 +14,4 @@
 - Fixed the audit issue where `valid_rate` incorrectly required reaching the goal; it now measures legal/collision-free execution separately from `success_rate`.
 
 ## Stop Justification
-- Completed at milestone `core_claim_plus`; optional remaining work is larger-scale benchmark coverage and the learned-policy wrapper experiment.
+- Completed at milestone `core_claim_plus`.

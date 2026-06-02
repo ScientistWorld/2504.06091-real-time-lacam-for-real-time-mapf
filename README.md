@@ -6,10 +6,10 @@ to keep LaCAM's lazy DFS tree alive across execution steps and re-root that
 tree after each executed move.
 
 The packaged reproduction compares full-horizon LaCAM, Real-Time LaCAM, and a
-naive real-time restart baseline on scaled congested MAPF instances. The current
-results demonstrate the core claim: Real-Time LaCAM matches full-horizon
-success on the benchmark while the naive restart baseline fails on some
-instances.
+naive real-time restart baseline on scaled congested MAPF instances and a small
+public MovingAI subset. The current results demonstrate the core claim:
+Real-Time LaCAM matches full-horizon success on all packaged settings while
+the naive restart baseline fails on some instances.
 
 ---
 
@@ -33,9 +33,10 @@ Success requires:
   can deadlock or livelock.
 
 The benchmark uses deterministic scaled-down grid instances with narrow
-passages, cross traffic, and random dense maps. The scale differs from the
-paper's standard benchmark scenes so the environment can run quickly, but the
-problem remains MAPF coordination under congestion.
+passages, cross traffic, and random dense maps, plus a small public MovingAI
+random-32-32-20 subset. The scale differs from the paper's largest benchmark
+scenes so the environment can run quickly, but the problem remains MAPF
+coordination under congestion.
 
 ---
 
@@ -87,6 +88,9 @@ evaluator independently checks path validity and computes:
 The core claim is supported when Real-Time LaCAM matches full-horizon LaCAM on
 success while using bounded per-iteration expansions, and the naive real-time
 restart baseline has lower success on the same instances.
+
+The packaged score file includes two scaled deterministic settings and one
+public MovingAI random-32-32-20 four-agent setting.
 
 ---
 
@@ -163,12 +167,31 @@ restart baseline has lower success on the same instances.
 
 </details>
 
+### Iteration 3: gpt-5.5
+- **Milestone**: `core_claim_plus` | **Status**: done
+- **Working time**: 8m | **GPU**: 0.0h
+- **Jobs**: 4 total (4 completed, 0 failed)
+
+<details>
+<summary>Progress Log</summary>
+
+### [2026-06-02 15:57] - core_claim
+- Implemented Real-Time LaCAM with persistent lazy DFS, constrained one-step successor generation, and tree re-rooting.
+- Verified the scaled benchmark core claim: Real-Time LaCAM matched full-horizon LaCAM success while naive restart replanning failed on congested cases.
+
+### [2026-06-02 16:00] - core_claim_plus
+- Added a public MovingAI MAPF random-32-32-20 four-agent subset and self-contained download script.
+- Verified an additional benchmark-backed setting in compute job `96b00c84-d41`: Real-Time LaCAM and full-horizon LaCAM solved all three MovingAI instances, while naive restart replanning solved two of three.
+- Fixed the audit issue where `valid_rate` incorrectly required reaching the goal; it now measures legal/collision-free execution separately from `success_rate`.
+
+</details>
+
 
 ---
 
 # Reproduction Milestones
 
-**Current: core_claim**
+**Current: core_claim_plus**
 
 ## Stop Justification
-- Completed at milestone `core_claim`.
+- Completed at milestone `core_claim_plus`.
