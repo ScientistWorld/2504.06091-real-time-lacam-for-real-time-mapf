@@ -1,6 +1,6 @@
 # Reproduction Milestones
 
-**Current: core_claim**
+**Current: core_claim_plus**
 
 ## Progress Log
 
@@ -29,6 +29,18 @@
 - Added a second per-iteration expansion setting locally; this is ready for a
   follow-up CPU job before claiming `core_claim_plus`.
 
+### [2026-06-02 16:52] - core_claim_plus
+- Compute job `1ac94747-97f` exited 0 and passed `python validate.py --compare`
+  inside the container.
+- Verified the core Real-Time LaCAM success-parity claim at two per-iteration
+  expansion settings: 1 expansion and 3 expansions.
+- In both settings, Real-Time LaCAM solved all 6 scaled instances with valid
+  paths and matched full-horizon LaCAM's mean expansion count of 14.5.
+
 ## Stop Justification
-- Not stopped; a CPU compute job is being submitted to verify the expanded
-  two-budget reproduction.
+- Stopping at `core_claim_plus`: the packaged environment implements the paper's
+  actual Real-Time LaCAM computation, includes a naive restart baseline and
+  full-horizon comparator, and has passed two in-container validation jobs.
+  Secondary learned-policy experiments were not reproduced because they require
+  pretrained SSIL policy resources that are outside the paper's main algorithmic
+  claim and were not needed to make the reusable core MAPF gym.

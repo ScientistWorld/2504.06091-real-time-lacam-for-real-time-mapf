@@ -16,6 +16,8 @@ Verified compute job:
 - Job `c3151de9-ae4` exited 0.
 - It ran `scripts/run.sh`, regenerated scores, and passed
   `python validate.py --compare` inside the container.
+- Job `1ac94747-97f` exited 0 after the budget-sweep expansion and passed the
+  same validation inside the container.
 
 Local expanded smoke-test command:
 
@@ -42,8 +44,9 @@ full-horizon success and search effort, while naive restart replanning can fail.
 
 ## Remaining
 
-- Run the expanded two-budget reproduction as a compute job. If it passes, this
-  reaches `core_claim_plus`.
+- Optional future work: add larger standard MAPF benchmark maps and reproduce
+  the learned-policy wrapper experiment from Figure 3.
+- The current environment is complete enough for `core_claim_plus`.
 
 ## Issues
 

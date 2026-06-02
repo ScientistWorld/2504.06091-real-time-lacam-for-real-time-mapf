@@ -27,8 +27,8 @@
 #   milestone: core_claim
 #   notes: "Reproduced the core claim. Environment packaged."
 
-action: submit
+action: done
 gpus: 0
-test: true
-milestone: core_claim
-notes: "CPU smoke job: run the expanded two-budget Real-Time LaCAM reproduction and validate.py --compare; expected to verify core_claim_plus."
+test: false
+milestone: core_claim_plus
+notes: "Verified Real-Time LaCAM core claim on scaled MAPF at two per-iteration expansion settings with in-container validation passing."

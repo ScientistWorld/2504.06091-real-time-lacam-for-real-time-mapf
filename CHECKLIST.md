@@ -33,7 +33,7 @@
 ## Milestones
 - [x] `method_runs`
 - [x] `core_claim`
-- [ ] `core_claim_plus` — expanded two-budget run prepared, awaiting compute job
+- [x] `core_claim_plus`
 - [ ] `secondary_claims`
 - [ ] `majority`
 - [ ] `near_complete`
