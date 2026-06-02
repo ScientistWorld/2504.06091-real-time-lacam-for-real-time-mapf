@@ -1,14 +1,19 @@
 #!/bin/bash
-# Run the paper's proposed method.
-#
-# This script trains/runs the paper's method using code in method/.
-#
-# Usage:
-#   bash scripts/method.sh
+# Run the paper's Real-Time LaCAM method and full-horizon LaCAM comparator.
 
-set -e
-
+set -euo pipefail
 cd /home/user
 
-# TODO: run the paper's method
-# TODO: call scripts/evaluate.sh to score
+mkdir -p outputs
+
+python method/rt_lacam.py \
+  --mode rt \
+  --per-iter-expansions "${PER_ITER_EXPANSIONS:-1}" \
+  --total-expansion-budget "${TOTAL_EXPANSION_BUDGET:-20000}" \
+  --max-steps "${MAX_STEPS:-200}" \
+  --output outputs/rt_lacam.json
+
+python method/rt_lacam.py \
+  --mode full \
+  --total-expansion-budget "${TOTAL_EXPANSION_BUDGET:-20000}" \
+  --output outputs/full_lacam.json

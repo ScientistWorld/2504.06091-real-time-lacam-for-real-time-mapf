@@ -16,4 +16,7 @@
 
 set -e
 
-# uv pip install --system <packages>
+# Pure-Python reproduction; no third-party packages are required.
+python - <<'PY'
+print("No Python packages to install.")
+PY

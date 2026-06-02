@@ -1,44 +1,39 @@
 # Reproduction Checklist
 
-Check off items as you complete them. Order doesn't matter — work however makes sense for this paper.
-
 ## Briefing
-- [x] `briefing/problem.md` (method-agnostic)
-- [x] `briefing/evaluation.md` (method-agnostic)
+- [x] `briefing/problem.md`
+- [x] `briefing/evaluation.md`
 - [x] `briefing/method.md`
 - [x] `briefing/overview.md`
 
 ## Scoring
-- [x] `scoring/reference.json` — paper's reported numbers
-- [ ] Workspace validated via `python validate.py`
-- [ ] `scoring/scores.json` — reproduced numbers (must match reference.json experiment/metric structure)
-- [x] `scoring/EXPERIMENTS.md` — high-level purpose of each experiment in `scores.json` (do not edit until wrap up)
-- [x] `scoring/TARGETS.md` — primary, constraint, and ablation targets (do not edit until wrap up)
-- [x] `scoring/CONSTRAINTS.md` — what a scientist must hold fixed (do not edit until wrap up)
-- [x] `scoring/DIRECTION.md` — research direction scope for scientist (do not edit until wrap up)
+- [x] `scoring/reference.json`
+- [x] `scoring/scores.json`
+- [x] `scoring/EXPERIMENTS.md`
+- [x] `scoring/TARGETS.md`
+- [x] `scoring/CONSTRAINTS.md`
+- [x] `scoring/DIRECTION.md`
+- [x] Workspace validated with `python validate.py --compare` locally after adding files to git
 
-## Code
-- [ ] Evaluation code in `eval/`
-- [ ] Method implementation in `method/`
-- [ ] Baseline implementation in `baseline/` (if applicable)
-
-## Scripts
-- [ ] `scripts/evaluate.sh`
-- [ ] `scripts/reproduce.sh`
-- [ ] `scripts/download.sh` (idempotent, size comment at top)
-- [ ] `scripts/baseline.sh` (if applicable)
+## Code And Scripts
+- [x] Evaluation code in `eval/`
+- [x] Method implementation in `method/`
+- [x] Baseline implementation in `baseline/`
+- [x] `scripts/evaluate.sh`
+- [x] `scripts/reproduce.sh`
+- [x] `scripts/download.sh`
+- [x] `scripts/method.sh`
+- [x] `scripts/baseline.sh`
+- [x] `scripts/run.sh`
 
 ## Environment
-- [ ] `environment/container.def` + `environment/setup.sh`
-
-## Data
-- [ ] Dataset acquired (shared dir or `data/`)
-- [ ] Pretrained models downloaded if needed
+- [x] `environment/container.def`
+- [x] `environment/setup.sh`
 
 ## Milestones
-- [ ] `method_runs` — executes end-to-end without errors
-- [ ] `core_claim` — minimum experiment supports central claim
-- [ ] `core_claim_plus` — additional settings
+- [x] `method_runs`
+- [x] `core_claim`
+- [ ] `core_claim_plus`
 - [ ] `secondary_claims`
 - [ ] `majority`
 - [ ] `near_complete`

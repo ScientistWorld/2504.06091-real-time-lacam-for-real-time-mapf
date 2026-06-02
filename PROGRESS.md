@@ -2,41 +2,52 @@
 
 ## What Works
 
-<!-- What has been successfully reproduced so far. -->
-- Documentation/scoring briefing has been drafted for paper 2504.06091, covering the problem statement, method overview, evaluation protocol, research direction, benchmark constraints, target experiments, and paper-reference metrics.
+- Pure-Python Real-Time LaCAM implementation in `method/rt_lacam.py`.
+- Full-horizon LaCAM comparator using the same lazy DFS machinery.
+- Naive real-time restart baseline in `baseline/naive_realtime_lacam.py`.
+- Method-independent evaluator in `eval/evaluate_mapf.py`.
+- End-to-end scripts for method, baseline, evaluation, reproduction, and job
+  submission.
 
 ## Results
 
-<!-- Reproduced numbers compared to the paper's reported numbers. -->
-- No reproduced experiment scores have been generated in this slice. `scoring/reference.json` records the paper-reported qualitative/numeric targets available from the markdown: 0.01-100 ms per-iteration cutoffs, 60-second cumulative timeout, zero reported success/runtime gap versus full-horizon LaCAM, and the reported small-cutoff solution-quality degradation.
+Local smoke-test command:
+
+```bash
+bash scripts/reproduce.sh
+```
+
+Current `scaled_small_mapf` scores:
+
+- `rt_lacam`: success_rate 1.000, valid_rate 1.000, mean_normalized_cost 1.842, mean_expansions 14.5.
+- `full_lacam`: success_rate 1.000, valid_rate 1.000, mean_normalized_cost 1.211, mean_expansions 14.5.
+- `naive_rt_lacam`: success_rate 0.667, valid_rate 0.667, mean_normalized_cost 1.114, mean_expansions 40.333.
+
+This supports the paper's core claim at scaled size: Real-Time LaCAM preserves
+full-horizon success and search effort, while naive restart replanning can fail.
 
 ## Remaining
 
-<!-- What still needs to be done to reach higher milestones. -->
-- Implement or verify the method and evaluation code.
-- Generate `scoring/scores.json` with reproduced numbers matching the experiment/metric structure in `scoring/reference.json`.
-- Run full workspace validation after implementation and scores are present.
+- Run the packaged reproduction as a compute job.
+- If budget allows after job verification, add more instances or larger maps for
+  `core_claim_plus`.
 
 ## Issues
 
-<!-- Blockers, bugs, or difficulties encountered. -->
-- The paper markdown reports most Figure 2 and Figure 3 results qualitatively rather than as exact table values, so `scoring/reference.json` uses explicit numeric targets only where stated in the text and normalized placeholders for qualitative improvements.
+- The paper reports most Figure 2 values graphically/qualitatively rather than
+  as exact tables. `scoring/reference.json` therefore encodes the central
+  qualitative targets on the scaled benchmark rather than exact benchmark
+  numbers from the figure.
 
 ## Deviations from Paper
 
-<!-- Do not edit this section unless you deviated from the paper's original setup.
-     For each deviation, document: what the paper used, what you substituted, and why.
-
-     ACCEPTABLE deviations (data/resource/scale substitutions — milestones still valid):
-       - Replaced a proprietary dataset with a public one
-       - Used a smaller model of the same architecture
-       - Scaled down training (fewer epochs, smaller batch)
-       - Used a different library for the same algorithm
-
-     UNACCEPTABLE deviations (algorithm substitutions — milestones above 'none' are void):
-       - Replaced the paper's algorithm with a fundamentally different one
-       - Wrote a generic model trained to approximate the method's outputs
-         instead of implementing the method's computational steps
-
-     The test: could someone reading your code identify which algorithm from
-     the paper you implemented? If not, you replaced the method. -->
+- Paper data: standard MAPF benchmark subset with 25 scenes per map. This
+  reproduction uses deterministic scaled grid instances generated in
+  `data/mapf_benchmarks.py` to keep jobs short and self-contained.
+- Paper time budget: millisecond wall-clock per-iteration cutoffs and 60-second
+  cumulative timeout. This reproduction uses per-iteration successor expansion
+  budgets and total expansion budgets as hardware-independent equivalents.
+- Paper implementation: full PIBT as the one-step generator. This reproduction
+  uses a deterministic constrained PIBT-style greedy generator with exhaustive
+  fully constrained attempts, preserving the LaCAM lazy constrained DFS
+  computation while reducing implementation complexity.
