@@ -43,20 +43,20 @@ Current local `scaled_small_mapf` scores with one expansion per real-time iterat
 
 - `rt_lacam`: success_rate 1.000, valid_rate 1.000, mean_normalized_cost 2.972, mean_expansions 28.167.
 - `full_lacam`: success_rate 1.000, valid_rate 1.000, mean_normalized_cost 1.417, mean_expansions 28.167.
-- `naive_rt_lacam`: success_rate 0.167, valid_rate 1.000, mean_normalized_cost 1.000, mean_expansions 7.333.
+- `naive_rt_lacam`: success_rate 0.167, valid_rate 1.000, mean_normalized_cost 12.402, mean_expansions 7.333.
 
 Current local `scaled_small_mapf_budget3` scores with three expansions per real-time iteration:
 
 - `rt_lacam`: success_rate 1.000, valid_rate 1.000, mean_normalized_cost 1.643, mean_expansions 28.167.
 - `full_lacam`: success_rate 1.000, valid_rate 1.000, mean_normalized_cost 1.417, mean_expansions 28.167.
-- `naive_rt_lacam`: success_rate 0.167, valid_rate 1.000, mean_normalized_cost 1.000, mean_expansions 219.000.
+- `naive_rt_lacam`: success_rate 0.167, valid_rate 1.000, mean_normalized_cost 12.402, mean_expansions 219.000.
 
 Current local `movingai_random32_4agent` scores on three random-32-32-20
 scenarios with four agents and three expansions per real-time iteration:
 
 - `rt_lacam`: success_rate 1.000, valid_rate 1.000, mean_normalized_cost 1.017, mean_expansions 40.333.
 - `full_lacam`: success_rate 1.000, valid_rate 1.000, mean_normalized_cost 1.017, mean_expansions 40.333.
-- `naive_rt_lacam`: success_rate 0.667, valid_rate 1.000, mean_normalized_cost 1.000, mean_expansions 101.000.
+- `naive_rt_lacam`: success_rate 0.667, valid_rate 1.000, mean_normalized_cost 23.182, mean_expansions 101.000.
 
 This supports the paper's core claim at scaled size: Real-Time LaCAM preserves
 full-horizon success and search effort, while naive restart replanning can fail.
