@@ -14,6 +14,7 @@
 - [x] `scoring/CONSTRAINTS.md`
 - [x] `scoring/DIRECTION.md`
 - [x] Workspace validated with `python validate.py --compare` locally after adding files to git
+- [x] MovingAI public benchmark subset included in scoring
 
 ## Code And Scripts
 - [x] Evaluation code in `eval/`
@@ -25,6 +26,7 @@
 - [x] `scripts/method.sh`
 - [x] `scripts/baseline.sh`
 - [x] `scripts/run.sh`
+- [x] MovingAI benchmark parser in `data/mapf_benchmarks.py`
 
 ## Environment
 - [x] `environment/container.def`
@@ -33,7 +35,7 @@
 ## Milestones
 - [x] `method_runs`
 - [x] `core_claim`
-- [x] `core_claim_plus`
+- [ ] `core_claim_plus`
 - [ ] `secondary_claims`
 - [ ] `majority`
 - [ ] `near_complete`

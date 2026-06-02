@@ -9,7 +9,7 @@ import sys
 
 sys.path.append(str(Path(__file__).resolve().parents[1]))
 
-from data.mapf_benchmarks import benchmark_suite, individual_optimal_cost, path_cost, validate_path  # noqa: E402
+from data.mapf_benchmarks import benchmark_suite, individual_optimal_cost, movingai_suite, path_cost, validate_path  # noqa: E402
 from method.rt_lacam import LazyLaCAM  # noqa: E402
 
 
@@ -39,18 +39,21 @@ def run_naive(instance, per_iter_expansions: int, total_expansion_budget: int, m
 
 def main() -> None:
     parser = argparse.ArgumentParser()
+    parser.add_argument("--benchmark", choices=["scaled", "movingai"], default="scaled")
     parser.add_argument("--output", default="outputs/naive_rt_lacam.json")
     parser.add_argument("--per-iter-expansions", type=int, default=1)
     parser.add_argument("--total-expansion-budget", type=int, default=20000)
     parser.add_argument("--max-steps", type=int, default=200)
     args = parser.parse_args()
+    instances = benchmark_suite() if args.benchmark == "scaled" else movingai_suite()
     results = [
         run_naive(inst, args.per_iter_expansions, args.total_expansion_budget, args.max_steps)
-        for inst in benchmark_suite()
+        for inst in instances
     ]
     out = {
         "method": "naive_rt_lacam",
         "mode": "naive_rt",
+        "benchmark": args.benchmark,
         "per_iter_expansions": args.per_iter_expansions,
         "total_expansion_budget": args.total_expansion_budget,
         "results": results,
@@ -61,4 +64,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

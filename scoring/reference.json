@@ -2,7 +2,7 @@
   "experiments": {
     "scaled_small_mapf": {
       "description": "Scaled MAPF reproduction of the paper's central Fig. 2 claim: Real-Time LaCAM should retain full-horizon LaCAM success under tiny per-iteration planning budgets, while naive real-time replanning can fail.",
-      "weight": 0.5,
+      "weight": 0.34,
       "primary_metric": "success_rate",
       "metrics": {
         "success_rate": {
@@ -55,7 +55,7 @@
     },
     "scaled_small_mapf_budget3": {
       "description": "Additional scaled MAPF reproduction at a larger real-time per-iteration expansion budget, testing that the persistent-search success parity holds beyond the minimum setting.",
-      "weight": 0.5,
+      "weight": 0.33,
       "primary_metric": "success_rate",
       "metrics": {
         "success_rate": {
@@ -103,6 +103,59 @@
           "mean_normalized_cost": 1.6427045177045176,
           "mean_expansions": 28.166666666666668,
           "instances": 6
+        }
+      }
+    },
+    "movingai_random32_4agent": {
+      "description": "MovingAI MAPF benchmark subset on random-32-32-20 random scenarios with 4 agents, matching the paper's standard-benchmark setting at reduced agent count. Real-Time LaCAM should match full-horizon LaCAM success while naive restart replanning can fail.",
+      "weight": 0.33,
+      "primary_metric": "success_rate",
+      "metrics": {
+        "success_rate": {
+          "higher_is_better": true,
+          "coefficient": 1.0
+        },
+        "valid_rate": {
+          "higher_is_better": true,
+          "coefficient": 0.5
+        },
+        "mean_normalized_cost": {
+          "higher_is_better": false,
+          "coefficient": -0.2
+        },
+        "mean_expansions": {
+          "higher_is_better": false,
+          "coefficient": -0.3
+        },
+        "instances": {
+          "higher_is_better": true,
+          "coefficient": 0.0
+        }
+      },
+      "results": {
+        "full_lacam": {
+          "type": "baseline",
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "mean_normalized_cost": 1.0171821305841924,
+          "mean_expansions": 40.333333333333336,
+          "instances": 3
+        },
+        "naive_rt_lacam": {
+          "type": "baseline",
+          "success_rate": 0.6666666666666666,
+          "valid_rate": 0.6666666666666666,
+          "mean_normalized_cost": 1.0,
+          "mean_expansions": 101.0,
+          "instances": 3
+        },
+        "rt_lacam": {
+          "type": "proposed",
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "mean_normalized_cost": 1.0171821305841924,
+          "mean_expansions": 40.333333333333336,
+          "instances": 3
         }
       }
     }

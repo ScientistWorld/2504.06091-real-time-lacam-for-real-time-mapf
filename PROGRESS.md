@@ -8,6 +8,8 @@
 - Method-independent evaluator in `eval/evaluate_mapf.py`.
 - End-to-end scripts for method, baseline, evaluation, reproduction, and job
   submission.
+- Public MovingAI MAPF benchmark download and parser for a random-32-32-20
+  four-agent subset.
 - Audited on continuation: the implementation is identifiable as Real-Time
   LaCAM, not a surrogate. It maintains persistent lazy DFS state, uses
   constrained PIBT-style successor generation, executes one joint action per
@@ -45,8 +47,17 @@ Current local `scaled_small_mapf_budget3` scores with three expansions per real-
 - `full_lacam`: success_rate 1.000, valid_rate 1.000, mean_normalized_cost 1.417, mean_expansions 28.167.
 - `naive_rt_lacam`: success_rate 0.167, valid_rate 0.167, mean_normalized_cost 1.000, mean_expansions 219.000.
 
+Current local `movingai_random32_4agent` scores on three random-32-32-20
+scenarios with four agents and three expansions per real-time iteration:
+
+- `rt_lacam`: success_rate 1.000, valid_rate 1.000, mean_normalized_cost 1.017, mean_expansions 40.333.
+- `full_lacam`: success_rate 1.000, valid_rate 1.000, mean_normalized_cost 1.017, mean_expansions 40.333.
+- `naive_rt_lacam`: success_rate 0.667, valid_rate 0.667, mean_normalized_cost 1.000, mean_expansions 101.000.
+
 This supports the paper's core claim at scaled size: Real-Time LaCAM preserves
 full-horizon success and search effort, while naive restart replanning can fail.
+The MovingAI subset adds a public benchmark-backed setting closer to the
+paper's standard benchmark experiments.
 
 Audit fix:
 
@@ -58,9 +69,9 @@ Audit fix:
 
 ## Remaining
 
-- Optional future work: add larger standard MAPF benchmark maps and reproduce
-  the learned-policy wrapper experiment from Figure 3.
-- No work remains for the packaged `core_claim_plus` reproduction.
+- Optional future work: scale the MovingAI experiments to more scenes/agents
+  and reproduce the learned-policy wrapper experiment from Figure 3.
+- `core_claim_plus` needs compute-job verification of the new MovingAI subset.
 
 ## Issues
 
@@ -77,7 +88,8 @@ Audit fix:
 
 - Paper data: standard MAPF benchmark subset with 25 scenes per map. This
   reproduction uses deterministic scaled grid instances generated in
-  `data/mapf_benchmarks.py` to keep jobs short and self-contained.
+  `data/mapf_benchmarks.py` plus a reduced public MovingAI random-32-32-20
+  subset to keep jobs short and self-contained.
 - Paper time budget: millisecond wall-clock per-iteration cutoffs and 60-second
   cumulative timeout. This reproduction uses per-iteration successor expansion
   budgets and total expansion budgets as hardware-independent equivalents.

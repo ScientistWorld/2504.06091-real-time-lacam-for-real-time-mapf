@@ -10,4 +10,7 @@ python eval/evaluate_mapf.py \
   --full "${FULL_ARTIFACT:-outputs/full_lacam.json}" \
   --naive "${NAIVE_ARTIFACT:-outputs/naive_rt_lacam.json}" \
   --naive-budget3 "${NAIVE_BUDGET3_ARTIFACT:-outputs/naive_rt_lacam_budget3.json}" \
+  --movingai-rt "${MOVINGAI_RT_ARTIFACT:-outputs/movingai_rt_lacam.json}" \
+  --movingai-full "${MOVINGAI_FULL_ARTIFACT:-outputs/movingai_full_lacam.json}" \
+  --movingai-naive "${MOVINGAI_NAIVE_ARTIFACT:-outputs/movingai_naive_rt_lacam.json}" \
   --out scoring/scores.json

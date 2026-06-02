@@ -21,6 +21,7 @@ from data.mapf_benchmarks import (  # noqa: E402
     MAPFInstance,
     benchmark_suite,
     individual_optimal_cost,
+    movingai_suite,
     path_cost,
     shortest_path_distances,
     validate_path,
@@ -292,6 +293,7 @@ def run_full(instance: MAPFInstance, expansion_budget: int) -> dict:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--mode", choices=["full", "rt"], default="rt")
+    parser.add_argument("--benchmark", choices=["scaled", "movingai"], default="scaled")
     parser.add_argument("--output", default="outputs/rt_lacam.json")
     parser.add_argument("--per-iter-expansions", type=int, default=1)
     parser.add_argument("--total-expansion-budget", type=int, default=20000)
@@ -299,7 +301,7 @@ def main() -> None:
     parser.add_argument("--instances", default="all")
     args = parser.parse_args()
 
-    instances = benchmark_suite()
+    instances = benchmark_suite() if args.benchmark == "scaled" else movingai_suite()
     if args.instances != "all":
         keep = set(args.instances.split(","))
         instances = [x for x in instances if x.name in keep]
@@ -314,6 +316,7 @@ def main() -> None:
     out = {
         "method": "rt_lacam" if args.mode == "rt" else "full_lacam",
         "mode": args.mode,
+        "benchmark": args.benchmark,
         "per_iter_expansions": args.per_iter_expansions,
         "total_expansion_budget": args.total_expansion_budget,
         "results": results,

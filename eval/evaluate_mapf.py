@@ -10,7 +10,14 @@ import sys
 
 sys.path.append(str(Path(__file__).resolve().parents[1]))
 
-from data.mapf_benchmarks import MAPFInstance, benchmark_suite, validate_path, path_cost, individual_optimal_cost  # noqa: E402
+from data.mapf_benchmarks import (  # noqa: E402
+    MAPFInstance,
+    benchmark_suite,
+    individual_optimal_cost,
+    movingai_suite,
+    path_cost,
+    validate_path,
+)
 
 
 def _load_path(raw):
@@ -54,10 +61,16 @@ def main() -> None:
     parser.add_argument("--full", default="outputs/full_lacam.json")
     parser.add_argument("--naive", default="outputs/naive_rt_lacam.json")
     parser.add_argument("--naive-budget3", default="outputs/naive_rt_lacam_budget3.json")
+    parser.add_argument("--movingai-rt", default="outputs/movingai_rt_lacam.json")
+    parser.add_argument("--movingai-full", default="outputs/movingai_full_lacam.json")
+    parser.add_argument("--movingai-naive", default="outputs/movingai_naive_rt_lacam.json")
     parser.add_argument("--out", default="scoring/scores.json")
     args = parser.parse_args()
 
     instances = {x.name: x for x in benchmark_suite()}
+    movingai_paths = [Path(args.movingai_rt), Path(args.movingai_full), Path(args.movingai_naive)]
+    if any(p.exists() for p in movingai_paths):
+        instances.update({x.name: x for x in movingai_suite()})
     budget1 = {
         "rt_lacam": Path(args.rt),
         "full_lacam": Path(args.full),
@@ -68,8 +81,14 @@ def main() -> None:
         "full_lacam": Path(args.full),
         "naive_rt_lacam": Path(args.naive_budget3),
     }
+    movingai = {
+        "rt_lacam": Path(args.movingai_rt),
+        "full_lacam": Path(args.movingai_full),
+        "naive_rt_lacam": Path(args.movingai_naive),
+    }
     summaries_budget1 = {name: summarize_artifact(p, instances) for name, p in budget1.items() if p.exists()}
     summaries_budget3 = {name: summarize_artifact(p, instances) for name, p in budget3.items() if p.exists()}
+    summaries_movingai = {name: summarize_artifact(p, instances) for name, p in movingai.items() if p.exists()}
 
     scores = {
         "experiments": {
@@ -78,9 +97,13 @@ def main() -> None:
             },
             "scaled_small_mapf_budget3": {
                 "results": summaries_budget3,
-            }
+            },
         }
     }
+    if summaries_movingai:
+        scores["experiments"]["movingai_random32_4agent"] = {
+            "results": summaries_movingai,
+        }
     Path(args.out).parent.mkdir(parents=True, exist_ok=True)
     Path(args.out).write_text(json.dumps(scores, indent=2))
     print(json.dumps(scores, indent=2))

@@ -17,3 +17,12 @@ python baseline/naive_realtime_lacam.py \
   --total-expansion-budget "${TOTAL_EXPANSION_BUDGET:-20000}" \
   --max-steps "${MAX_STEPS:-200}" \
   --output outputs/naive_rt_lacam_budget3.json
+
+if [ "${RUN_MOVINGAI:-1}" = "1" ]; then
+  python baseline/naive_realtime_lacam.py \
+    --benchmark movingai \
+    --per-iter-expansions "${MOVINGAI_PER_ITER_EXPANSIONS:-3}" \
+    --total-expansion-budget "${MOVINGAI_TOTAL_EXPANSION_BUDGET:-50000}" \
+    --max-steps "${MOVINGAI_MAX_STEPS:-300}" \
+    --output outputs/movingai_naive_rt_lacam.json
+fi

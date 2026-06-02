@@ -179,6 +179,71 @@ def benchmark_suite() -> list[MAPFInstance]:
     return instances
 
 
+def _parse_movingai_map(path: Path) -> tuple[int, int, frozenset[Coord]]:
+    lines = path.read_text().splitlines()
+    height = int(lines[1].split()[1])
+    width = int(lines[2].split()[1])
+    grid = lines[4 : 4 + height]
+    obstacles = {
+        (x, y)
+        for y, row in enumerate(grid)
+        for x, char in enumerate(row)
+        if char in {"@", "T"}
+    }
+    return width, height, frozenset(obstacles)
+
+
+def movingai_suite(
+    root: str | Path = "data/downloads/movingai_mapf",
+    map_name: str = "random-32-32-20",
+    scenario_ids: Iterable[int] = (1, 2, 3),
+    n_agents: int = 4,
+) -> list[MAPFInstance]:
+    """Load a small MAPF Benchmark subset from MovingAI files.
+
+    The MAPF benchmark scenario files list single-agent start/goal tasks.
+    Following common MAPF benchmark usage, the first ``n_agents`` rows from a
+    scenario define one multi-agent instance.
+    """
+    root = Path(root)
+    map_path = root / f"{map_name}.map"
+    if not map_path.exists():
+        raise FileNotFoundError(
+            f"Missing {map_path}. Run scripts/download.sh before using the MovingAI benchmark."
+        )
+    width, height, obstacles = _parse_movingai_map(map_path)
+    instances: list[MAPFInstance] = []
+    for sid in scenario_ids:
+        scen_path = root / "scen-random" / f"{map_name}-random-{sid}.scen"
+        if not scen_path.exists():
+            raise FileNotFoundError(
+                f"Missing {scen_path}. Run scripts/download.sh before using the MovingAI benchmark."
+            )
+        starts: list[Coord] = []
+        goals: list[Coord] = []
+        for line in scen_path.read_text().splitlines()[1:]:
+            parts = line.split()
+            if len(parts) < 9:
+                continue
+            starts.append((int(parts[4]), int(parts[5])))
+            goals.append((int(parts[6]), int(parts[7])))
+            if len(starts) == n_agents:
+                break
+        if len(starts) != n_agents:
+            raise ValueError(f"{scen_path} has fewer than {n_agents} tasks")
+        instances.append(
+            MAPFInstance(
+                name=f"movingai_{map_name}_random_{sid}_{n_agents}a",
+                width=width,
+                height=height,
+                obstacles=obstacles,
+                starts=tuple(starts),
+                goals=tuple(goals),
+            )
+        )
+    return instances
+
+
 def write_benchmarks(path: str | Path) -> None:
     Path(path).write_text(json.dumps([x.to_dict() for x in benchmark_suite()], indent=2))
 
@@ -187,4 +252,3 @@ def load_benchmarks(path: str | Path | None = None) -> list[MAPFInstance]:
     if path is None:
         return benchmark_suite()
     return [MAPFInstance.from_dict(obj) for obj in json.loads(Path(path).read_text())]
-

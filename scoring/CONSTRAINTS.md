@@ -1,8 +1,9 @@
 # Constraints
 
 Methods must solve the same MAPF instances from `data/mapf_benchmarks.py` and
-must emit explicit joint-configuration paths. Evaluation rejects paths with
-illegal moves, vertex collisions, or edge-swap collisions.
+the downloaded MovingAI files referenced there. They must emit explicit
+joint-configuration paths. Evaluation rejects paths with illegal moves, vertex
+collisions, or edge-swap collisions.
 
 Do not improve scores by changing the benchmark, selectively dropping hard
 instances, hiding invalid paths, or scoring wall-clock speed. Expansion counts

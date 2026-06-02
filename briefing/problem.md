@@ -18,6 +18,7 @@ Success requires:
   can deadlock or livelock.
 
 The benchmark uses deterministic scaled-down grid instances with narrow
-passages, cross traffic, and random dense maps. The scale differs from the
-paper's standard benchmark scenes so the environment can run quickly, but the
-problem remains MAPF coordination under congestion.
+passages, cross traffic, and random dense maps, plus a small public MovingAI
+random-32-32-20 subset. The scale differs from the paper's largest benchmark
+scenes so the environment can run quickly, but the problem remains MAPF
+coordination under congestion.

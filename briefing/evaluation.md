@@ -19,3 +19,6 @@ evaluator independently checks path validity and computes:
 The core claim is supported when Real-Time LaCAM matches full-horizon LaCAM on
 success while using bounded per-iteration expansions, and the naive real-time
 restart baseline has lower success on the same instances.
+
+The packaged score file includes two scaled deterministic settings and one
+public MovingAI random-32-32-20 four-agent setting.
