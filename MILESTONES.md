@@ -23,6 +23,12 @@
 - Naive real-time restart LaCAM solved 4 of 6 instances, demonstrating the
   failure mode addressed by persistent search state.
 
+### [2026-06-02 16:48] - core_claim
+- Compute job `c3151de9-ae4` exited 0 and passed `python validate.py --compare`
+  inside the container.
+- Added a second per-iteration expansion setting locally; this is ready for a
+  follow-up CPU job before claiming `core_claim_plus`.
+
 ## Stop Justification
-- Not stopped; a CPU compute job is being submitted to verify the packaged
-  environment end to end.
+- Not stopped; a CPU compute job is being submitted to verify the expanded
+  two-budget reproduction.

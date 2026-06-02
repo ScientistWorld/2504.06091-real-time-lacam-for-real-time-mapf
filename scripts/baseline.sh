@@ -11,3 +11,9 @@ python baseline/naive_realtime_lacam.py \
   --total-expansion-budget "${TOTAL_EXPANSION_BUDGET:-20000}" \
   --max-steps "${MAX_STEPS:-200}" \
   --output outputs/naive_rt_lacam.json
+
+python baseline/naive_realtime_lacam.py \
+  --per-iter-expansions "${PER_ITER_EXPANSIONS_WIDE:-3}" \
+  --total-expansion-budget "${TOTAL_EXPANSION_BUDGET:-20000}" \
+  --max-steps "${MAX_STEPS:-200}" \
+  --output outputs/naive_rt_lacam_budget3.json

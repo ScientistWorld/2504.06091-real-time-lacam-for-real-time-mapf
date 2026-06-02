@@ -10,3 +10,5 @@ are used as the hardware-independent search effort constraint.
 
 The real-time setting matters: methods should make bounded per-iteration
 decisions rather than only returning a full-horizon plan after unbounded search.
+The packaged evaluation currently checks one-expansion and three-expansion
+per-iteration settings.

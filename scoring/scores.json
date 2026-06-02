@@ -24,6 +24,31 @@
           "instances": 6
         }
       }
+    },
+    "scaled_small_mapf_budget3": {
+      "results": {
+        "rt_lacam": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "mean_normalized_cost": 1.377899877899878,
+          "mean_expansions": 14.5,
+          "instances": 6
+        },
+        "full_lacam": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "mean_normalized_cost": 1.2112332112332111,
+          "mean_expansions": 14.5,
+          "instances": 6
+        },
+        "naive_rt_lacam": {
+          "success_rate": 0.6666666666666666,
+          "valid_rate": 0.6666666666666666,
+          "mean_normalized_cost": 1.1144688644688645,
+          "mean_expansions": 118.5,
+          "instances": 6
+        }
+      }
     }
   }
 }

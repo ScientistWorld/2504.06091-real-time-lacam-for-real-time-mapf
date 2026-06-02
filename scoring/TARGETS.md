@@ -1,6 +1,7 @@
 # Targets
 
-Optimize `success_rate` first on `scaled_small_mapf`.
+Optimize `success_rate` first on `scaled_small_mapf`, then on
+`scaled_small_mapf_budget3`.
 
 Valid improvements must also preserve:
 

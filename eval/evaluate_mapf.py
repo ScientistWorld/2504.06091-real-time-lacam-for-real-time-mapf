@@ -50,23 +50,34 @@ def summarize_artifact(path: Path, instances: dict[str, MAPFInstance]) -> dict:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--rt", default="outputs/rt_lacam.json")
+    parser.add_argument("--rt-budget3", default="outputs/rt_lacam_budget3.json")
     parser.add_argument("--full", default="outputs/full_lacam.json")
     parser.add_argument("--naive", default="outputs/naive_rt_lacam.json")
+    parser.add_argument("--naive-budget3", default="outputs/naive_rt_lacam_budget3.json")
     parser.add_argument("--out", default="scoring/scores.json")
     args = parser.parse_args()
 
     instances = {x.name: x for x in benchmark_suite()}
-    artifacts = {
+    budget1 = {
         "rt_lacam": Path(args.rt),
         "full_lacam": Path(args.full),
         "naive_rt_lacam": Path(args.naive),
     }
-    summaries = {name: summarize_artifact(p, instances) for name, p in artifacts.items() if p.exists()}
+    budget3 = {
+        "rt_lacam": Path(args.rt_budget3),
+        "full_lacam": Path(args.full),
+        "naive_rt_lacam": Path(args.naive_budget3),
+    }
+    summaries_budget1 = {name: summarize_artifact(p, instances) for name, p in budget1.items() if p.exists()}
+    summaries_budget3 = {name: summarize_artifact(p, instances) for name, p in budget3.items() if p.exists()}
 
     scores = {
         "experiments": {
             "scaled_small_mapf": {
-                "results": summaries,
+                "results": summaries_budget1,
+            },
+            "scaled_small_mapf_budget3": {
+                "results": summaries_budget3,
             }
         }
     }
@@ -77,4 +88,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

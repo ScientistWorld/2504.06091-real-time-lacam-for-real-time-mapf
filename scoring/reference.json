@@ -2,7 +2,60 @@
   "experiments": {
     "scaled_small_mapf": {
       "description": "Scaled MAPF reproduction of the paper's central Fig. 2 claim: Real-Time LaCAM should retain full-horizon LaCAM success under tiny per-iteration planning budgets, while naive real-time replanning can fail.",
-      "weight": 1.0,
+      "weight": 0.5,
+      "primary_metric": "success_rate",
+      "metrics": {
+        "success_rate": {
+          "higher_is_better": true,
+          "coefficient": 1.0
+        },
+        "valid_rate": {
+          "higher_is_better": true,
+          "coefficient": 0.5
+        },
+        "mean_normalized_cost": {
+          "higher_is_better": false,
+          "coefficient": -0.2
+        },
+        "mean_expansions": {
+          "higher_is_better": false,
+          "coefficient": -0.3
+        },
+        "instances": {
+          "higher_is_better": true,
+          "coefficient": 0.0
+        }
+      },
+      "results": {
+        "full_lacam": {
+          "type": "baseline",
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "mean_normalized_cost": 1.0,
+          "mean_expansions": 1.0,
+          "instances": 6
+        },
+        "naive_rt_lacam": {
+          "type": "baseline",
+          "success_rate": 0.7,
+          "valid_rate": 0.7,
+          "mean_normalized_cost": 1.0,
+          "mean_expansions": 1.0,
+          "instances": 6
+        },
+        "rt_lacam": {
+          "type": "proposed",
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "mean_normalized_cost": 1.0,
+          "mean_expansions": 1.0,
+          "instances": 6
+        }
+      }
+    },
+    "scaled_small_mapf_budget3": {
+      "description": "Additional scaled MAPF reproduction at a larger real-time per-iteration expansion budget, testing that the persistent-search success parity holds beyond the minimum setting.",
+      "weight": 0.5,
       "primary_metric": "success_rate",
       "metrics": {
         "success_rate": {

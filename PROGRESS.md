@@ -11,26 +11,39 @@
 
 ## Results
 
-Local smoke-test command:
+Verified compute job:
+
+- Job `c3151de9-ae4` exited 0.
+- It ran `scripts/run.sh`, regenerated scores, and passed
+  `python validate.py --compare` inside the container.
+
+Local expanded smoke-test command:
 
 ```bash
 bash scripts/reproduce.sh
+python validate.py --compare
 ```
 
-Current `scaled_small_mapf` scores:
+Current `scaled_small_mapf` scores with one expansion per real-time iteration:
 
 - `rt_lacam`: success_rate 1.000, valid_rate 1.000, mean_normalized_cost 1.842, mean_expansions 14.5.
 - `full_lacam`: success_rate 1.000, valid_rate 1.000, mean_normalized_cost 1.211, mean_expansions 14.5.
 - `naive_rt_lacam`: success_rate 0.667, valid_rate 0.667, mean_normalized_cost 1.114, mean_expansions 40.333.
+
+Current `scaled_small_mapf_budget3` scores with three expansions per real-time
+iteration:
+
+- `rt_lacam`: success_rate 1.000, valid_rate 1.000, mean_normalized_cost 1.378, mean_expansions 14.5.
+- `full_lacam`: success_rate 1.000, valid_rate 1.000, mean_normalized_cost 1.211, mean_expansions 14.5.
+- `naive_rt_lacam`: success_rate 0.667, valid_rate 0.667, mean_normalized_cost 1.114, mean_expansions 118.5.
 
 This supports the paper's core claim at scaled size: Real-Time LaCAM preserves
 full-horizon success and search effort, while naive restart replanning can fail.
 
 ## Remaining
 
-- Run the packaged reproduction as a compute job.
-- If budget allows after job verification, add more instances or larger maps for
-  `core_claim_plus`.
+- Run the expanded two-budget reproduction as a compute job. If it passes, this
+  reaches `core_claim_plus`.
 
 ## Issues
 
