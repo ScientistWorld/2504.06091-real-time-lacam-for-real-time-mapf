@@ -4,4 +4,4 @@ action: done
 gpus: 0
 test: false
 milestone: core_claim_plus
-notes: "Finished core_claim_plus reproduction. Validation passes; MovingAI URLs resolve; baseline is fixed independently from method edits."
+notes: "Final verification passed at core_claim_plus; method-agnostic docs cleaned up and validation passes."

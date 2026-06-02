@@ -1,7 +1,8 @@
 {
   "experiments": {
     "scaled_small_mapf": {
-      "description": "Scaled MAPF reproduction of the paper's central Fig. 2 claim: Real-Time LaCAM should retain full-horizon LaCAM success under tiny per-iteration planning budgets, while naive real-time replanning can fail.",
+      "description": "Scaled MAPF reproduction of the central Fig. 2 claim: bounded real-time planning should retain full-horizon success under tiny per-iteration planning budgets, while naive restart replanning can fail.",
+      "notes": "The paper reports this result graphically and qualitatively rather than as an exact table. These values are scaled reproduction targets from the packaged deterministic benchmark; the paper's qualitative target is success parity between bounded real-time planning and full-horizon planning, with restart replanning failing on congested cases.",
       "weight": 0.34,
       "primary_metric": "success_rate",
       "metrics": {
@@ -69,7 +70,8 @@
       }
     },
     "scaled_small_mapf_budget3": {
-      "description": "Additional scaled MAPF reproduction at a larger real-time per-iteration expansion budget, testing that the persistent-search success parity holds beyond the minimum setting.",
+      "description": "Additional scaled MAPF reproduction at a larger real-time per-iteration expansion budget, testing that success parity with full-horizon planning holds beyond the minimum setting.",
+      "notes": "The paper varies millisecond cutoffs in Figure 2. This gym uses hardware-independent expansion budgets, so these values are scaled reproduction targets rather than exact paper plot readings.",
       "weight": 0.33,
       "primary_metric": "success_rate",
       "metrics": {
@@ -137,7 +139,8 @@
       }
     },
     "movingai_random32_4agent": {
-      "description": "MovingAI MAPF benchmark subset on random-32-32-20 random scenarios with 4 agents, matching the paper's standard-benchmark setting at reduced agent count. Real-Time LaCAM should match full-horizon LaCAM success while naive restart replanning can fail.",
+      "description": "MovingAI MAPF benchmark subset on random-32-32-20 random scenarios with 4 agents, matching the paper's standard-benchmark setting at reduced agent count. Bounded real-time planning should match full-horizon success while naive restart replanning can fail.",
+      "notes": "The paper uses larger standard benchmark slices with 25 scenes per map. This gym uses a verified public MovingAI subset at reduced agent count to keep evaluation lightweight; values are scaled reproduction targets documenting the same qualitative comparison.",
       "weight": 0.33,
       "primary_metric": "success_rate",
       "metrics": {
