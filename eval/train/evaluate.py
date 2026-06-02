@@ -122,32 +122,52 @@ def _artifact_uses_movingai(path: Path) -> bool:
 
 def summarize_artifact(path: Path, instances: dict[str, MAPFInstance], allowed_instances: set[str]) -> dict:
     obj = _load_json(path)
-    rows = []
+    by_instance = {}
+    duplicate_results = 0
     for res in obj["results"]:
-        if res["instance"] not in allowed_instances:
+        name = res["instance"]
+        if name not in allowed_instances:
             continue
-        inst = instances[res["instance"]]
-        plan = _load_path(res.get("path", []))
-        valid = path_is_legal(inst, plan)
-        success = bool(valid and plan[-1] == inst.goals) if plan else False
-        cost = path_cost(inst, plan) if valid else None
+        if name in by_instance:
+            duplicate_results += 1
+            continue
+        by_instance[name] = res
+
+    rows = []
+    for name in sorted(allowed_instances):
+        inst = instances[name]
+        res = by_instance.get(name)
+        if res is None:
+            valid = False
+            success = False
+            cost = None
+            expansions = None
+        else:
+            plan = _load_path(res.get("path", []))
+            valid = path_is_legal(inst, plan)
+            success = bool(valid and plan[-1] == inst.goals) if plan else False
+            cost = path_cost(inst, plan) if valid else None
+            expansions = res.get("expansions", 0)
         rows.append(
             {
                 "success": success,
                 "valid": valid,
                 "cost": cost,
                 "normalized_cost": cost / max(1, individual_optimal_cost(inst)) if cost is not None else None,
-                "expansions": res.get("expansions", 0),
+                "expansions": expansions,
             }
         )
     solved = [r for r in rows if r["success"]]
     norm = [r["normalized_cost"] for r in solved if r["normalized_cost"] is not None]
+    expansion_values = [r["expansions"] for r in rows if r["expansions"] is not None]
     return {
         "success_rate": sum(1 for r in rows if r["success"]) / max(1, len(rows)),
         "valid_rate": sum(1 for r in rows if r["valid"]) / max(1, len(rows)),
+        "coverage_rate": len(by_instance) / max(1, len(allowed_instances)),
         "mean_normalized_cost": statistics.mean(norm) if norm else None,
-        "mean_expansions": statistics.mean(r["expansions"] for r in rows) if rows else None,
-        "instances": len(rows),
+        "mean_expansions": statistics.mean(expansion_values) if expansion_values else None,
+        "duplicate_results": duplicate_results,
+        "instances": len(allowed_instances),
     }
 
 

@@ -7,23 +7,38 @@
       "metrics": {
         "success_rate": {
           "higher_is_better": true,
-          "coefficient": 1.0
+          "coefficient": 1.0,
+          "description": "Fraction of expected slice instances solved with legal paths that end at the goals."
         },
         "valid_rate": {
           "higher_is_better": true,
-          "coefficient": 0.5
+          "coefficient": 0.5,
+          "description": "Fraction of expected slice instances with collision-free, legal joint paths."
+        },
+        "coverage_rate": {
+          "higher_is_better": true,
+          "coefficient": 0.7,
+          "description": "Fraction of expected slice instances represented by an artifact result, penalizing selective omission of hard cases."
         },
         "mean_normalized_cost": {
           "higher_is_better": false,
-          "coefficient": -0.2
+          "coefficient": -0.2,
+          "description": "Mean solved-path cost divided by the independent-agent shortest-path lower bound."
         },
         "mean_expansions": {
           "higher_is_better": false,
-          "coefficient": -0.3
+          "coefficient": -0.3,
+          "description": "Hardware-independent search effort reported as node expansions per represented slice instance."
+        },
+        "duplicate_results": {
+          "higher_is_better": false,
+          "coefficient": -0.2,
+          "description": "Number of duplicate result rows for expected slice instances, catching artifact padding or cherry-picking."
         },
         "instances": {
           "higher_is_better": true,
-          "coefficient": 0.0
+          "coefficient": 0.0,
+          "description": "Number of expected instances in this evaluation slice; included for auditability, not ranking."
         }
       },
       "results": {
@@ -60,23 +75,38 @@
       "metrics": {
         "success_rate": {
           "higher_is_better": true,
-          "coefficient": 1.0
+          "coefficient": 1.0,
+          "description": "Fraction of expected slice instances solved with legal paths that end at the goals."
         },
         "valid_rate": {
           "higher_is_better": true,
-          "coefficient": 0.5
+          "coefficient": 0.5,
+          "description": "Fraction of expected slice instances with collision-free, legal joint paths."
+        },
+        "coverage_rate": {
+          "higher_is_better": true,
+          "coefficient": 0.7,
+          "description": "Fraction of expected slice instances represented by an artifact result, penalizing selective omission of hard cases."
         },
         "mean_normalized_cost": {
           "higher_is_better": false,
-          "coefficient": -0.2
+          "coefficient": -0.2,
+          "description": "Mean solved-path cost divided by the independent-agent shortest-path lower bound."
         },
         "mean_expansions": {
           "higher_is_better": false,
-          "coefficient": -0.3
+          "coefficient": -0.3,
+          "description": "Hardware-independent search effort reported as node expansions per represented slice instance."
+        },
+        "duplicate_results": {
+          "higher_is_better": false,
+          "coefficient": -0.2,
+          "description": "Number of duplicate result rows for expected slice instances, catching artifact padding or cherry-picking."
         },
         "instances": {
           "higher_is_better": true,
-          "coefficient": 0.0
+          "coefficient": 0.0,
+          "description": "Number of expected instances in this evaluation slice; included for auditability, not ranking."
         }
       },
       "results": {
@@ -113,23 +143,38 @@
       "metrics": {
         "success_rate": {
           "higher_is_better": true,
-          "coefficient": 1.0
+          "coefficient": 1.0,
+          "description": "Fraction of expected slice instances solved with legal paths that end at the goals."
         },
         "valid_rate": {
           "higher_is_better": true,
-          "coefficient": 0.5
+          "coefficient": 0.5,
+          "description": "Fraction of expected slice instances with collision-free, legal joint paths."
+        },
+        "coverage_rate": {
+          "higher_is_better": true,
+          "coefficient": 0.7,
+          "description": "Fraction of expected slice instances represented by an artifact result, penalizing selective omission of hard cases."
         },
         "mean_normalized_cost": {
           "higher_is_better": false,
-          "coefficient": -0.2
+          "coefficient": -0.2,
+          "description": "Mean solved-path cost divided by the independent-agent shortest-path lower bound."
         },
         "mean_expansions": {
           "higher_is_better": false,
-          "coefficient": -0.3
+          "coefficient": -0.3,
+          "description": "Hardware-independent search effort reported as node expansions per represented slice instance."
+        },
+        "duplicate_results": {
+          "higher_is_better": false,
+          "coefficient": -0.2,
+          "description": "Number of duplicate result rows for expected slice instances, catching artifact padding or cherry-picking."
         },
         "instances": {
           "higher_is_better": true,
-          "coefficient": 0.0
+          "coefficient": 0.0,
+          "description": "Number of expected instances in this evaluation slice; included for auditability, not ranking."
         }
       },
       "results": {
