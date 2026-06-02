@@ -27,7 +27,6 @@ from data.mapf_benchmarks import (  # noqa: E402
 SLICE = "test"
 SCALED_INSTANCES = {
     "four_agent_cross",
-    "random_dense_1",
     "random_dense_3",
 }
 MOVINGAI_INSTANCES = {

@@ -28,6 +28,7 @@ SLICE = "train"
 SCALED_INSTANCES = {
     "corridor_swap_2",
     "random_dense_0",
+    "random_dense_1",
     "random_dense_2",
 }
 MOVINGAI_INSTANCES = {

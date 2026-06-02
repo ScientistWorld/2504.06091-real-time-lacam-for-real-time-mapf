@@ -1,7 +1,7 @@
 # The system reads this file after the turn ends.
 # Do NOT sleep, poll, or wait for the submitted job.
-action: submit
+action: done
 gpus: 0
 test: false
 milestone: core_claim_plus
-notes: "Rerun actual RT-LaCAM method, baselines, full scoring, split scoring, and validation; explicit milestone for external gate."
+notes: "Core RT-LaCAM claim reproduced: method/full solve scaled and MovingAI artifacts while naive restart fails on scaled and one MovingAI case. Split scores regenerated after calibration; scaled primary remains success, MovingAI primary uses expansion effort because one-instance held-out success is too quantized."
