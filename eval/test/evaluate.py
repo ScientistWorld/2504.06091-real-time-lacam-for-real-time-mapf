@@ -30,7 +30,9 @@ SCALED_INSTANCES = {
     "random_dense_3",
 }
 MOVINGAI_INSTANCES = {
+    "movingai_random-32-32-20_random_1_4a",
     "movingai_random-32-32-20_random_2_4a",
+    "movingai_random-32-32-20_random_3_4a",
 }
 
 

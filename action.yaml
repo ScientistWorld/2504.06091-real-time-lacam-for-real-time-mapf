@@ -4,4 +4,4 @@ action: done
 gpus: 0
 test: false
 milestone: core_claim_plus
-notes: "Final verification passed at core_claim_plus; method-agnostic docs cleaned up and validation passes."
+notes: "Validation failure fixed: MovingAI test slice now matches the scored aggregate and python validate.py passes."

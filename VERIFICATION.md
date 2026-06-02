@@ -27,6 +27,9 @@ instances plus a small public MovingAI subset.
 - Minor: `scoring/reference.json` uses scaled reproduction targets because the
   paper reports Figure 2 graphically/qualitatively rather than in an exact
   table. This needed explicit notes.
+- Minor: the held-out MovingAI test slice originally used only scenario 2, so
+  the naive restart baseline's test `success_rate` was 1.0 while the reference
+  and main score use the three-scenario aggregate value 0.667.
 
 ## Fixes Applied
 
@@ -40,8 +43,12 @@ instances plus a small public MovingAI subset.
   that the values are scaled reproduction targets for the paper's qualitative
   graphical claim.
 - Made `scoring/reference.json` experiment descriptions method-neutral.
+- Updated `eval/test/evaluate.py` to score all three MovingAI scenarios for the
+  MovingAI held-out experiment and regenerated `scoring/scores_test.json`.
 - Re-ran `bash scripts/evaluate.sh` and `python validate.py --compare`; all
   checks passed.
+- After the follow-up validation failure, re-ran `bash scripts/evaluate_test.sh`
+  and `python validate.py`; all checks passed.
 
 ## Final Judgment
 
