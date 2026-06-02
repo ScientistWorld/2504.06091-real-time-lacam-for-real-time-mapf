@@ -1,0 +1,141 @@
+{
+  "paper": {
+    "arxiv_id": "2504.06091",
+    "title": "Real-Time LaCAM for Real-Time MAPF",
+    "date": "",
+    "topics": [
+      "paper-type-metric-method",
+      "domain-ai-ml",
+      "area-multi-agent-systems",
+      "category-planning",
+      "method-incremental-search",
+      "secondary-domain-robotics",
+      "secondary-area-embodied-ai",
+      "secondary-category-motion-planning",
+      "secondary-method-multi-agent-path-finding",
+      "selection-category-embodied-control"
+    ]
+  },
+  "reproduction": {
+    "milestone": "core_claim_plus",
+    "status": "done",
+    "error": null,
+    "scaffold": "codex",
+    "model": "gpt-5.5",
+    "profile": "gpt-5.5-medium",
+    "effort": "medium",
+    "gpu_hours_used": 0.0,
+    "current_iteration_gpu_budget": 30,
+    "current_iteration_gpu_hours_used": 0.0,
+    "total_gpu_hours_used": 0.0,
+    "current_iteration_cpu_hours_used": 0.023,
+    "total_cpu_hours_used": 0.023,
+    "gpu_budget": 30,
+    "duration_sec": 966.9,
+    "cost_usd": null,
+    "input_tokens": 2824593,
+    "output_tokens": 24594,
+    "cached_input_tokens": 2604544,
+    "cache_creation_tokens": null,
+    "reasoning_tokens": 0,
+    "total_input_tokens": 2824593,
+    "num_turns": 63,
+    "duration_api_ms": null,
+    "num_runs": 1,
+    "iteration_count": 0,
+    "workflow": "standard",
+    "workflow_step": 0,
+    "total_gpu_jobs": 2,
+    "time_breakdown": {
+      "working": 825.0058710575104,
+      "building": 0.990074634552002,
+      "installing": 1.6684446334838867,
+      "waiting": 92.04412269592285
+    }
+  },
+  "agents": [
+    {
+      "scaffold": "codex",
+      "model": "gpt-5.5",
+      "profile": "gpt-5.5-medium",
+      "effort": "medium",
+      "role": "reproducer",
+      "is_iteration": false,
+      "iteration": 1,
+      "workflow": "standard",
+      "workflow_step": 0,
+      "started_at": 1780414519.035364,
+      "finished_at": 1780415485.903248,
+      "duration_sec": 966.9,
+      "blocked_sec": 0.0,
+      "status": "done",
+      "error": null,
+      "milestone": "core_claim_plus",
+      "gpu_budget": 30,
+      "gpu_hours_used": 0.0,
+      "total_gpu_hours_used": 0.0,
+      "cpu_hours_used": 0.023,
+      "time_breakdown": {
+        "working": 825.0058710575104,
+        "building": 0.990074634552002,
+        "installing": 1.6684446334838867,
+        "waiting": 92.04412269592285
+      },
+      "cost_usd": null,
+      "input_tokens": 2824593,
+      "output_tokens": 24594,
+      "cached_input_tokens": 2604544,
+      "cache_creation_tokens": null,
+      "reasoning_tokens": 0,
+      "total_input_tokens": 2824593,
+      "num_turns": 63,
+      "duration_api_ms": null,
+      "tool_uses": {
+        "shell": 47,
+        "file_edit": 16
+      },
+      "gpu_jobs": [
+        {
+          "run_id": "1ac94747-97f",
+          "command": "bash /home/user/scripts/run.sh",
+          "num_gpus": 0,
+          "num_cpus": 1,
+          "resource": "gpu-cpu",
+          "hive_job_id": "d38c23ea",
+          "status": "completed",
+          "returncode": 0,
+          "duration_sec": 59.0,
+          "submitted_at": 1780415381.807177,
+          "started_at": 1780415385.278025,
+          "completed_at": 1780415444.2444224
+        },
+        {
+          "run_id": "c3151de9-ae4",
+          "command": "bash /home/user/scripts/run.sh",
+          "num_gpus": 0,
+          "num_cpus": 1,
+          "resource": "gpu-cpu",
+          "hive_job_id": "6544dfd5",
+          "status": "completed",
+          "returncode": 0,
+          "duration_sec": 25.5,
+          "submitted_at": 1780415236.9276104,
+          "started_at": 1780415238.6783683,
+          "completed_at": 1780415264.194599
+        }
+      ],
+      "progress_log": "### [2026-06-02 15:45] - none\n- Read the paper markdown and identified the central claim: persistent\n  Real-Time LaCAM should match full-horizon LaCAM success under small\n  per-iteration planning budgets, unlike naive restart replanning.\n\n### [2026-06-02 16:05] - method_runs\n- Implemented lazy joint-configuration DFS, constrained successor generation,\n  persistent Real-Time LaCAM state, and tree re-rooting.\n- Added deterministic scaled MAPF benchmark instances and runnable method,\n  baseline, and evaluation scripts.\n\n### [2026-06-02 16:15] - core_claim\n- Ran `bash scripts/reproduce.sh` locally as a smoke test.\n- Real-Time LaCAM solved all 6 scaled instances with valid paths.\n- Full-horizon LaCAM also solved all 6 instances; both used mean expansions\n  14.5, matching the paper's search-effort parity claim at this scale.\n- Naive real-time restart LaCAM solved 4 of 6 instances, demonstrating the\n  failure mode addressed by persistent search state.\n\n### [2026-06-02 16:48] - core_claim\n- Compute job `c3151de9-ae4` exited 0 and passed `python validate.py --compare`\n  inside the container.\n- Added a second per-iteration expansion setting locally; this is ready for a\n  follow-up CPU job before claiming `core_claim_plus`.\n\n### [2026-06-02 16:52] - core_claim_plus\n- Compute job `1ac94747-97f` exited 0 and passed `python validate.py --compare`\n  inside the container.\n- Verified the core Real-Time LaCAM success-parity claim at two per-iteration\n  expansion settings: 1 expansion and 3 expansions.\n- In both settings, Real-Time LaCAM solved all 6 scaled instances with valid\n  paths and matched full-horizon LaCAM's mean expansion count of 14.5."
+    }
+  ],
+  "components": {
+    "has_container": true,
+    "has_method_code": true,
+    "has_evaluation": true,
+    "has_download_script": true,
+    "has_reproduce_script": true,
+    "has_method_script": true,
+    "has_baseline": true,
+    "has_reference": true,
+    "has_data": true
+  }
+}

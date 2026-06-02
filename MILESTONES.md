@@ -38,9 +38,4 @@
   paths and matched full-horizon LaCAM's mean expansion count of 14.5.
 
 ## Stop Justification
-- Stopping at `core_claim_plus`: the packaged environment implements the paper's
-  actual Real-Time LaCAM computation, includes a naive restart baseline and
-  full-horizon comparator, and has passed two in-container validation jobs.
-  Secondary learned-policy experiments were not reproduced because they require
-  pretrained SSIL policy resources that are outside the paper's main algorithmic
-  claim and were not needed to make the reusable core MAPF gym.
+- Completed at milestone `core_claim_plus`.
