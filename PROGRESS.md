@@ -27,6 +27,10 @@ Previously verified compute jobs:
   `python validate.py --compare` inside the container.
 - Job `1ac94747-97f` exited 0 after the budget-sweep expansion and passed the
   same validation inside the container.
+- Job `96b00c84-d41` exited 0 after the continuation audit fix. It ran
+  `scripts/run.sh`, regenerated all three scored experiments including the
+  MovingAI subset, and passed `python validate.py --compare` inside the
+  container.
 
 Local expanded smoke-test command:
 
@@ -75,7 +79,7 @@ Audit fix:
 
 - Optional future work: scale the MovingAI experiments to more scenes/agents
   and reproduce the learned-policy wrapper experiment from Figure 3.
-- `core_claim_plus` needs compute-job verification of the new MovingAI subset.
+- No work remains for the packaged `core_claim_plus` reproduction.
 
 ## Issues
 

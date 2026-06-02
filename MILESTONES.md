@@ -1,6 +1,6 @@
 # Reproduction Milestones
 
-**Current: core_claim**
+**Current: core_claim_plus**
 
 ## Progress Log
 
@@ -10,8 +10,8 @@
 
 ### [2026-06-02 16:00] - core_claim_plus
 - Added a public MovingAI MAPF random-32-32-20 four-agent subset and self-contained download script.
-- Locally smoke-tested an additional benchmark-backed setting: Real-Time LaCAM and full-horizon LaCAM solved all three MovingAI instances, while naive restart replanning solved two of three.
-- Pending compute-job verification before claiming this milestone.
+- Verified an additional benchmark-backed setting in compute job `96b00c84-d41`: Real-Time LaCAM and full-horizon LaCAM solved all three MovingAI instances, while naive restart replanning solved two of three.
+- Fixed the audit issue where `valid_rate` incorrectly required reaching the goal; it now measures legal/collision-free execution separately from `success_rate`.
 
 ## Stop Justification
-- Completed at milestone `core_claim`; `core_claim_plus` verification job is pending.
+- Completed at milestone `core_claim_plus`; optional remaining work is larger-scale benchmark coverage and the learned-policy wrapper experiment.
