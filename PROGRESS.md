@@ -17,6 +17,9 @@
 
 Previously verified compute jobs:
 
+- Job `3bc2147c-29f` exited 0 after the lazy constraint enumeration fix.
+- It ran `scripts/run.sh`, regenerated both scaled experiments, and passed
+  `python validate.py --compare` inside the container.
 - Job `c3151de9-ae4` exited 0.
 - It ran `scripts/run.sh`, regenerated scores, and passed
   `python validate.py --compare` inside the container.
@@ -57,8 +60,7 @@ Audit fix:
 
 - Optional future work: add larger standard MAPF benchmark maps and reproduce
   the learned-policy wrapper experiment from Figure 3.
-- Awaiting compute-container verification for the corrected lazy constraint
-  schedule.
+- No work remains for the packaged `core_claim_plus` reproduction.
 
 ## Issues
 

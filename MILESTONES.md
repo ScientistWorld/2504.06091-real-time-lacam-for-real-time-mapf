@@ -17,5 +17,10 @@
 - Fixed the LaCAM lazy constraint schedule so attempts use block-local enumeration: 5 constraints for one agent, then 5^2 for two agents, continuing through all forced-prefix blocks.
 - Re-ran the scaled reproduction locally; Real-Time LaCAM still matches full-horizon success on both per-iteration budgets and validation passes.
 
+### [2026-06-02 16:25] - core_claim_plus
+- Container verification job `3bc2147c-29f` exited 0.
+- The job ran `scripts/run.sh`, regenerated both scaled experiments, and passed `python validate.py --compare` inside the compute container.
+- Final milestone remains `core_claim_plus`: the core claim is reproduced on the minimum one-expansion setting and an additional three-expansion setting.
+
 ## Stop Justification
-- Not stopped; submitting a container verification job for the patched implementation.
+- Completed at milestone `core_claim_plus`.
