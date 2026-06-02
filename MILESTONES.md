@@ -22,5 +22,9 @@
 - The job ran `scripts/run.sh`, regenerated both scaled experiments, and passed `python validate.py --compare` inside the compute container.
 - Final milestone remains `core_claim_plus`: the core claim is reproduced on the minimum one-expansion setting and an additional three-expansion setting.
 
+### [2026-06-02 16:31] - core_claim_plus
+- Corrected `scoring/reference.json` to remove an unverified placeholder naive-baseline success rate for the scaled benchmark.
+- Re-ran `python validate.py --compare`; all checks pass.
+
 ## Stop Justification
 - Completed at milestone `core_claim_plus`.
