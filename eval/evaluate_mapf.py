@@ -15,8 +15,8 @@ from data.mapf_benchmarks import (  # noqa: E402
     benchmark_suite,
     individual_optimal_cost,
     movingai_suite,
+    path_is_legal,
     path_cost,
-    validate_path,
 )
 
 
@@ -30,7 +30,7 @@ def summarize_artifact(path: Path, instances: dict[str, MAPFInstance]) -> dict:
     for res in obj["results"]:
         inst = instances[res["instance"]]
         plan = _load_path(res.get("path", []))
-        valid = validate_path(inst, plan)
+        valid = path_is_legal(inst, plan)
         success = bool(valid and plan[-1] == inst.goals) if plan else False
         cost = path_cost(inst, plan) if valid else None
         rows.append(

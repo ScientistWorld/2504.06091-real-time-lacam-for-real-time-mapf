@@ -9,7 +9,7 @@ import sys
 
 sys.path.append(str(Path(__file__).resolve().parents[1]))
 
-from data.mapf_benchmarks import benchmark_suite, individual_optimal_cost, movingai_suite, path_cost, validate_path  # noqa: E402
+from data.mapf_benchmarks import benchmark_suite, individual_optimal_cost, movingai_suite, path_is_legal, path_cost  # noqa: E402
 from method.rt_lacam import LazyLaCAM  # noqa: E402
 
 
@@ -24,14 +24,15 @@ def run_naive(instance, per_iter_expansions: int, total_expansion_budget: int, m
         if len(partial) < 2:
             break
         executed.append(partial[1])
-    valid = validate_path(instance, executed)
+    legal = path_is_legal(instance, executed)
+    success = legal and executed[-1] == instance.goals
     return {
         "instance": instance.name,
-        "success": bool(valid and executed[-1] == instance.goals),
-        "valid": bool(valid),
+        "success": bool(success),
+        "valid": bool(legal),
         "steps": len(executed) - 1,
-        "sum_of_costs": path_cost(instance, executed) if valid else None,
-        "normalized_cost": (path_cost(instance, executed) / max(1, individual_optimal_cost(instance))) if valid else None,
+        "sum_of_costs": path_cost(instance, executed) if legal else None,
+        "normalized_cost": (path_cost(instance, executed) / max(1, individual_optimal_cost(instance))) if legal else None,
         "expansions": expansions,
         "path": [[list(c) for c in cfg] for cfg in executed],
     }

@@ -93,7 +93,7 @@ def individual_optimal_cost(instance: MAPFInstance) -> int:
     return total
 
 
-def validate_path(instance: MAPFInstance, path: list[tuple[Coord, ...]]) -> bool:
+def path_is_legal(instance: MAPFInstance, path: list[tuple[Coord, ...]]) -> bool:
     if not path or path[0] != instance.starts:
         return False
     occupied = set(instance.free_cells())
@@ -110,7 +110,11 @@ def validate_path(instance: MAPFInstance, path: list[tuple[Coord, ...]]) -> bool
             for j in range(i + 1, instance.n_agents):
                 if prev[i] == cur[j] and prev[j] == cur[i]:
                     return False
-    return path[-1] == instance.goals
+    return True
+
+
+def validate_path(instance: MAPFInstance, path: list[tuple[Coord, ...]]) -> bool:
+    return path_is_legal(instance, path) and path[-1] == instance.goals
 
 
 def path_cost(instance: MAPFInstance, path: list[tuple[Coord, ...]]) -> int:

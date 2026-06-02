@@ -22,6 +22,7 @@ from data.mapf_benchmarks import (  # noqa: E402
     benchmark_suite,
     individual_optimal_cost,
     movingai_suite,
+    path_is_legal,
     path_cost,
     shortest_path_distances,
     validate_path,
@@ -259,14 +260,15 @@ def run_realtime(instance: MAPFInstance, per_iter_expansions: int, total_expansi
         if nxt == instance.goals:
             goal_found = True
             break
-    valid = validate_path(instance, executed)
+    legal = path_is_legal(instance, executed)
+    success = legal and executed[-1] == instance.goals
     return {
         "instance": instance.name,
-        "success": bool(valid and executed[-1] == instance.goals),
-        "valid": bool(valid),
+        "success": bool(success),
+        "valid": bool(legal),
         "steps": len(executed) - 1,
-        "sum_of_costs": path_cost(instance, executed) if valid else None,
-        "normalized_cost": (path_cost(instance, executed) / max(1, individual_optimal_cost(instance))) if valid else None,
+        "sum_of_costs": path_cost(instance, executed) if legal else None,
+        "normalized_cost": (path_cost(instance, executed) / max(1, individual_optimal_cost(instance))) if legal else None,
         "expansions": total_exp,
         "expanded_nodes": len(solver.nodes),
         "path": [[list(c) for c in cfg] for cfg in executed],
