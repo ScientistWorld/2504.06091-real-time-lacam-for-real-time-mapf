@@ -120,6 +120,11 @@ def _artifact_uses_movingai(path: Path) -> bool:
         return path.name.startswith("movingai_")
 
 
+def _failure_normalized_cost(instance: MAPFInstance) -> float:
+    lower_bound = max(1, individual_optimal_cost(instance))
+    return (2 * len(instance.free_cells()) * instance.n_agents) / lower_bound
+
+
 def summarize_artifact(path: Path, instances: dict[str, MAPFInstance], allowed_instances: set[str]) -> dict:
     obj = _load_json(path)
     by_instance = {}
@@ -141,30 +146,35 @@ def summarize_artifact(path: Path, instances: dict[str, MAPFInstance], allowed_i
             valid = False
             success = False
             cost = None
+            normalized_cost = _failure_normalized_cost(inst)
             expansions = None
         else:
             plan = _load_path(res.get("path", []))
             valid = path_is_legal(inst, plan)
             success = bool(valid and plan[-1] == inst.goals) if plan else False
             cost = path_cost(inst, plan) if valid else None
+            normalized_cost = (
+                cost / max(1, individual_optimal_cost(inst))
+                if success and cost is not None
+                else _failure_normalized_cost(inst)
+            )
             expansions = res.get("expansions", 0)
         rows.append(
             {
                 "success": success,
                 "valid": valid,
                 "cost": cost,
-                "normalized_cost": cost / max(1, individual_optimal_cost(inst)) if cost is not None else None,
+                "normalized_cost": normalized_cost,
                 "expansions": expansions,
             }
         )
-    solved = [r for r in rows if r["success"]]
-    norm = [r["normalized_cost"] for r in solved if r["normalized_cost"] is not None]
+    norm = [r["normalized_cost"] for r in rows]
     expansion_values = [r["expansions"] for r in rows if r["expansions"] is not None]
     return {
         "success_rate": sum(1 for r in rows if r["success"]) / max(1, len(rows)),
         "valid_rate": sum(1 for r in rows if r["valid"]) / max(1, len(rows)),
         "coverage_rate": len(by_instance) / max(1, len(allowed_instances)),
-        "mean_normalized_cost": statistics.mean(norm) if norm else None,
+        "mean_normalized_cost": statistics.mean(norm),
         "mean_expansions": statistics.mean(expansion_values) if expansion_values else None,
         "duplicate_results": duplicate_results,
         "instances": len(allowed_instances),

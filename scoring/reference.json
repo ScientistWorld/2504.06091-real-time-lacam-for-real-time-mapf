@@ -23,7 +23,7 @@
         "mean_normalized_cost": {
           "higher_is_better": false,
           "coefficient": -0.2,
-          "description": "Mean solved-path cost divided by the independent-agent shortest-path lower bound."
+          "description": "Mean per-instance path cost divided by the independent-agent shortest-path lower bound; failed, invalid, or omitted instances receive a deterministic instance-size penalty."
         },
         "mean_expansions": {
           "higher_is_better": false,
@@ -91,7 +91,7 @@
         "mean_normalized_cost": {
           "higher_is_better": false,
           "coefficient": -0.2,
-          "description": "Mean solved-path cost divided by the independent-agent shortest-path lower bound."
+          "description": "Mean per-instance path cost divided by the independent-agent shortest-path lower bound; failed, invalid, or omitted instances receive a deterministic instance-size penalty."
         },
         "mean_expansions": {
           "higher_is_better": false,
@@ -159,7 +159,7 @@
         "mean_normalized_cost": {
           "higher_is_better": false,
           "coefficient": -0.2,
-          "description": "Mean solved-path cost divided by the independent-agent shortest-path lower bound."
+          "description": "Mean per-instance path cost divided by the independent-agent shortest-path lower bound; failed, invalid, or omitted instances receive a deterministic instance-size penalty."
         },
         "mean_expansions": {
           "higher_is_better": false,

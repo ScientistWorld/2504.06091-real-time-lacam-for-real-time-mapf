@@ -3,4 +3,4 @@
 action: submit
 gpus: 0
 test: false
-notes: "Run evaluate_train.sh and evaluate_test.sh against existing output artifacts; populate scores_train/test."
+notes: "Re-run train/test scoring after replacing null solved-only cost with failure-penalized normalized cost."
