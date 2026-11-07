@@ -1,0 +1,52 @@
+[hive] This stdout log is managed by Hive.
+[hive] job_id: 9bed9288
+[hive] host: node
+[hive] node_id: 0e2da7d46377be01720740f5d6216c84c1cfd312d41e238f04a3568a
+[hive] user: nexus/user (remote)
+[hive] resource: gpu-cpu
+[hive] gpus: 0
+[hive] cpus: 1
+[hive] workdir: /home/user
+[hive] timeout_sec: 21600
+[hive] started_at: 2026-11-07 04:14:19 EST
+[hive] command: apptainer exec --containall --cleanenv --env HF_HOME=/home/user/shared/hf_cache --env TRANSFORMERS_CACHE=/home/user/shared/hf_cache --env HF_DATASETS_CACHE=/home/user/shared/hf_cache/datasets --env TORCH_HOME=/home/user/shared/hf_cache/torch --bind /home/user/scratch/AgentWorkspaces/workspaces/2504.06091:/home/user --overlay /home/user/scratch/AgentWorkspaces/workspaces/2504.06091/environment/overlay.img:ro --bind /home/user/scratch/AgentWorkspaces/shared/datasets:/home/user/shared/datasets:ro --bind /home/user/scratch/AgentWorkspaces/shared/models:/home/user/shared/models:ro --bind /home/user/scratch/AgentWorkspaces/shared/hf_cache:/home/user/shared/hf_cache /home/user/scratch/AgentWorkspaces/workspaces/2504.06091/environment/container.sif bash -c 'cd /home/user && bash /home/user/scripts/run.sh'
+Running: reference_seed0
+Completed: reference_seed0
+Running: reference_seed1
+Completed: reference_seed1
+Running: reference_seed2
+Completed: reference_seed2
+Running: quality_farthest
+Completed: quality_farthest
+Running: quality_degree
+Completed: quality_degree
+Running: quality_farthest_degree
+Completed: quality_farthest_degree
+Running: quality_backtrack_fix
+Completed: quality_backtrack_fix
+Running: weak_no_memory
+Completed: weak_no_memory
+Running: weak_limited_steps
+Completed: weak_limited_steps
+Running: offline_cache_shortcut
+Completed: offline_cache_shortcut
+Running: reported_work_shortcut
+Completed: reported_work_shortcut
+Running: missing_work_shortcut
+Completed: missing_work_shortcut
+Running: null_work_shortcut
+Completed: null_work_shortcut
+Running: comparison_artifact_shortcut
+Completed: comparison_artifact_shortcut
+Running: ground_truth_shortcut
+Completed: ground_truth_shortcut
+Running: direct_scores_shortcut
+Completed: direct_scores_shortcut
+Running: forged_flags_empty_shortcut
+Completed: forged_flags_empty_shortcut
+Running: constant_start_shortcut
+Completed: constant_start_shortcut
+Running: copied_goal_shortcut
+Completed: copied_goal_shortcut
+Running: selective_omission_shortcut
+Completed: selective_omission_shortcut

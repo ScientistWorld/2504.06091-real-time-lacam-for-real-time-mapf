@@ -24,8 +24,9 @@ identical method. No paper is used.
 
 Quality variants retain the original per-iteration expansion budgets,
 cumulative budgets, and execution limits. They change agent priorities,
-action tie breaking, or restore recursive reservations after failed branches.
-All four are measured rather than assuming any improves quality. The
+action tie breaking, constraint ordering, cycle handling, or recursive
+reservation restoration after failed branches. All fourteen are measured
+rather than assuming any improves quality. The
 `weak_no_memory` variant actually reruns the supplied restart baseline;
 `weak_limited_steps` executes the original method with one permitted action.
 
@@ -47,3 +48,14 @@ between the visible and hidden runs. All policies are reported, including
 unsuccessful ones; there is no hidden-test selection presented as a held-out
 scientific result. A single-case `run.sh` reruns the case; `--all` skips completed
 cases to resume a bundle.
+
+`quality_backtrack_fix` and `quality_goal_traffic` are honest alternatives
+the test cannot tell apart from the reference: they tie its complete test
+metric vectors. See `QUALITY.md` for every policy, including failed candidates.
+
+The completed audit comprises 31 cases in two CPU jobs. `summary.json` retains
+exact metrics, `job_records/` preserves scheduler evidence, and
+`python3 redteam/verify_audit.py` checks the recorded evidence and workspace
+restoration without performing planning or inference. The main report is
+`../REDTEAM.md`. The reproduction milestone is unchanged; this audit does not
+claim a new reproduction milestone.

@@ -1,0 +1,87 @@
+[hive] This stdout log is managed by Hive.
+[hive] job_id: 64a3ebfd
+[hive] host: node
+[hive] node_id: 0e2da7d46377be01720740f5d6216c84c1cfd312d41e238f04a3568a
+[hive] user: nexus/user (remote)
+[hive] resource: gpu-cpu
+[hive] gpus: 0
+[hive] cpus: 1
+[hive] workdir: /home/user
+[hive] timeout_sec: 21600
+[hive] started_at: 2026-11-07 04:19:03 EST
+[hive] command: apptainer exec --containall --cleanenv --env HF_HOME=/home/user/shared/hf_cache --env TRANSFORMERS_CACHE=/home/user/shared/hf_cache --env HF_DATASETS_CACHE=/home/user/shared/hf_cache/datasets --env TORCH_HOME=/home/user/shared/hf_cache/torch --bind /home/user/scratch/AgentWorkspaces/workspaces/2504.06091:/home/user --overlay /home/user/scratch/AgentWorkspaces/workspaces/2504.06091/environment/overlay.img:ro --bind /home/user/scratch/AgentWorkspaces/shared/datasets:/home/user/shared/datasets:ro --bind /home/user/scratch/AgentWorkspaces/shared/models:/home/user/shared/models:ro --bind /home/user/scratch/AgentWorkspaces/shared/hf_cache:/home/user/shared/hf_cache /home/user/scratch/AgentWorkspaces/workspaces/2504.06091/environment/container.sif bash -c 'cd /home/user && bash /home/user/scripts/run.sh'
+Already complete: reference_seed0
+Already complete: reference_seed1
+Already complete: reference_seed2
+Already complete: quality_farthest
+Already complete: quality_degree
+Already complete: quality_farthest_degree
+Already complete: quality_backtrack_fix
+Running: quality_agent_id
+Completed: quality_agent_id
+Running: quality_reverse_agent_id
+Completed: quality_reverse_agent_id
+Running: quality_initial_distance
+Completed: quality_initial_distance
+Running: quality_reverse_xy
+Completed: quality_reverse_xy
+Running: quality_yx
+Completed: quality_yx
+Running: quality_reverse_yx
+Completed: quality_reverse_yx
+Running: quality_goal_traffic
+Completed: quality_goal_traffic
+Running: quality_reverse_constraints
+Completed: quality_reverse_constraints
+Running: quality_rotations
+Completed: quality_rotations
+Running: quality_continue_heading
+Completed: quality_continue_heading
+Already complete: weak_no_memory
+Already complete: weak_limited_steps
+Already complete: offline_cache_shortcut
+Already complete: reported_work_shortcut
+Already complete: missing_work_shortcut
+Already complete: null_work_shortcut
+Already complete: comparison_artifact_shortcut
+Already complete: ground_truth_shortcut
+Already complete: direct_scores_shortcut
+Already complete: forged_flags_empty_shortcut
+Already complete: constant_start_shortcut
+Already complete: copied_goal_shortcut
+Already complete: selective_omission_shortcut
+Running: train_scope_shortcut
+Completed: train_scope_shortcut
+comparison_artifact_shortcut -9.802217353951892
+constant_start_shortcut -5.639034761215972
+copied_goal_shortcut -6.139034761215972
+direct_scores_shortcut -9.802217353951892
+forged_flags_empty_shortcut -6.139034761215972
+ground_truth_shortcut 2.2
+missing_work_shortcut 1.72828264604811
+null_work_shortcut None
+offline_cache_shortcut -9.648025046259583
+quality_agent_id -30.875800687285228
+quality_backtrack_fix -9.802217353951892
+quality_continue_heading -11.169953203008493
+quality_degree -10.206525046259582
+quality_farthest -30.875800687285228
+quality_farthest_degree -30.72896583399419
+quality_goal_traffic -9.802217353951892
+quality_initial_distance -30.875800687285228
+quality_reverse_agent_id -47.23180068728523
+quality_reverse_constraints -77.37726420830029
+quality_reverse_xy -17.698170962199313
+quality_reverse_yx -14.50288402061856
+quality_rotations -5.71019171292625
+quality_yx -48.3552237642083
+reference_seed0 -9.802217353951892
+reference_seed1 -9.802217353951892
+reference_seed2 -9.802217353951892
+reported_work_shortcut 300000001.7282827
+selective_omission_shortcut None
+train_scope_shortcut None
+weak_limited_steps -6.335034761215971
+weak_no_memory -44.42111036214644
+Packaged scores exactly reproduced: True
+Seed diagnostic spread: 0.0
