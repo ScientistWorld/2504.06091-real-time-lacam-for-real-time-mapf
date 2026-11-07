@@ -1,0 +1,7 @@
+{
+ "case": "q_goal_traffic",
+ "description": "Alternative: avoid other agents' goals on ties.",
+ "entry": "redteam/hardened/cases/q_goal_traffic.py",
+ "full_script": false,
+ "seconds": 6.3
+}

@@ -1,0 +1,959 @@
+{
+ "reference": {
+  "description": "Reference Real-Time LaCAM (rerun through the no-argument test script).",
+  "test": {
+   "scaled_small_mapf": {
+    "full_lacam": {
+     "realtime_score": 0.8055674994519249,
+     "success_rate": 0.85,
+     "mean_log_normalized_cost": 0.5439982635175611,
+     "mean_log_planning_work": 1.9909426843032976
+    },
+    "naive_rt_lacam": {
+     "realtime_score": 0.2994383984691985,
+     "success_rate": 0.3,
+     "mean_log_normalized_cost": 1.931687655301722,
+     "mean_log_planning_work": 2.5863499980120155
+    },
+    "reference": {
+     "realtime_score": 0.5157098009316442,
+     "success_rate": 0.75,
+     "mean_log_normalized_cost": 1.3411932552202834,
+     "mean_log_planning_work": 2.0554063542332797
+    }
+   },
+   "scaled_small_mapf_budget3": {
+    "full_lacam": {
+     "realtime_score": 0.7961955821286354,
+     "success_rate": 0.85,
+     "mean_log_normalized_cost": 0.4724137872304456,
+     "mean_log_planning_work": 1.9909426843032976
+    },
+    "naive_rt_lacam": {
+     "realtime_score": 0.299325245931736,
+     "success_rate": 0.3,
+     "mean_log_normalized_cost": 1.5976267659618497,
+     "mean_log_planning_work": 2.687322539849099
+    },
+    "reference": {
+     "realtime_score": 0.556780260681373,
+     "success_rate": 0.8,
+     "mean_log_normalized_cost": 1.0168657558334395,
+     "mean_log_planning_work": 2.054284066706106
+    }
+   },
+   "movingai_random32": {
+    "full_lacam": {
+     "realtime_score": 0.8636782093363038,
+     "success_rate": 0.875,
+     "mean_log_normalized_cost": 0.3070977702643317,
+     "mean_log_planning_work": 1.8553301718802915
+    },
+    "naive_rt_lacam": {
+     "realtime_score": 0.5546733495176577,
+     "success_rate": 0.5625,
+     "mean_log_normalized_cost": 0.9870213124757186,
+     "mean_log_planning_work": 2.762872196609571
+    },
+    "reference": {
+     "realtime_score": 0.8125921096172392,
+     "success_rate": 0.875,
+     "mean_log_normalized_cost": 0.4231602772696375,
+     "mean_log_planning_work": 1.9502137190163205
+    }
+   }
+  },
+  "train": {
+   "scaled_small_mapf": {
+    "reference": {
+     "realtime_score": 0.504901051454427,
+     "success_rate": 0.75,
+     "mean_log_normalized_cost": 1.377936152699362,
+     "mean_log_planning_work": 2.0762761647506753
+    }
+   },
+   "scaled_small_mapf_budget3": {
+    "reference": {
+     "realtime_score": 0.5509133195396013,
+     "success_rate": 0.75,
+     "mean_log_normalized_cost": 1.0374368252579367,
+     "mean_log_planning_work": 2.073701145784106
+    }
+   },
+   "movingai_random32": {
+    "reference": {
+     "realtime_score": 0.8210761378302036,
+     "success_rate": 0.875,
+     "mean_log_normalized_cost": 0.40393472039548195,
+     "mean_log_planning_work": 1.9097640571782013
+    }
+   }
+  }
+ },
+ "reference_repeat": {
+  "description": "Reference again, fresh workers: determinism check.",
+  "test": {
+   "scaled_small_mapf": {
+    "reference_repeat": {
+     "realtime_score": 0.5157098009316442,
+     "success_rate": 0.75,
+     "mean_log_normalized_cost": 1.3411932552202834,
+     "mean_log_planning_work": 2.0554063542332797
+    }
+   },
+   "scaled_small_mapf_budget3": {
+    "reference_repeat": {
+     "realtime_score": 0.556780260681373,
+     "success_rate": 0.8,
+     "mean_log_normalized_cost": 1.0168657558334395,
+     "mean_log_planning_work": 2.054284066706106
+    }
+   },
+   "movingai_random32": {
+    "reference_repeat": {
+     "realtime_score": 0.8125921096172392,
+     "success_rate": 0.875,
+     "mean_log_normalized_cost": 0.4231602772696375,
+     "mean_log_planning_work": 1.9502137190163205
+    }
+   }
+  }
+ },
+ "q_rotations": {
+  "description": "Better: allow legal priority-inheritance rotations.",
+  "test": {
+   "scaled_small_mapf": {
+    "q_rotations": {
+     "realtime_score": 0.0,
+     "success_rate": 0.0,
+     "mean_log_normalized_cost": 2.7834922071594375,
+     "mean_log_planning_work": 3.3012470886362104
+    }
+   },
+   "scaled_small_mapf_budget3": {
+    "q_rotations": {
+     "realtime_score": 0.0,
+     "success_rate": 0.0,
+     "mean_log_normalized_cost": 2.3062623652453347,
+     "mean_log_planning_work": 3.3012470886362104
+    }
+   },
+   "movingai_random32": {
+    "q_rotations": {
+     "realtime_score": 0.0,
+     "success_rate": 0.0,
+     "mean_log_normalized_cost": 2.263288587144649,
+     "mean_log_planning_work": 3.7782236267660974
+    }
+   }
+  },
+  "train": {
+   "scaled_small_mapf": {
+    "q_rotations": {
+     "realtime_score": 0.0,
+     "success_rate": 0.0,
+     "mean_log_normalized_cost": 2.7890122652654608,
+     "mean_log_planning_work": 3.3012470886362104
+    }
+   },
+   "scaled_small_mapf_budget3": {
+    "q_rotations": {
+     "realtime_score": 0.0,
+     "success_rate": 0.0,
+     "mean_log_normalized_cost": 2.311782423351357,
+     "mean_log_planning_work": 3.3012470886362104
+    }
+   },
+   "movingai_random32": {
+    "q_rotations": {
+     "realtime_score": 0.0,
+     "success_rate": 0.0,
+     "mean_log_normalized_cost": 2.2636583029500343,
+     "mean_log_planning_work": 3.7782236267660974
+    }
+   }
+  }
+ },
+ "q_backtrack_fix": {
+  "description": "Alternative: restore reservations after failed branches.",
+  "test": {
+   "scaled_small_mapf": {
+    "q_backtrack_fix": {
+     "realtime_score": 0.0,
+     "success_rate": 0.0,
+     "mean_log_normalized_cost": 2.7834922071594375,
+     "mean_log_planning_work": 3.3012470886362104
+    }
+   },
+   "scaled_small_mapf_budget3": {
+    "q_backtrack_fix": {
+     "realtime_score": 0.0,
+     "success_rate": 0.0,
+     "mean_log_normalized_cost": 2.3062623652453347,
+     "mean_log_planning_work": 3.3012470886362104
+    }
+   },
+   "movingai_random32": {
+    "q_backtrack_fix": {
+     "realtime_score": 0.0,
+     "success_rate": 0.0,
+     "mean_log_normalized_cost": 2.263288587144649,
+     "mean_log_planning_work": 3.7782236267660974
+    }
+   }
+  },
+  "train": {
+   "scaled_small_mapf": {
+    "q_backtrack_fix": {
+     "realtime_score": 0.0,
+     "success_rate": 0.0,
+     "mean_log_normalized_cost": 2.7890122652654608,
+     "mean_log_planning_work": 3.3012470886362104
+    }
+   },
+   "scaled_small_mapf_budget3": {
+    "q_backtrack_fix": {
+     "realtime_score": 0.0,
+     "success_rate": 0.0,
+     "mean_log_normalized_cost": 2.311782423351357,
+     "mean_log_planning_work": 3.3012470886362104
+    }
+   },
+   "movingai_random32": {
+    "q_backtrack_fix": {
+     "realtime_score": 0.0,
+     "success_rate": 0.0,
+     "mean_log_normalized_cost": 2.2636583029500343,
+     "mean_log_planning_work": 3.7782236267660974
+    }
+   }
+  }
+ },
+ "q_goal_traffic": {
+  "description": "Alternative: avoid other agents' goals on ties.",
+  "test": {
+   "scaled_small_mapf": {
+    "q_goal_traffic": {
+     "realtime_score": 0.0,
+     "success_rate": 0.0,
+     "mean_log_normalized_cost": 2.7834922071594375,
+     "mean_log_planning_work": 3.3012470886362104
+    }
+   },
+   "scaled_small_mapf_budget3": {
+    "q_goal_traffic": {
+     "realtime_score": 0.0,
+     "success_rate": 0.0,
+     "mean_log_normalized_cost": 2.3062623652453347,
+     "mean_log_planning_work": 3.3012470886362104
+    }
+   },
+   "movingai_random32": {
+    "q_goal_traffic": {
+     "realtime_score": 0.0,
+     "success_rate": 0.0,
+     "mean_log_normalized_cost": 2.263288587144649,
+     "mean_log_planning_work": 3.7782236267660974
+    }
+   }
+  },
+  "train": {
+   "scaled_small_mapf": {
+    "q_goal_traffic": {
+     "realtime_score": 0.0,
+     "success_rate": 0.0,
+     "mean_log_normalized_cost": 2.7890122652654608,
+     "mean_log_planning_work": 3.3012470886362104
+    }
+   },
+   "scaled_small_mapf_budget3": {
+    "q_goal_traffic": {
+     "realtime_score": 0.0,
+     "success_rate": 0.0,
+     "mean_log_normalized_cost": 2.311782423351357,
+     "mean_log_planning_work": 3.3012470886362104
+    }
+   },
+   "movingai_random32": {
+    "q_goal_traffic": {
+     "realtime_score": 0.0,
+     "success_rate": 0.0,
+     "mean_log_normalized_cost": 2.2636583029500343,
+     "mean_log_planning_work": 3.7782236267660974
+    }
+   }
+  }
+ },
+ "w_no_memory": {
+  "description": "Weaker: discard the search after every move (restart).",
+  "test": {
+   "scaled_small_mapf": {
+    "w_no_memory": {
+     "realtime_score": 0.0,
+     "success_rate": 0.0,
+     "mean_log_normalized_cost": 2.7834922071594375,
+     "mean_log_planning_work": 3.3012470886362104
+    }
+   },
+   "scaled_small_mapf_budget3": {
+    "w_no_memory": {
+     "realtime_score": 0.0,
+     "success_rate": 0.0,
+     "mean_log_normalized_cost": 2.3062623652453347,
+     "mean_log_planning_work": 3.3012470886362104
+    }
+   },
+   "movingai_random32": {
+    "w_no_memory": {
+     "realtime_score": 0.0,
+     "success_rate": 0.0,
+     "mean_log_normalized_cost": 2.263288587144649,
+     "mean_log_planning_work": 3.7782236267660974
+    }
+   }
+  },
+  "train": {
+   "scaled_small_mapf": {
+    "w_no_memory": {
+     "realtime_score": 0.0,
+     "success_rate": 0.0,
+     "mean_log_normalized_cost": 2.7890122652654608,
+     "mean_log_planning_work": 3.3012470886362104
+    }
+   },
+   "scaled_small_mapf_budget3": {
+    "w_no_memory": {
+     "realtime_score": 0.0,
+     "success_rate": 0.0,
+     "mean_log_normalized_cost": 2.311782423351357,
+     "mean_log_planning_work": 3.3012470886362104
+    }
+   },
+   "movingai_random32": {
+    "w_no_memory": {
+     "realtime_score": 0.0,
+     "success_rate": 0.0,
+     "mean_log_normalized_cost": 2.2636583029500343,
+     "mean_log_planning_work": 3.7782236267660974
+    }
+   }
+  }
+ },
+ "w_limited_steps": {
+  "description": "Weaker: execute one move, then stop.",
+  "test": {
+   "scaled_small_mapf": {
+    "w_limited_steps": {
+     "realtime_score": 0.0,
+     "success_rate": 0.0,
+     "mean_log_normalized_cost": 2.7834922071594375,
+     "mean_log_planning_work": 3.3012470886362104
+    }
+   },
+   "scaled_small_mapf_budget3": {
+    "w_limited_steps": {
+     "realtime_score": 0.0,
+     "success_rate": 0.0,
+     "mean_log_normalized_cost": 2.3062623652453347,
+     "mean_log_planning_work": 3.3012470886362104
+    }
+   },
+   "movingai_random32": {
+    "w_limited_steps": {
+     "realtime_score": 0.0,
+     "success_rate": 0.0,
+     "mean_log_normalized_cost": 2.263288587144649,
+     "mean_log_planning_work": 3.7782236267660974
+    }
+   }
+  }
+ },
+ "s_full_horizon_first_tick": {
+  "description": "Offline-cache shortcut, online form: full-horizon plan before the first move.",
+  "test": {
+   "scaled_small_mapf": {
+    "s_full_horizon_first_tick": {
+     "realtime_score": 0.5059051351748374,
+     "success_rate": 0.8,
+     "mean_log_normalized_cost": 1.3701440981594266,
+     "mean_log_planning_work": 2.023463217946642
+    }
+   },
+   "scaled_small_mapf_budget3": {
+    "s_full_horizon_first_tick": {
+     "realtime_score": 0.5495484089208589,
+     "success_rate": 0.8,
+     "mean_log_normalized_cost": 1.03452459884909,
+     "mean_log_planning_work": 2.023463217946642
+    }
+   },
+   "movingai_random32": {
+    "s_full_horizon_first_tick": {
+     "realtime_score": 0.761843719534843,
+     "success_rate": 0.875,
+     "mean_log_normalized_cost": 0.536557951558165,
+     "mean_log_planning_work": 1.8865712021716738
+    }
+   }
+  },
+  "train": {
+   "scaled_small_mapf": {
+    "s_full_horizon_first_tick": {
+     "realtime_score": 0.49484624125730275,
+     "success_rate": 0.75,
+     "mean_log_normalized_cost": 1.4077817022973123,
+     "mean_log_planning_work": 2.0462767624880276
+    }
+   },
+   "scaled_small_mapf_budget3": {
+    "s_full_horizon_first_tick": {
+     "realtime_score": 0.5394181139803912,
+     "success_rate": 0.75,
+     "mean_log_normalized_cost": 1.064774395407096,
+     "mean_log_planning_work": 2.0462767624880276
+    }
+   },
+   "movingai_random32": {
+    "s_full_horizon_first_tick": {
+     "realtime_score": 0.769479073418895,
+     "success_rate": 0.875,
+     "mean_log_normalized_cost": 0.522041952989704,
+     "mean_log_planning_work": 1.8421188660270456
+    }
+   }
+  }
+ },
+ "s_think_then_move": {
+  "description": "Control: wait while searching within budget, then execute.",
+  "test": {
+   "scaled_small_mapf": {
+    "s_think_then_move": {
+     "realtime_score": 0.4838173739501227,
+     "success_rate": 0.8,
+     "mean_log_normalized_cost": 1.4308445051872523,
+     "mean_log_planning_work": 2.0405710350455992
+    }
+   },
+   "scaled_small_mapf_budget3": {
+    "s_think_then_move": {
+     "realtime_score": 0.535535098738659,
+     "success_rate": 0.8,
+     "mean_log_normalized_cost": 1.066177037228141,
+     "mean_log_planning_work": 2.038135770527329
+    }
+   },
+   "movingai_random32": {
+    "s_think_then_move": {
+     "realtime_score": 0.7527003826885634,
+     "success_rate": 0.875,
+     "mean_log_normalized_cost": 0.5572312609431643,
+     "mean_log_planning_work": 1.8955531959998986
+    }
+   }
+  }
+ },
+ "s_public_cache": {
+  "description": "Replay plans cached offline for every visible instance.",
+  "test": {
+   "scaled_small_mapf": {
+    "s_public_cache": {
+     "realtime_score": 0.5157098009316442,
+     "success_rate": 0.75,
+     "mean_log_normalized_cost": 1.3411932552202834,
+     "mean_log_planning_work": 2.056012954522995
+    }
+   },
+   "scaled_small_mapf_budget3": {
+    "s_public_cache": {
+     "realtime_score": 0.5562907602835088,
+     "success_rate": 0.8,
+     "mean_log_normalized_cost": 1.017983136650664,
+     "mean_log_planning_work": 2.054878872742411
+    }
+   },
+   "movingai_random32": {
+    "s_public_cache": {
+     "realtime_score": 0.8130530495221489,
+     "success_rate": 0.875,
+     "mean_log_normalized_cost": 0.4221008879764772,
+     "mean_log_planning_work": 1.9504950401751284
+    }
+   }
+  },
+  "train": {
+   "scaled_small_mapf": {
+    "s_public_cache": {
+     "realtime_score": 0.7139842857190987,
+     "success_rate": 0.75,
+     "mean_log_normalized_cost": 0.8053764037202292,
+     "mean_log_planning_work": 0.8947499258640221
+    }
+   },
+   "scaled_small_mapf_budget3": {
+    "s_public_cache": {
+     "realtime_score": 0.7063998143841743,
+     "success_rate": 0.75,
+     "mean_log_normalized_cost": 0.6860689432417034,
+     "mean_log_planning_work": 0.8947499258640221
+    }
+   },
+   "movingai_random32": {
+    "s_public_cache": {
+     "realtime_score": 0.8565663432680901,
+     "success_rate": 0.875,
+     "mean_log_normalized_cost": 0.32297179135904774,
+     "mean_log_planning_work": 0.7528948723745799
+    }
+   }
+  }
+ },
+ "s_forged_artifacts": {
+  "description": "Reference + forged old-style artifacts (negative/missing/null work, forged flags).",
+  "test": {
+   "scaled_small_mapf": {
+    "s_forged_artifacts": {
+     "realtime_score": 0.5157098009316442,
+     "success_rate": 0.75,
+     "mean_log_normalized_cost": 1.3411932552202834,
+     "mean_log_planning_work": 2.0554063542332797
+    }
+   },
+   "scaled_small_mapf_budget3": {
+    "s_forged_artifacts": {
+     "realtime_score": 0.556780260681373,
+     "success_rate": 0.8,
+     "mean_log_normalized_cost": 1.0168657558334395,
+     "mean_log_planning_work": 2.054284066706106
+    }
+   },
+   "movingai_random32": {
+    "s_forged_artifacts": {
+     "realtime_score": 0.8125921096172392,
+     "success_rate": 0.875,
+     "mean_log_normalized_cost": 0.4231602772696375,
+     "mean_log_planning_work": 1.9502137190163205
+    }
+   }
+  }
+ },
+ "s_comparison_artifacts": {
+  "description": "Reference + replaced comparator artifacts, reserved-name manifests, sabotaged baseline/.",
+  "test": {
+   "scaled_small_mapf": {
+    "full_lacam": {
+     "realtime_score": 0.8055674994519249,
+     "success_rate": 0.85,
+     "mean_log_normalized_cost": 0.5439982635175611,
+     "mean_log_planning_work": 1.9909426843032976
+    },
+    "naive_rt_lacam": {
+     "realtime_score": 0.2994383984691985,
+     "success_rate": 0.3,
+     "mean_log_normalized_cost": 1.931687655301722,
+     "mean_log_planning_work": 2.5863499980120155
+    },
+    "s_comparison_artifacts": {
+     "realtime_score": 0.5157098009316442,
+     "success_rate": 0.75,
+     "mean_log_normalized_cost": 1.3411932552202834,
+     "mean_log_planning_work": 2.0554063542332797
+    }
+   },
+   "scaled_small_mapf_budget3": {
+    "full_lacam": {
+     "realtime_score": 0.7961955821286354,
+     "success_rate": 0.85,
+     "mean_log_normalized_cost": 0.4724137872304456,
+     "mean_log_planning_work": 1.9909426843032976
+    },
+    "naive_rt_lacam": {
+     "realtime_score": 0.299325245931736,
+     "success_rate": 0.3,
+     "mean_log_normalized_cost": 1.5976267659618497,
+     "mean_log_planning_work": 2.687322539849099
+    },
+    "s_comparison_artifacts": {
+     "realtime_score": 0.556780260681373,
+     "success_rate": 0.8,
+     "mean_log_normalized_cost": 1.0168657558334395,
+     "mean_log_planning_work": 2.054284066706106
+    }
+   },
+   "movingai_random32": {
+    "full_lacam": {
+     "realtime_score": 0.8636782093363038,
+     "success_rate": 0.875,
+     "mean_log_normalized_cost": 0.3070977702643317,
+     "mean_log_planning_work": 1.8553301718802915
+    },
+    "naive_rt_lacam": {
+     "realtime_score": 0.5546733495176577,
+     "success_rate": 0.5625,
+     "mean_log_normalized_cost": 0.9870213124757186,
+     "mean_log_planning_work": 2.762872196609571
+    },
+    "s_comparison_artifacts": {
+     "realtime_score": 0.8125921096172392,
+     "success_rate": 0.875,
+     "mean_log_normalized_cost": 0.4231602772696375,
+     "mean_log_planning_work": 1.9502137190163205
+    }
+   }
+  }
+ },
+ "s_ground_truth": {
+  "description": "Reference + trivialised data/ generator, map and scenario files.",
+  "test": {
+   "scaled_small_mapf": {
+    "full_lacam": {
+     "realtime_score": 0.8055674994519249,
+     "success_rate": 0.85,
+     "mean_log_normalized_cost": 0.5439982635175611,
+     "mean_log_planning_work": 1.9909426843032976
+    },
+    "naive_rt_lacam": {
+     "realtime_score": 0.2994383984691985,
+     "success_rate": 0.3,
+     "mean_log_normalized_cost": 1.931687655301722,
+     "mean_log_planning_work": 2.5863499980120155
+    },
+    "s_ground_truth": {
+     "realtime_score": 0.5157098009316442,
+     "success_rate": 0.75,
+     "mean_log_normalized_cost": 1.3411932552202834,
+     "mean_log_planning_work": 2.0554063542332797
+    }
+   },
+   "scaled_small_mapf_budget3": {
+    "full_lacam": {
+     "realtime_score": 0.7961955821286354,
+     "success_rate": 0.85,
+     "mean_log_normalized_cost": 0.4724137872304456,
+     "mean_log_planning_work": 1.9909426843032976
+    },
+    "naive_rt_lacam": {
+     "realtime_score": 0.299325245931736,
+     "success_rate": 0.3,
+     "mean_log_normalized_cost": 1.5976267659618497,
+     "mean_log_planning_work": 2.687322539849099
+    },
+    "s_ground_truth": {
+     "realtime_score": 0.556780260681373,
+     "success_rate": 0.8,
+     "mean_log_normalized_cost": 1.0168657558334395,
+     "mean_log_planning_work": 2.054284066706106
+    }
+   },
+   "movingai_random32": {
+    "full_lacam": {
+     "realtime_score": 0.8636782093363038,
+     "success_rate": 0.875,
+     "mean_log_normalized_cost": 0.3070977702643317,
+     "mean_log_planning_work": 1.8553301718802915
+    },
+    "naive_rt_lacam": {
+     "realtime_score": 0.5546733495176577,
+     "success_rate": 0.5625,
+     "mean_log_normalized_cost": 0.9870213124757186,
+     "mean_log_planning_work": 2.762872196609571
+    },
+    "s_ground_truth": {
+     "realtime_score": 0.8125921096172392,
+     "success_rate": 0.875,
+     "mean_log_normalized_cost": 0.4231602772696375,
+     "mean_log_planning_work": 1.9502137190163205
+    }
+   }
+  }
+ },
+ "s_train_scope": {
+  "description": "Reference + scores_train.json cut down to one experiment.",
+  "test": {
+   "scaled_small_mapf": {
+    "s_train_scope": {
+     "realtime_score": 0.5157098009316442,
+     "success_rate": 0.75,
+     "mean_log_normalized_cost": 1.3411932552202834,
+     "mean_log_planning_work": 2.0554063542332797
+    }
+   },
+   "scaled_small_mapf_budget3": {
+    "s_train_scope": {
+     "realtime_score": 0.556780260681373,
+     "success_rate": 0.8,
+     "mean_log_normalized_cost": 1.0168657558334395,
+     "mean_log_planning_work": 2.054284066706106
+    }
+   },
+   "movingai_random32": {
+    "s_train_scope": {
+     "realtime_score": 0.8125921096172392,
+     "success_rate": 0.875,
+     "mean_log_normalized_cost": 0.4231602772696375,
+     "mean_log_planning_work": 1.9502137190163205
+    }
+   }
+  }
+ },
+ "s_direct_scores": {
+  "description": "Reference + prewritten perfect scores_test.json.",
+  "test": {
+   "scaled_small_mapf": {
+    "s_direct_scores": {
+     "realtime_score": 0.5157098009316442,
+     "success_rate": 0.75,
+     "mean_log_normalized_cost": 1.3411932552202834,
+     "mean_log_planning_work": 2.0554063542332797
+    }
+   },
+   "scaled_small_mapf_budget3": {
+    "s_direct_scores": {
+     "realtime_score": 0.556780260681373,
+     "success_rate": 0.8,
+     "mean_log_normalized_cost": 1.0168657558334395,
+     "mean_log_planning_work": 2.054284066706106
+    }
+   },
+   "movingai_random32": {
+    "s_direct_scores": {
+     "realtime_score": 0.8125921096172392,
+     "success_rate": 0.875,
+     "mean_log_normalized_cost": 0.4231602772696375,
+     "mean_log_planning_work": 1.9502137190163205
+    }
+   }
+  }
+ },
+ "s_constant_start": {
+  "description": "Never move.",
+  "test": {
+   "scaled_small_mapf": {
+    "s_constant_start": {
+     "realtime_score": 0.0,
+     "success_rate": 0.0,
+     "mean_log_normalized_cost": 2.7834922071594375,
+     "mean_log_planning_work": 3.3012470886362104
+    }
+   },
+   "scaled_small_mapf_budget3": {
+    "s_constant_start": {
+     "realtime_score": 0.0,
+     "success_rate": 0.0,
+     "mean_log_normalized_cost": 2.3062623652453347,
+     "mean_log_planning_work": 3.3012470886362104
+    }
+   },
+   "movingai_random32": {
+    "s_constant_start": {
+     "realtime_score": 0.0,
+     "success_rate": 0.0,
+     "mean_log_normalized_cost": 2.263288587144649,
+     "mean_log_planning_work": 3.7782236267660974
+    }
+   }
+  }
+ },
+ "s_teleport": {
+  "description": "Jump to the goals.",
+  "test": {
+   "scaled_small_mapf": {
+    "s_teleport": {
+     "realtime_score": 0.0,
+     "success_rate": 0.0,
+     "mean_log_normalized_cost": 2.7834922071594375,
+     "mean_log_planning_work": 3.3012470886362104
+    }
+   },
+   "scaled_small_mapf_budget3": {
+    "s_teleport": {
+     "realtime_score": 0.0,
+     "success_rate": 0.0,
+     "mean_log_normalized_cost": 2.3062623652453347,
+     "mean_log_planning_work": 3.3012470886362104
+    }
+   },
+   "movingai_random32": {
+    "s_teleport": {
+     "realtime_score": 0.0,
+     "success_rate": 0.0,
+     "mean_log_normalized_cost": 2.263288587144649,
+     "mean_log_planning_work": 3.7782236267660974
+    }
+   }
+  }
+ },
+ "s_selective_omission": {
+  "description": "Refuse instances with 7+ agents.",
+  "test": {
+   "scaled_small_mapf": {
+    "s_selective_omission": {
+     "realtime_score": 0.3675215570252198,
+     "success_rate": 0.6,
+     "mean_log_normalized_cost": 1.7644664657277176,
+     "mean_log_planning_work": 2.4349053401888243
+    }
+   },
+   "scaled_small_mapf_budget3": {
+    "s_selective_omission": {
+     "realtime_score": 0.4074550147496369,
+     "success_rate": 0.65,
+     "mean_log_normalized_cost": 1.3721391512865122,
+     "mean_log_planning_work": 2.43296875208025
+    }
+   },
+   "movingai_random32": {
+    "s_selective_omission": {
+     "realtime_score": 0.2399881638953153,
+     "success_rate": 0.25,
+     "mean_log_normalized_cost": 1.7120942210157397,
+     "mean_log_planning_work": 3.201661653893922
+    }
+   }
+  }
+ },
+ "s_meter_escape": {
+  "description": "Switch the meter off and plan unmetered.",
+  "test": {
+   "scaled_small_mapf": {
+    "s_meter_escape": {
+     "realtime_score": 0.0,
+     "success_rate": 0.0,
+     "mean_log_normalized_cost": 2.7834922071594375,
+     "mean_log_planning_work": 3.3012470886362104
+    }
+   },
+   "scaled_small_mapf_budget3": {
+    "s_meter_escape": {
+     "realtime_score": 0.0,
+     "success_rate": 0.0,
+     "mean_log_normalized_cost": 2.3062623652453347,
+     "mean_log_planning_work": 3.3012470886362104
+    }
+   },
+   "movingai_random32": {
+    "s_meter_escape": {
+     "realtime_score": 0.0,
+     "success_rate": 0.0,
+     "mean_log_normalized_cost": 2.263288587144649,
+     "mean_log_planning_work": 3.7782236267660974
+    }
+   }
+  }
+ },
+ "s_thread_escape": {
+  "description": "Plan in a background thread.",
+  "test": {
+   "scaled_small_mapf": {
+    "s_thread_escape": {
+     "realtime_score": 0.321437771881384,
+     "success_rate": 0.35,
+     "mean_log_normalized_cost": 1.8750383755904227,
+     "mean_log_planning_work": 2.404740909296269
+    }
+   },
+   "scaled_small_mapf_budget3": {
+    "s_thread_escape": {
+     "realtime_score": 0.33586848114659623,
+     "success_rate": 0.35,
+     "mean_log_normalized_cost": 1.5173052650870562,
+     "mean_log_planning_work": 2.404740909296269
+    }
+   },
+   "movingai_random32": {
+    "s_thread_escape": {
+     "realtime_score": 0.1811404386225648,
+     "success_rate": 0.1875,
+     "mean_log_normalized_cost": 1.838996485723307,
+     "mean_log_planning_work": 3.274769635402684
+    }
+   }
+  }
+ },
+ "s_swallow_abort": {
+  "description": "Swallow the work-cap interrupt and keep searching.",
+  "test": {
+   "scaled_small_mapf": {
+    "s_swallow_abort": {
+     "realtime_score": 0.5062266727175353,
+     "success_rate": 0.8,
+     "mean_log_normalized_cost": 1.3692678478210816,
+     "mean_log_planning_work": 2.02214624071885
+    }
+   },
+   "scaled_small_mapf_budget3": {
+    "s_swallow_abort": {
+     "realtime_score": 0.5499207419223578,
+     "success_rate": 0.8,
+     "mean_log_normalized_cost": 1.0336908610079238,
+     "mean_log_planning_work": 2.02214624071885
+    }
+   },
+   "movingai_random32": {
+    "s_swallow_abort": {
+     "realtime_score": 0.7618639326143161,
+     "success_rate": 0.875,
+     "mean_log_normalized_cost": 0.5365119106598072,
+     "mean_log_planning_work": 1.8858765859522473
+    }
+   }
+  }
+ },
+ "s_exit_forge": {
+  "description": "Forge the worker result file and exit early.",
+  "test": {
+   "scaled_small_mapf": {
+    "s_exit_forge": {
+     "realtime_score": 0.0,
+     "success_rate": 0.0,
+     "mean_log_normalized_cost": 2.7834922071594375,
+     "mean_log_planning_work": 3.3012470886362104
+    }
+   },
+   "scaled_small_mapf_budget3": {
+    "s_exit_forge": {
+     "realtime_score": 0.0,
+     "success_rate": 0.0,
+     "mean_log_normalized_cost": 2.3062623652453347,
+     "mean_log_planning_work": 3.3012470886362104
+    }
+   },
+   "movingai_random32": {
+    "s_exit_forge": {
+     "realtime_score": 0.0,
+     "success_rate": 0.0,
+     "mean_log_normalized_cost": 2.263288587144649,
+     "mean_log_planning_work": 3.7782236267660974
+    }
+   }
+  }
+ },
+ "s_evaluator_rewrite": {
+  "description": "Rewrite eval/test/evaluate.py on disk mid-run (meter off), plan full horizon.",
+  "test": {
+   "scaled_small_mapf": {
+    "s_evaluator_rewrite": {
+     "realtime_score": 0.5037171922165914,
+     "success_rate": 0.8,
+     "mean_log_normalized_cost": 1.376552482813197,
+     "mean_log_planning_work": 2.0292835304991845
+    }
+   },
+   "scaled_small_mapf_budget3": {
+    "s_evaluator_rewrite": {
+     "realtime_score": 0.5494499946673422,
+     "success_rate": 0.8,
+     "mean_log_normalized_cost": 1.0347584595460393,
+     "mean_log_planning_work": 2.029281164191161
+    }
+   },
+   "movingai_random32": {
+    "s_evaluator_rewrite": {
+     "realtime_score": 0.7611455976317937,
+     "success_rate": 0.875,
+     "mean_log_normalized_cost": 0.538291097929737,
+     "mean_log_planning_work": 1.8893795927689159
+    }
+   }
+  }
+ }
+}

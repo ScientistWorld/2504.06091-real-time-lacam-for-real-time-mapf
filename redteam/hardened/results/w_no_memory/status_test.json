@@ -1,0 +1,17 @@
+{
+ "scaled_small_mapf": {
+  "w_no_memory": {
+   "load_error:planner_error:SyntaxError": 20
+  }
+ },
+ "scaled_small_mapf_budget3": {
+  "w_no_memory": {
+   "load_error:planner_error:SyntaxError": 20
+  }
+ },
+ "movingai_random32": {
+  "w_no_memory": {
+   "load_error:planner_error:SyntaxError": 16
+  }
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "case": "s_evaluator_rewrite",
+ "description": "Rewrite eval/test/evaluate.py on disk mid-run (meter off), plan full horizon.",
+ "entry": "redteam/hardened/cases/s_evaluator_rewrite.py",
+ "full_script": false,
+ "seconds": 6.0
+}

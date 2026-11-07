@@ -1,0 +1,14 @@
+[
+ {
+  "cmd": [
+   "/usr/local/bin/python3",
+   "eval/test/evaluate.py",
+   "--methods-only",
+   "--out",
+   "scoring/scores_test.json",
+   "--details",
+   "/home/user/redteam/hardened/results/w_limited_steps/_details_test.json"
+  ],
+  "rc": 0
+ }
+]

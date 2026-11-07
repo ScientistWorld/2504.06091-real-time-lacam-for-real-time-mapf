@@ -1,0 +1,7 @@
+{
+ "case": "s_swallow_abort",
+ "description": "Swallow the work-cap interrupt and keep searching.",
+ "entry": "redteam/hardened/cases/s_swallow_abort.py",
+ "full_script": false,
+ "seconds": 8.2
+}

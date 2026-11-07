@@ -1,0 +1,7 @@
+{
+ "case": "reference_repeat",
+ "description": "Reference again, fresh workers: determinism check.",
+ "entry": "method/rt_lacam.py",
+ "full_script": false,
+ "seconds": 6.4
+}

@@ -1,0 +1,7 @@
+{
+ "case": "s_comparison_artifacts",
+ "description": "Reference + replaced comparator artifacts, reserved-name manifests, sabotaged baseline/.",
+ "entry": "method/rt_lacam.py",
+ "full_script": true,
+ "seconds": 19.3
+}

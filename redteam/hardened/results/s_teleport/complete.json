@@ -1,0 +1,7 @@
+{
+ "case": "s_teleport",
+ "description": "Jump to the goals.",
+ "entry": "redteam/hardened/cases/s_teleport.py",
+ "full_script": false,
+ "seconds": 3.2
+}

@@ -1,0 +1,7 @@
+{
+ "case": "s_exit_forge",
+ "description": "Forge the worker result file and exit early.",
+ "entry": "redteam/hardened/cases/s_exit_forge.py",
+ "full_script": false,
+ "seconds": 6.7
+}

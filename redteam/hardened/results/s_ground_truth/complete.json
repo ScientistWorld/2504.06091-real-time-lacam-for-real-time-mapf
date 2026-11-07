@@ -1,0 +1,7 @@
+{
+ "case": "s_ground_truth",
+ "description": "Reference + trivialised data/ generator, map and scenario files.",
+ "entry": "method/rt_lacam.py",
+ "full_script": true,
+ "seconds": 20.8
+}

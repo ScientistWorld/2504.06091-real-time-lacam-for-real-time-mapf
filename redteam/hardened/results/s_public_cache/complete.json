@@ -1,0 +1,7 @@
+{
+ "case": "s_public_cache",
+ "description": "Replay plans cached offline for every visible instance.",
+ "entry": "redteam/hardened/cases/s_public_cache.py",
+ "full_script": false,
+ "seconds": 17.3
+}

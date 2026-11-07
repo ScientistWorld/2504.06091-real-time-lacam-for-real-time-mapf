@@ -1,0 +1,7 @@
+{
+ "case": "s_direct_scores",
+ "description": "Reference + prewritten perfect scores_test.json.",
+ "entry": "method/rt_lacam.py",
+ "full_script": false,
+ "seconds": 6.3
+}

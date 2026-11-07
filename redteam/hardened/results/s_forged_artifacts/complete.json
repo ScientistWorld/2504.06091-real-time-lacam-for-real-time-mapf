@@ -1,0 +1,7 @@
+{
+ "case": "s_forged_artifacts",
+ "description": "Reference + forged old-style artifacts (negative/missing/null work, forged flags).",
+ "entry": "method/rt_lacam.py",
+ "full_script": false,
+ "seconds": 6.6
+}
