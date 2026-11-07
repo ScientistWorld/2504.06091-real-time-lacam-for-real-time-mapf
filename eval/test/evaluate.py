@@ -22,6 +22,7 @@ are frozen copies owned by this evaluator and run under the same meter.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import importlib.util
 import json
 import math
@@ -70,8 +71,11 @@ EXPERIMENTS = {
 # Held-out instance seeds (train uses different seeds).
 SCALED_SEED = 0x7E57_51A1_C0DE_0001
 MOVINGAI_SEED = 0x7E57_51A1_C0DE_0002
-SCALED_LAYOUT = (("corridor", 5), ("cross", 4), ("dense", 11))
-MOVINGAI_AGENTS = (6, 6, 6, 6, 8, 8, 8, 8, 10, 10, 10, 10, 12, 12, 12, 12)
+SCALED_LAYOUT = (("corridor", 10), ("cross", 8), ("dense", 22))
+MOVINGAI_AGENTS = tuple(n for n in (6, 8, 10, 12) for _ in range(8))
+# Train and test are disjoint by construction: a candidate instance belongs to
+# the slice whose parity matches a hash of its agent-order-invariant form.
+SLICE_PARITY = 1
 
 # MovingAI MAPF benchmark map random-32-32-20 (Stern et al. 2019), embedded so
 # that edits to downloaded files cannot change the evaluated tasks.
@@ -221,22 +225,19 @@ def _corridor(rng, name):
 
 
 def _cross(rng, name):
-    r = rng.choice((3, 4))
-    size = 2 * r + 1
-    free = {(x, r) for x in range(size)} | {(r, y) for y in range(size)}
-    free |= {(r - 1, r - 1), (r + 1, r - 1), (r - 1, r + 1), (r + 1, r + 1)}
-    obstacles = {(x, y) for y in range(size) for x in range(size)} - free
-    ends = [((0, r), (size - 1, r)), ((size - 1, r), (0, r)), ((r, 0), (r, size - 1)), ((r, size - 1), (r, 0))]
+    left, right, up, down = (rng.randint(3, 4) for _ in range(4))
+    width, height = left + right + 1, up + down + 1
+    cx, cy = left, up
+    free = {(x, cy) for x in range(width)} | {(cx, y) for y in range(height)}
+    alcoves = [(cx - 1, cy - 1), (cx + 1, cy - 1), (cx - 1, cy + 1), (cx + 1, cy + 1)]
+    free |= set(rng.sample(alcoves, rng.choice((3, 4))))
+    obstacles = {(x, y) for y in range(height) for x in range(width)} - free
+    ends = [((0, cy), (width - 1, cy)), ((width - 1, cy), (0, cy)), ((cx, 0), (cx, height - 1)), ((cx, height - 1), (cx, 0))]
     starts = [s for s, _ in ends]
     goals = [g for _, g in ends]
-    for arm in rng.sample(range(4), rng.choice((0, 0, 1))):
-        (sx, sy), (gx, gy) = ends[arm]
-        step = (1 if sx == 0 else -1 if sx == size - 1 else 0, 1 if sy == 0 else -1 if sy == size - 1 else 0)
-        starts.append((sx + step[0], sy + step[1]))
-        goals.append((gx - step[0], gy - step[1]))
     order = list(range(len(starts)))
     rng.shuffle(order)
-    return Instance(name, size, size, obstacles, [starts[i] for i in order], [goals[i] for i in order])
+    return Instance(name, width, height, obstacles, [starts[i] for i in order], [goals[i] for i in order])
 
 
 def _dense(rng, name):
@@ -253,13 +254,35 @@ def _dense(rng, name):
         return Instance(name, size, size, obstacles, starts, goals)
 
 
+def _canonical(inst):
+    return repr((inst.width, inst.height, sorted(inst.obstacles), sorted(zip(inst.starts, inst.goals))))
+
+
+def _accept(inst, seen):
+    """Reject duplicates (up to agent relabelling) and the other slice's instances."""
+    key = _canonical(inst)
+    if key in seen or hashlib.sha256(key.encode()).digest()[0] % 2 != SLICE_PARITY:
+        return False
+    seen.add(key)
+    return True
+
+
 def scaled_instances():
     rng = random.Random(SCALED_SEED)
     out = []
+    seen = set()
     makers = {"corridor": _corridor, "cross": _cross, "dense": _dense}
     for kind, count in SCALED_LAYOUT:
-        for k in range(count):
-            out.append(makers[kind](rng, f"{SLICE}_{kind}_{k}"))
+        k = 0
+        tries = 0
+        while k < count:
+            tries += 1
+            if tries > 100_000:
+                raise RuntimeError(f"cannot draw {count} distinct {kind} instances")
+            inst = makers[kind](rng, f"{SLICE}_{kind}_{k}")
+            if _accept(inst, seen):
+                out.append(inst)
+                k += 1
     return out
 
 
@@ -271,9 +294,14 @@ def movingai_instances():
     obstacles |= {(x, y) for y in range(height) for x in range(width)} - comp
     rng = random.Random(MOVINGAI_SEED)
     out = []
+    seen = set()
     for k, n in enumerate(MOVINGAI_AGENTS):
-        starts, goals = _sample_agents(rng, comp, n)
-        out.append(Instance(f"{SLICE}_random32_{n}a_{k}", width, height, obstacles, starts, goals))
+        while True:
+            starts, goals = _sample_agents(rng, comp, n)
+            inst = Instance(f"{SLICE}_random32_{n}a_{k}", width, height, obstacles, starts, goals)
+            if _accept(inst, seen):
+                out.append(inst)
+                break
     return out
 
 

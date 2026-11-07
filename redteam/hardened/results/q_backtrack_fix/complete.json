@@ -1,7 +1,0 @@
-{
- "case": "q_backtrack_fix",
- "description": "Alternative: restore reservations after failed branches.",
- "entry": "redteam/hardened/cases/q_backtrack_fix.py",
- "full_script": false,
- "seconds": 12.1
-}

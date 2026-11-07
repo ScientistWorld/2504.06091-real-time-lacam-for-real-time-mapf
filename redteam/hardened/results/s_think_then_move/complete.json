@@ -1,7 +1,0 @@
-{
- "case": "s_think_then_move",
- "description": "Control: wait while searching within budget, then execute.",
- "entry": "redteam/hardened/cases/s_think_then_move.py",
- "full_script": false,
- "seconds": 6.7
-}

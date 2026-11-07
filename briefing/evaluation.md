@@ -69,13 +69,15 @@ per-tick budget.
 
 | experiment | instances | budget B per tick | cumulative work cap |
 |---|---|---|---|
-| `scaled_small_mapf` | 20 small congested grids | 1,000 | 2,000,000 |
-| `scaled_small_mapf_budget3` | the same 20 grids | 3,000 | 2,000,000 |
-| `movingai_random32` | 16 random-32-32-20 instances, 6-12 agents | 3,000 | 6,000,000 |
+| `scaled_small_mapf` | 40 small congested grids (10 corridors, 8 crossings, 22 dense) | 1,000 | 2,000,000 |
+| `scaled_small_mapf_budget3` | the same 40 grids | 3,000 | 2,000,000 |
+| `movingai_random32` | 32 random-32-32-20 instances, 8 each with 6/8/10/12 agents | 3,000 | 6,000,000 |
 
 The train slice and the held-out test slice use the same generators and
-operating points with different instances; the test instances exist only
-inside the held-out evaluator.
+operating points with different seeds. They are disjoint by construction: an
+instance belongs to one slice according to a hash of its
+agent-order-invariant form, and duplicates within a slice are rejected. The
+test instances exist only inside the held-out evaluator.
 
 ## Metrics (per experiment, means over instances)
 

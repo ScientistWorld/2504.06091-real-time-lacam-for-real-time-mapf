@@ -1,7 +1,0 @@
-{
- "case": "s_constant_start",
- "description": "Never move.",
- "entry": "redteam/hardened/cases/s_constant_start.py",
- "full_script": false,
- "seconds": 4.0
-}

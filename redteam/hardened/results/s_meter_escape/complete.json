@@ -1,7 +1,0 @@
-{
- "case": "s_meter_escape",
- "description": "Switch the meter off and plan unmetered.",
- "entry": "redteam/hardened/cases/s_meter_escape.py",
- "full_script": false,
- "seconds": 4.4
-}

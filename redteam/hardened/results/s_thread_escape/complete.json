@@ -1,7 +1,0 @@
-{
- "case": "s_thread_escape",
- "description": "Plan in a background thread.",
- "entry": "redteam/hardened/cases/s_thread_escape.py",
- "full_script": false,
- "seconds": 3.9
-}

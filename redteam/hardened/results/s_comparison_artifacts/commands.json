@@ -1,9 +1,0 @@
-[
- {
-  "cmd": [
-   "bash",
-   "scripts/evaluate_test.sh"
-  ],
-  "rc": 0
- }
-]
