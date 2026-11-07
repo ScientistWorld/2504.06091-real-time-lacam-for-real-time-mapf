@@ -5,4 +5,4 @@ action: submit
 gpus: 0
 test: false
 milestone: core_claim_plus
-notes: "Hardening check: reproduce reference end to end with the hardened evaluators (train+test, frozen comparison rows), then run 23 hardening cases (better/weaker variants, shortcuts) through the final held-out evaluator."
+notes: "Final run.sh: reproduce reference end to end with hardened evaluators, then rerun the 5 hardening variant cases (rotations, backtrack fix, goal traffic, no-memory, limited-steps) whose generated files failed to import in job 1; other cases are skipped."
