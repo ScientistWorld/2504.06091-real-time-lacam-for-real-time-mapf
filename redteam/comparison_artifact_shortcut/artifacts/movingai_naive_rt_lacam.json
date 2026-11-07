@@ -1,0 +1,39 @@
+{
+  "method": "naive_rt_lacam",
+  "mode": "naive_rt",
+  "benchmark": "movingai",
+  "per_iter_expansions": 3,
+  "total_expansion_budget": 50000,
+  "results": [
+    {
+      "instance": "movingai_random-32-32-20_random_1_4a",
+      "success": false,
+      "valid": false,
+      "steps": 29,
+      "sum_of_costs": 90,
+      "normalized_cost": 0.9278350515463918,
+      "expansions": 1000000000,
+      "path": []
+    },
+    {
+      "instance": "movingai_random-32-32-20_random_2_4a",
+      "success": false,
+      "valid": false,
+      "steps": 32,
+      "sum_of_costs": 73,
+      "normalized_cost": 1.0,
+      "expansions": 1000000000,
+      "path": []
+    },
+    {
+      "instance": "movingai_random-32-32-20_random_3_4a",
+      "success": false,
+      "valid": false,
+      "steps": 41,
+      "sum_of_costs": 106,
+      "normalized_cost": 1.0,
+      "expansions": 1000000000,
+      "path": []
+    }
+  ]
+}

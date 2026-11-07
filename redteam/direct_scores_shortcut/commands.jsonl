@@ -1,0 +1,3 @@
+{"command": ["/usr/local/bin/python3", "method/shortcut.py"], "returncode": 0, "elapsed_seconds": 0.1649556600023061}
+{"command": ["bash", "scripts/evaluate_train.sh"], "returncode": 0, "elapsed_seconds": 0.36462932894937694}
+{"command": ["bash", "scripts/evaluate_test.sh"], "returncode": 0, "elapsed_seconds": 0.3658833899535239}

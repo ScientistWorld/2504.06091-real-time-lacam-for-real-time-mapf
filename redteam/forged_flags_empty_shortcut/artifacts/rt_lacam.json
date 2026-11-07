@@ -1,0 +1,75 @@
+{
+  "method": "rt_lacam",
+  "mode": "rt",
+  "benchmark": "scaled",
+  "per_iter_expansions": 1,
+  "total_expansion_budget": 20000,
+  "results": [
+    {
+      "instance": "corridor_swap_2",
+      "success": true,
+      "valid": true,
+      "steps": 0,
+      "sum_of_costs": -1000000000,
+      "normalized_cost": -1000000000,
+      "expansions": 0,
+      "expanded_nodes": 14,
+      "path": []
+    },
+    {
+      "instance": "four_agent_cross",
+      "success": true,
+      "valid": true,
+      "steps": 0,
+      "sum_of_costs": -1000000000,
+      "normalized_cost": -1000000000,
+      "expansions": 0,
+      "expanded_nodes": 26,
+      "path": []
+    },
+    {
+      "instance": "random_dense_0",
+      "success": true,
+      "valid": true,
+      "steps": 0,
+      "sum_of_costs": -1000000000,
+      "normalized_cost": -1000000000,
+      "expansions": 0,
+      "expanded_nodes": 10,
+      "path": []
+    },
+    {
+      "instance": "random_dense_1",
+      "success": true,
+      "valid": true,
+      "steps": 0,
+      "sum_of_costs": -1000000000,
+      "normalized_cost": -1000000000,
+      "expansions": 0,
+      "expanded_nodes": 15,
+      "path": []
+    },
+    {
+      "instance": "random_dense_2",
+      "success": true,
+      "valid": true,
+      "steps": 0,
+      "sum_of_costs": -1000000000,
+      "normalized_cost": -1000000000,
+      "expansions": 0,
+      "expanded_nodes": 18,
+      "path": []
+    },
+    {
+      "instance": "random_dense_3",
+      "success": true,
+      "valid": true,
+      "steps": 0,
+      "sum_of_costs": -1000000000,
+      "normalized_cost": -1000000000,
+      "expansions": 0,
+      "expanded_nodes": 20,
+      "path": []
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "method": "full_lacam",
+  "mode": "full",
+  "benchmark": "movingai",
+  "per_iter_expansions": 1,
+  "total_expansion_budget": 50000,
+  "results": [
+    {
+      "instance": "movingai_random-32-32-20_random_1_4a",
+      "success": false,
+      "valid": false,
+      "steps": 39,
+      "sum_of_costs": 102,
+      "normalized_cost": 1.0515463917525774,
+      "expansions": 1000000000,
+      "expanded_nodes": 44,
+      "path": []
+    },
+    {
+      "instance": "movingai_random-32-32-20_random_2_4a",
+      "success": false,
+      "valid": false,
+      "steps": 32,
+      "sum_of_costs": 73,
+      "normalized_cost": 1.0,
+      "expansions": 1000000000,
+      "expanded_nodes": 33,
+      "path": []
+    },
+    {
+      "instance": "movingai_random-32-32-20_random_3_4a",
+      "success": false,
+      "valid": false,
+      "steps": 41,
+      "sum_of_costs": 106,
+      "normalized_cost": 1.0,
+      "expansions": 1000000000,
+      "expanded_nodes": 42,
+      "path": []
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "test_command": [
+    "bash",
+    "scripts/evaluate_test.sh"
+  ],
+  "test_arguments": [],
+  "separate_process_after_generator_exit": true,
+  "evaluator_hashes": {
+    "eval/evaluate_mapf.py": "99e28760b79b02b6e17c04540e004e9ce2ffd93e16fc5f7ab718c2e2b29e0152",
+    "eval/test/evaluate.py": "6634d2e8c88d9f4683d162464b5d39e1cc70109cba6b60120b14604c000f46ac",
+    "eval/train/evaluate.py": "b00ea71bce2061f6bbcf06f9f3f7a42b8a83eddded2ff2f5ac47609c1705e257",
+    "scripts/evaluate_test.sh": "7b4b6d068a33ae0ee6fdef02cac649e3d5db3948bdc313953cf1988c9e955651"
+  }
+}

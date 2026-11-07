@@ -1,0 +1,153 @@
+{
+  "method": "rt_lacam",
+  "mode": "rt",
+  "benchmark": "movingai",
+  "per_iter_expansions": 3,
+  "total_expansion_budget": 50000,
+  "results": [
+    {
+      "instance": "movingai_random-32-32-20_random_1_4a",
+      "success": false,
+      "valid": true,
+      "steps": 1,
+      "sum_of_costs": 4,
+      "normalized_cost": 0.041237113402061855,
+      "expansions": 3,
+      "expanded_nodes": 4,
+      "path": [
+        [
+          [
+            5,
+            16
+          ],
+          [
+            21,
+            29
+          ],
+          [
+            27,
+            1
+          ],
+          [
+            20,
+            14
+          ]
+        ],
+        [
+          [
+            5,
+            15
+          ],
+          [
+            21,
+            28
+          ],
+          [
+            27,
+            2
+          ],
+          [
+            19,
+            14
+          ]
+        ]
+      ]
+    },
+    {
+      "instance": "movingai_random-32-32-20_random_2_4a",
+      "success": false,
+      "valid": true,
+      "steps": 1,
+      "sum_of_costs": 4,
+      "normalized_cost": 0.0547945205479452,
+      "expansions": 3,
+      "expanded_nodes": 4,
+      "path": [
+        [
+          [
+            12,
+            24
+          ],
+          [
+            9,
+            27
+          ],
+          [
+            1,
+            6
+          ],
+          [
+            23,
+            30
+          ]
+        ],
+        [
+          [
+            11,
+            24
+          ],
+          [
+            9,
+            26
+          ],
+          [
+            2,
+            6
+          ],
+          [
+            24,
+            30
+          ]
+        ]
+      ]
+    },
+    {
+      "instance": "movingai_random-32-32-20_random_3_4a",
+      "success": false,
+      "valid": true,
+      "steps": 1,
+      "sum_of_costs": 4,
+      "normalized_cost": 0.03773584905660377,
+      "expansions": 3,
+      "expanded_nodes": 4,
+      "path": [
+        [
+          [
+            18,
+            22
+          ],
+          [
+            19,
+            11
+          ],
+          [
+            2,
+            21
+          ],
+          [
+            24,
+            11
+          ]
+        ],
+        [
+          [
+            17,
+            22
+          ],
+          [
+            19,
+            12
+          ],
+          [
+            2,
+            20
+          ],
+          [
+            24,
+            12
+          ]
+        ]
+      ]
+    }
+  ]
+}

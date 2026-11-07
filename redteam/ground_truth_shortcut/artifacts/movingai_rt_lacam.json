@@ -1,0 +1,80 @@
+{
+  "method": "rt_lacam",
+  "mode": "rt",
+  "benchmark": "movingai",
+  "per_iter_expansions": 3,
+  "results": [
+    {
+      "instance": "movingai_random-32-32-20_random_1_4a",
+      "path": [
+        [
+          [
+            5,
+            16
+          ],
+          [
+            21,
+            29
+          ],
+          [
+            27,
+            1
+          ],
+          [
+            20,
+            14
+          ]
+        ]
+      ],
+      "expansions": 0
+    },
+    {
+      "instance": "movingai_random-32-32-20_random_2_4a",
+      "path": [
+        [
+          [
+            12,
+            24
+          ],
+          [
+            9,
+            27
+          ],
+          [
+            1,
+            6
+          ],
+          [
+            23,
+            30
+          ]
+        ]
+      ],
+      "expansions": 0
+    },
+    {
+      "instance": "movingai_random-32-32-20_random_3_4a",
+      "path": [
+        [
+          [
+            18,
+            22
+          ],
+          [
+            19,
+            11
+          ],
+          [
+            2,
+            21
+          ],
+          [
+            24,
+            11
+          ]
+        ]
+      ],
+      "expansions": 0
+    }
+  ]
+}
