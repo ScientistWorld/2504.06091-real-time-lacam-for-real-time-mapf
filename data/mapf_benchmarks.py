@@ -1,8 +1,10 @@
-"""Small MAPF benchmark instances for bounded real-time MAPF evaluation.
+"""MAPF utilities for local experiments: small hand-built instances, a loader
+for the downloaded MovingAI maps/scenarios, and legality/cost helpers.
 
-The instances are intentionally compact so they can run in CPU smoke tests, but
-they include narrow passages and opposing traffic to expose deadlock/livelock in
-real-time replanning.
+The scored evaluators do not use this module: eval/train and eval/test build
+their own instances and carry their own checks, so edits here cannot change
+any score. The instances below include narrow passages and opposing traffic
+that expose deadlock/livelock in real-time replanning.
 """
 
 from __future__ import annotations

@@ -1,7 +1,0 @@
-{
- "case": "w_no_memory",
- "description": "Weaker: discard the search after every move (restart).",
- "entry": "redteam/hardened/cases/w_no_memory.py",
- "full_script": false,
- "seconds": 6.1
-}

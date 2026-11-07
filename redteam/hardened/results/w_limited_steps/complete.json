@@ -1,7 +1,0 @@
-{
- "case": "w_limited_steps",
- "description": "Weaker: execute one move, then stop.",
- "entry": "redteam/hardened/cases/w_limited_steps.py",
- "full_script": false,
- "seconds": 3.2
-}

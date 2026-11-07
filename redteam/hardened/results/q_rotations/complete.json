@@ -1,7 +1,0 @@
-{
- "case": "q_rotations",
- "description": "Better: allow legal priority-inheritance rotations.",
- "entry": "redteam/hardened/cases/q_rotations.py",
- "full_script": false,
- "seconds": 6.2
-}

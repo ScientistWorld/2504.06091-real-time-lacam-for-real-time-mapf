@@ -2,7 +2,7 @@
   "experiments": {
     "scaled_small_mapf": {
       "description": "Scaled congested MAPF (narrow corridors with passing pockets, four-way crossings, dense random 8x8/9x9 grids) at the tight per-tick planning budget. Reproduces the central Fig. 2 claim: a bounded real-time planner keeps full-horizon success, a planner that restarts its search every tick does not, and tight budgets cost solution quality.",
-      "notes": "The paper reports Fig. 2 graphically. success_rate keeps the qualitative targets recorded by the original reproduction (real-time = full-horizon = 1.0, restart far lower). The paper reports no number for realtime_score, mean_log_normalized_cost or mean_log_planning_work; those entries are this gym's scaled-reproduction values (20 evaluator-built instances, budget 1000 metered events per tick, cumulative cap 2,000,000) in place of millisecond cutoffs and the 60 s timeout.",
+      "notes": "The paper reports Fig. 2 graphically. success_rate keeps the qualitative targets recorded by the original reproduction (real-time = full-horizon = 1.0, restart far lower). The paper reports no number for realtime_score, mean_log_normalized_cost or mean_log_planning_work; those entries are this gym's scaled-reproduction values (20 evaluator-built instances, budget 1000 metered events per tick, cumulative cap 2,000,000) in place of millisecond cutoffs and the 60 s timeout. Reproduced held-out success_rate under the same cumulative work cap: full_lacam 0.850, naive_rt_lacam 0.300, rt_lacam 0.750.",
       "weight": 0.34,
       "primary_metric": "realtime_score",
       "metrics": {
@@ -30,22 +30,30 @@
       "results": {
         "full_lacam": {
           "type": "baseline",
-          "success_rate": 1.0
+          "success_rate": 1.0,
+          "realtime_score": 0.8056,
+          "mean_log_normalized_cost": 0.544,
+          "mean_log_planning_work": 1.9909
         },
         "naive_rt_lacam": {
           "type": "baseline",
-          "success_rate": 0.16666666666666666
+          "success_rate": 0.16666666666666666,
+          "realtime_score": 0.2994,
+          "mean_log_normalized_cost": 1.9317,
+          "mean_log_planning_work": 2.5863
         },
         "rt_lacam": {
           "type": "proposed",
           "success_rate": 1.0,
-          "realtime_score": 0.517
+          "realtime_score": 0.5157,
+          "mean_log_normalized_cost": 1.3412,
+          "mean_log_planning_work": 2.0554
         }
       }
     },
     "scaled_small_mapf_budget3": {
       "description": "The same scaled instances at a three-times larger per-tick budget: success parity should hold, and solution quality should improve with the larger cutoff, as in the paper's cutoff sweep.",
-      "notes": "Same provenance as scaled_small_mapf; per-tick budget 3000 metered events, same cumulative cap (the paper keeps one 60 s cap across cutoffs).",
+      "notes": "Same provenance as scaled_small_mapf; per-tick budget 3000 metered events, same cumulative cap (the paper keeps one 60 s cap across cutoffs). Reproduced held-out success_rate under the same cumulative work cap: full_lacam 0.850, naive_rt_lacam 0.300, rt_lacam 0.800.",
       "weight": 0.33,
       "primary_metric": "realtime_score",
       "metrics": {
@@ -73,22 +81,30 @@
       "results": {
         "full_lacam": {
           "type": "baseline",
-          "success_rate": 1.0
+          "success_rate": 1.0,
+          "realtime_score": 0.7962,
+          "mean_log_normalized_cost": 0.4724,
+          "mean_log_planning_work": 1.9909
         },
         "naive_rt_lacam": {
           "type": "baseline",
-          "success_rate": 0.16666666666666666
+          "success_rate": 0.16666666666666666,
+          "realtime_score": 0.2993,
+          "mean_log_normalized_cost": 1.5976,
+          "mean_log_planning_work": 2.6873
         },
         "rt_lacam": {
           "type": "proposed",
           "success_rate": 1.0,
-          "realtime_score": 0.559
+          "realtime_score": 0.5568,
+          "mean_log_normalized_cost": 1.0169,
+          "mean_log_planning_work": 2.0543
         }
       }
     },
     "movingai_random32": {
       "description": "MovingAI MAPF benchmark map random-32-32-20 (the paper's Fig. 2 map) with 6-12 agents placed at random free cells, tight per-tick budget. Real-time planning should match full-horizon success while restart replanning fails more often.",
-      "notes": "Formerly movingai_random32_4agent (three public 4-agent scenarios that were also downloadable answers). success_rate keeps the recorded targets of that experiment (1.0 / 1.0 / 0.667). The paper uses 25 scenes per map and up to 400 agents; this gym uses 16 evaluator-sampled instances with 6-12 agents (pure-Python planners), budget 3000 metered events per tick and a cumulative cap of 6,000,000. Values of the other metrics are scaled-reproduction values.",
+      "notes": "Formerly movingai_random32_4agent (three public 4-agent scenarios that were also downloadable answers). success_rate keeps the recorded targets of that experiment (1.0 / 1.0 / 0.667). The paper uses 25 scenes per map and up to 400 agents; this gym uses 16 evaluator-sampled instances with 6-12 agents (pure-Python planners), budget 3000 metered events per tick and a cumulative cap of 6,000,000. Values of the other metrics are scaled-reproduction values. Reproduced held-out success_rate under the same cumulative work cap: full_lacam 0.875, naive_rt_lacam 0.562, rt_lacam 0.875.",
       "weight": 0.33,
       "primary_metric": "realtime_score",
       "metrics": {
@@ -116,16 +132,24 @@
       "results": {
         "full_lacam": {
           "type": "baseline",
-          "success_rate": 1.0
+          "success_rate": 1.0,
+          "realtime_score": 0.8637,
+          "mean_log_normalized_cost": 0.3071,
+          "mean_log_planning_work": 1.8553
         },
         "naive_rt_lacam": {
           "type": "baseline",
-          "success_rate": 0.6666666666666666
+          "success_rate": 0.6666666666666666,
+          "realtime_score": 0.5547,
+          "mean_log_normalized_cost": 0.987,
+          "mean_log_planning_work": 2.7629
         },
         "rt_lacam": {
           "type": "proposed",
           "success_rate": 1.0,
-          "realtime_score": 0.82
+          "realtime_score": 0.8126,
+          "mean_log_normalized_cost": 0.4232,
+          "mean_log_planning_work": 1.9502
         }
       }
     }

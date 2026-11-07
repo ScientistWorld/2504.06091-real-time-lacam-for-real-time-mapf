@@ -1,42 +1,61 @@
 # Overview
 
-Real-Time LaCAM addresses real-time MAPF, where agents must execute after a
-tiny planning budget rather than wait for a full-horizon plan. The key idea is
-to keep LaCAM's lazy DFS tree alive across execution steps and re-root that
-tree after each executed move.
+Real-Time LaCAM addresses real-time MAPF, where agents must move after a tiny
+planning budget instead of waiting for a full-horizon plan. The key idea is to
+keep LaCAM's lazy DFS tree alive across execution steps and re-root that tree
+after each executed move, which keeps the search complete.
 
-The packaged reproduction compares full-horizon LaCAM, Real-Time LaCAM, and a
-naive real-time restart baseline on scaled congested MAPF instances and a small
-public MovingAI subset. The current results demonstrate the core claim:
-Real-Time LaCAM matches full-horizon success on all packaged settings while
-the naive restart baseline fails on some instances.
+The gym runs every registered planner online inside the evaluator, which meters
+planning work, charges overrun decisions as waiting time, and scores the
+executed paths. It compares the paper's planner with two evaluator-owned rows,
+a full-horizon planner that plans once and a real-time planner that restarts
+its search every tick, on small congested grids at two per-tick budgets and on
+the MovingAI random-32-32-20 map.
+
+On the held-out slice the reproduction shows the paper's claim. The real-time
+planner matches full-horizon success on random-32-32-20 (0.875 for both). On
+the congested grids it comes within the full-horizon planner's success
+(0.75-0.80 vs 0.85), while restart replanning collapses (0.30). Tight budgets
+cost solution quality, the weakness the paper reports, which leaves clear
+headroom: realtime_score is 0.52 / 0.56 / 0.81, well below the bound of 1.
 
 ---
 
 # Problem
 
-Multi-Agent Path Finding (MAPF) asks for collision-free paths for multiple
-agents moving on a shared grid. Each agent starts at a cell, has a goal cell,
-and may move one cardinal step or wait at each timestep. A valid solution must
-avoid vertex collisions and edge-swap collisions.
+Multi-Agent Path Finding (MAPF) asks for collision-free paths for several
+agents on a shared 4-connected grid. Every agent starts at a cell and has a
+goal cell; at every timestep each agent moves to an adjacent free cell or waits.
+A joint move is legal only if no two agents end in the same cell (vertex
+collision) and no two agents swap cells (edge collision).
 
-This reproduction focuses on real-time MAPF. The solver receives a small
-planning budget, outputs the next joint action, executes that action, and then
-replans from the new joint configuration until all agents reach their goals.
+This gym studies **real-time** MAPF. The planner is not given time to compute a
+complete plan before the agents start. Instead, planning and execution
+interleave: at every tick the planner receives the current joint configuration
+and must return the next joint configuration within a small, fixed planning
+budget. The agents execute that move, and the loop repeats until every agent
+stands on its goal. A planner that needs more than one tick's budget for a
+decision is late: the agents wait in place for the ticks it overran.
 
-Success requires:
+What makes the problem hard:
 
-- Valid executed paths with no illegal moves or collisions.
-- High episode success under bounded per-iteration planning.
-- A cumulative search effort comparable to full-horizon planning.
-- Nontrivial coordination in congested instances where naive restart replanning
-  can deadlock or livelock.
+- In congested settings (narrow corridors, crossings, dense obstacle fields)
+  greedy one-step decisions deadlock or livelock, so a real-time planner must
+  still make global progress although it only ever commits to one move.
+- Tight per-tick budgets trade against solution quality: myopic moves can make
+  the executed paths far longer than necessary.
+- The total planning effort across the whole episode should stay comparable
+  to that of planning the full horizon once.
 
-The benchmark uses deterministic scaled-down grid instances with narrow
-passages, cross traffic, and random dense maps, plus a small public MovingAI
-random-32-32-20 subset. The scale differs from the paper's largest benchmark
-scenes so the environment can run quickly, but the problem remains MAPF
-coordination under congestion.
+Success therefore means: legal execution, reaching all goals within the
+episode's limits, a short executed sum of costs, and modest total planning
+work.
+
+The benchmark consists of small congested grids (corridors with passing
+pockets, four-way crossings, dense random grids with 5-7 agents) and the
+MovingAI MAPF benchmark map random-32-32-20 with 6-12 agents. These are scaled
+down from published benchmark sizes so that pure-Python planners can be
+evaluated quickly; the coordination problem stays the same.
 
 ---
 
@@ -49,49 +68,141 @@ LaCAM performs a lazy depth-first search over joint configurations. Instead of
 enumerating all joint moves at once, each configuration generates one successor
 at a time using a fast one-step MAPF generator. When a configuration is
 revisited, additional action constraints force the generator to explore a new
-successor. In the limit, the constrained generator covers the same joint action
-space as exhaustive DFS.
+successor (first constraining one agent's action, then two agents', and so
+on). In the limit, the constrained generator covers the same joint action
+space as exhaustive DFS, which makes the search complete.
 
 Real-Time LaCAM keeps the DFS state across planning and execution iterations.
-At each iteration it continues the existing DFS for a small budget, recovers the
-path from the DFS cursor back to the current executed configuration, and
-executes the first joint action on that path. After execution it re-roots the
-DFS tree at the new current configuration by reversing the executed tree edge.
+At each iteration it continues the existing DFS until the per-iteration
+cutoff, recovers the path from the DFS cursor back to the current executed
+configuration, and executes the first joint action on that path. After
+execution it re-roots the DFS tree at the new current configuration by
+reversing the executed tree edge. Because it builds the same search tree as
+full-horizon LaCAM, it keeps LaCAM's completeness and total planning effort.
 
-This reproduction implements the paper's computational structure: lazy
-joint-configuration DFS, constrained successor generation, persistent search
-state, and re-rooting. The one-step generator is a deterministic constrained
-PIBT-style recursive priority-inheritance planner; fully constrained attempts
-enumerate valid joint actions, preserving the lazy constrained search behavior
-needed by LaCAM.
+The packaged implementation (`method/rt_lacam.py`) implements this structure:
+lazy joint-configuration DFS split into single constrained-generator attempts,
+the LaCAM constraint schedule, persistent search state, and re-rooting. The
+per-iteration cutoff is read from the evaluator's work clock. The one-step
+generator is a deterministic PIBT-style recursive priority-inheritance planner
+that honours a forced prefix of agent actions. It is weaker than the PIBT used
+in the paper: when greedy one-step planning stalls, the lazy constraint search
+can need very many attempts, which limits the agent counts the packaged
+planner solves.
 
 ---
 
 # Evaluation
 
-`scripts/evaluate.sh` reads solver artifacts from `outputs/*.json` and invokes
-only code in `eval/` plus problem utilities in `data/`. It does not import
-`method/`, so future agents can replace the method as long as they emit the
-same artifact format.
+The evaluators (`eval/train/evaluate.py`, visible; and the held-out test
+evaluator) **run your planner themselves**. They build the instances, drive the
+real-time loop, meter planning work, execute and check every move, and score
+the joint path they recorded. Nothing a planner writes to disk or reports is
+trusted. `eval/` never imports `method/`.
 
-Each artifact contains a list of explicit joint-configuration paths. The
-evaluator independently checks path validity and computes:
+## Registering a planner
 
-- `success_rate`: fraction of instances ending at all goals with a valid path.
-- `valid_rate`: fraction of instances with legal moves and no collisions.
-- `mean_normalized_cost`: mean sum-of-costs divided by the sum of individual
-  shortest path lengths; failed, invalid, or omitted instances receive a
-  deterministic instance-size penalty.
-- `mean_expansions`: mean generated-successor expansion count, used as a
-  hardware-independent search effort constraint.
-- `instances`: number of benchmark instances scored.
+Write a manifest `outputs/planners/<name>.json`:
 
-The core claim is supported when a bounded real-time solver matches a
-full-horizon comparator on success and search effort, while a restart-from-
-scratch real-time baseline has lower success on the same instances.
+```json
+{"name": "my_planner", "entry": "method/my_planner.py", "factory": "make_planner"}
+```
 
-The packaged score file includes two scaled deterministic settings and one
-public MovingAI random-32-32-20 four-agent setting.
+Every manifest in `outputs/planners/` is scored (`scripts/method.sh`
+registers the packaged planner `rt_lacam`). The names `full_lacam`,
+`naive_rt_lacam` and names starting with `_` are reserved for the evaluator's
+comparison rows and are ignored.
+
+## Planner interface
+
+```python
+def make_planner(instance: dict) -> Planner: ...
+
+class Planner:
+    def step(self, config, clock):  # -> next joint configuration
+        ...
+```
+
+`instance` contains:
+
+| key | content |
+|---|---|
+| `width`, `height` | grid size |
+| `obstacles` | frozenset of blocked `(x, y)` cells |
+| `starts`, `goals` | tuples of `(x, y)`, one per agent |
+| `neighbors` | dict: free cell -> tuple of cells reachable in one tick (the cell itself first) |
+| `dist` | tuple, one dict per agent: free cell -> shortest-path distance to that agent's goal |
+
+`config` is a tuple of `(x, y)` cells, one per agent. `step` must return a
+built-in `list`/`tuple` of N `(x, y)` pairs of `int` (no subclasses or lazy
+objects). `clock.remaining()` returns the metered work left in the current
+tick (negative once the tick's budget is overrun); `clock.budget` is the
+per-tick budget.
+
+## Metering and the real-time loop
+
+- **Work unit.** Every executed Python line and every Python function call
+  inside planner code (including standard-library Python code it calls)
+  counts one event. The count is deterministic and hardware-independent; no
+  wall-clock time is used anywhere in scoring.
+- **Ticks.** A decision that costs W events occupies `ceil(W / B)` ticks for a
+  per-tick budget B (at least one). During the first `ceil(W / B) - 1` of them
+  every agent waits in place, and those waits are part of the executed path
+  and its cost. `make_planner` is charged to the first decision.
+- **Limits.** Each episode has a cumulative work cap and a tick horizon of
+  `2 * cap / B` ticks. A decision that would cross either limit is interrupted
+  and the episode fails.
+- **Failure.** An episode fails on an illegal or malformed move, an exception,
+  exhausting the work cap or the horizon, or tampering with the meter (tracing
+  switched off, threads left running). Importing the planner module is metered
+  separately (at most 200,000 events, not charged to any tick).
+- Every episode runs in a fresh Python process; no state carries over between
+  instances.
+
+## Experiments and operating points
+
+| experiment | instances | budget B per tick | cumulative work cap |
+|---|---|---|---|
+| `scaled_small_mapf` | 20 small congested grids | 1,000 | 2,000,000 |
+| `scaled_small_mapf_budget3` | the same 20 grids | 3,000 | 2,000,000 |
+| `movingai_random32` | 16 random-32-32-20 instances, 6-12 agents | 3,000 | 6,000,000 |
+
+The train slice and the held-out test slice use the same generators and
+operating points with different instances; the test instances exist only
+inside the held-out evaluator.
+
+## Metrics (per experiment, means over instances)
+
+- `realtime_score` (primary, higher is better, in [0, 1]): 0 for a failed
+  episode, otherwise `1 - log10(C / LB) / log10(C_max / LB)`, where C is the
+  executed sum of costs (unit cost per agent per tick except an agent staying
+  on its goal), LB the sum of the agents' individual shortest-path lengths,
+  and C_max = agents x horizon the largest cost an execution inside the
+  horizon can have.
+- `success_rate` (higher is better): fraction of episodes that reach all goals
+  legally within the limits.
+- `mean_log_normalized_cost` (lower is better): mean `log10(C / LB)`; failed
+  episodes count as `log10(C_max / LB)`.
+- `mean_log_planning_work` (lower is better): mean `log10(1 + W_total / 1000)`
+  over the whole episode; failed episodes count as the work cap.
+
+## Comparison rows
+
+Each score file also contains two rows the evaluator computes with its own
+frozen planners under the same meter: `full_lacam`, a full-horizon search
+that plans once offline and then executes its plan (not a real-time method;
+its cost has no waits), and `naive_rt_lacam`, a real-time planner that
+restarts its search from scratch every tick.
+
+## Commands
+
+```bash
+bash scripts/method.sh          # register rt_lacam
+bash scripts/evaluate_train.sh  # -> scoring/scores_train.json (train slice)
+bash scripts/evaluate.sh        # same evaluator -> scoring/scores.json
+bash scripts/evaluate_test.sh   # held-out slice -> scoring/scores_test.json (no arguments)
+python3 eval/train/evaluate.py --details tmp/train_details.json   # per-instance train records
+```
 
 ---
 

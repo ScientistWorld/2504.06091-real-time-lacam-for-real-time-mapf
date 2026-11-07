@@ -1,15 +1,27 @@
 # Targets
 
-Optimize `success_rate` first on `scaled_small_mapf`, then on
-`scaled_small_mapf_budget3` and `movingai_random32_4agent`.
+Every experiment below appears in `scoring/scores_train.json` and
+`scoring/scores_test.json` with the same four metrics.
 
-Valid improvements must also preserve:
+| experiment | primary | reference `rt_lacam` (held-out) | frozen rows (held-out): full-horizon / restart |
+|---|---|---|---|
+| `scaled_small_mapf` | `realtime_score` | 0.516 (success 0.75) | 0.806 (0.85) / 0.299 (0.30) |
+| `scaled_small_mapf_budget3` | `realtime_score` | 0.557 (success 0.80) | 0.796 (0.85) / 0.299 (0.30) |
+| `movingai_random32` | `realtime_score` | 0.813 (success 0.875) | 0.864 (0.875) / 0.555 (0.5625) |
 
-- `valid_rate`: paths must remain collision-free and legal.
-- `mean_expansions`: higher success should not come only from much more search.
-- `mean_normalized_cost`: solutions should not become arbitrarily inefficient.
+Benefit metrics: `realtime_score` (primary) and `success_rate`, higher is
+better, in [0, 1]. Neither is at its bound for the reference.
 
-Every submitted method should write path artifacts that `scripts/evaluate.sh`
-can score. The primary comparison is against `rt_lacam`, `full_lacam`, and
-`naive_rt_lacam` in `scoring/scores.json`. The MovingAI experiment uses the
-public random-32-32-20 benchmark subset downloaded by `scripts/download.sh`.
+Constraint metrics, lower is better:
+
+- `mean_log_normalized_cost`: executed solution quality, including waits
+  caused by overrunning the per-tick budget.
+- `mean_log_planning_work`: total metered planning work per episode. The
+  paper's claim is parity with full-horizon planning (reference 2.06 / 2.05 /
+  1.95 vs full-horizon 1.99 / 1.99 / 1.86).
+
+Hard constraints, enforced by the evaluator (a violation fails the instance):
+legal moves only, the per-tick budget (overruns become waiting ticks), the
+cumulative work cap, the tick horizon, and no tampering with the meter.
+
+Train-slice values of the reference are 0.505 / 0.551 / 0.821.
