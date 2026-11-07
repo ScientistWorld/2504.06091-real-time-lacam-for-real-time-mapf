@@ -1,8 +1,6 @@
 # Once you set action to 'submit' or 'done', STOP immediately.
 # Do NOT sleep, poll, or wait for jobs. The system reads this file
 # only after your turn ends.
-action: submit
-gpus: 0
-test: false
+action: done
 milestone: core_claim_plus
-notes: "Final check: enlarged disjoint train/test slices (40 scaled, 32 MovingAI) -> reproduce reference + frozen rows end to end, rerun all 23 hardening cases through the final held-out evaluator, validate."
+notes: "Hardened: hidden test now runs planners online with metered per-tick budgets on hidden disjoint instances and frozen comparators; rotation fix scores higher, weaker variants lower, all major shortcuts closed (HARDENING.md); RT LaCAM matches full-horizon success on all held-out experiments."
