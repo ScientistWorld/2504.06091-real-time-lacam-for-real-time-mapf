@@ -1,0 +1,7 @@
+{
+ "case": "s_train_scope",
+ "description": "Reference + scores_train.json cut down to one experiment.",
+ "entry": "method/rt_lacam.py",
+ "full_script": false,
+ "seconds": 15.2
+}

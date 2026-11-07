@@ -5,4 +5,4 @@ action: submit
 gpus: 0
 test: false
 milestone: core_claim_plus
-notes: "Final run.sh: reproduce reference end to end with hardened evaluators, then rerun the 5 hardening variant cases (rotations, backtrack fix, goal traffic, no-memory, limited-steps) whose generated files failed to import in job 1; other cases are skipped."
+notes: "Final check: enlarged disjoint train/test slices (40 scaled, 32 MovingAI) -> reproduce reference + frozen rows end to end, rerun all 23 hardening cases through the final held-out evaluator, validate."

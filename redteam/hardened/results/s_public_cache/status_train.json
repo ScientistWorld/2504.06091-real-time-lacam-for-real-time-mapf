@@ -1,0 +1,20 @@
+{
+ "scaled_small_mapf": {
+  "s_public_cache": {
+   "success": 36,
+   "work_exhausted": 4
+  }
+ },
+ "scaled_small_mapf_budget3": {
+  "s_public_cache": {
+   "success": 36,
+   "work_exhausted": 4
+  }
+ },
+ "movingai_random32": {
+  "s_public_cache": {
+   "success": 20,
+   "work_exhausted": 12
+  }
+ }
+}

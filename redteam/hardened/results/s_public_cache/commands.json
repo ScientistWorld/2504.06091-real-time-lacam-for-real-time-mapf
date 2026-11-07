@@ -1,0 +1,26 @@
+[
+ {
+  "cmd": [
+   "/usr/local/bin/python3",
+   "eval/test/evaluate.py",
+   "--methods-only",
+   "--out",
+   "scoring/scores_test.json",
+   "--details",
+   "/home/user/redteam/hardened/results/s_public_cache/_details_test.json"
+  ],
+  "rc": 0
+ },
+ {
+  "cmd": [
+   "/usr/local/bin/python3",
+   "eval/train/evaluate.py",
+   "--methods-only",
+   "--out",
+   "/home/user/redteam/hardened/results/s_public_cache/scores_train.json",
+   "--details",
+   "/home/user/redteam/hardened/results/s_public_cache/_details_train.json"
+  ],
+  "rc": 0
+ }
+]

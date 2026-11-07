@@ -1,0 +1,47 @@
+{
+  "slice": "test",
+  "experiments": {
+    "scaled_small_mapf": {
+      "slice": "test",
+      "budget_per_tick": 1000,
+      "work_cap": 2000000,
+      "n_instances": 40,
+      "results": {
+        "s_direct_scores": {
+          "realtime_score": 0.5076648576297574,
+          "success_rate": 0.8,
+          "mean_log_normalized_cost": 1.368271648017905,
+          "mean_log_planning_work": 2.1289739153708274
+        }
+      }
+    },
+    "scaled_small_mapf_budget3": {
+      "slice": "test",
+      "budget_per_tick": 3000,
+      "work_cap": 2000000,
+      "n_instances": 40,
+      "results": {
+        "s_direct_scores": {
+          "realtime_score": 0.5484300395960238,
+          "success_rate": 0.8,
+          "mean_log_normalized_cost": 1.0387341203314064,
+          "mean_log_planning_work": 2.1269792027005
+        }
+      }
+    },
+    "movingai_random32": {
+      "slice": "test",
+      "budget_per_tick": 3000,
+      "work_cap": 6000000,
+      "n_instances": 32,
+      "results": {
+        "s_direct_scores": {
+          "realtime_score": 0.7236097433401578,
+          "success_rate": 0.75,
+          "mean_log_normalized_cost": 0.6177861313812727,
+          "mean_log_planning_work": 2.0580060993094578
+        }
+      }
+    }
+  }
+}

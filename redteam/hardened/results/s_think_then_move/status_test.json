@@ -1,0 +1,20 @@
+{
+ "scaled_small_mapf": {
+  "s_think_then_move": {
+   "success": 32,
+   "work_exhausted": 8
+  }
+ },
+ "scaled_small_mapf_budget3": {
+  "s_think_then_move": {
+   "success": 32,
+   "work_exhausted": 8
+  }
+ },
+ "movingai_random32": {
+  "s_think_then_move": {
+   "success": 24,
+   "work_exhausted": 8
+  }
+ }
+}

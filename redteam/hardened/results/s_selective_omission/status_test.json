@@ -1,0 +1,23 @@
+{
+ "scaled_small_mapf": {
+  "s_selective_omission": {
+   "success": 26,
+   "work_exhausted": 4,
+   "planner_error:RuntimeError": 10
+  }
+ },
+ "scaled_small_mapf_budget3": {
+  "s_selective_omission": {
+   "success": 26,
+   "work_exhausted": 4,
+   "planner_error:RuntimeError": 10
+  }
+ },
+ "movingai_random32": {
+  "s_selective_omission": {
+   "success": 7,
+   "work_exhausted": 1,
+   "planner_error:RuntimeError": 24
+  }
+ }
+}

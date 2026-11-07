@@ -5,25 +5,25 @@
       "slice": "train",
       "budget_per_tick": 1000,
       "work_cap": 2000000,
-      "n_instances": 20,
+      "n_instances": 40,
       "results": {
         "full_lacam": {
-          "realtime_score": 0.7139842857190987,
-          "success_rate": 0.75,
-          "mean_log_normalized_cost": 0.8053764037202292,
-          "mean_log_planning_work": 2.015521439330244
+          "realtime_score": 0.8119654189339839,
+          "success_rate": 0.85,
+          "mean_log_normalized_cost": 0.5147945088662468,
+          "mean_log_planning_work": 1.7658985095635935
         },
         "naive_rt_lacam": {
-          "realtime_score": 0.2497988529294358,
-          "success_rate": 0.25,
-          "mean_log_normalized_cost": 2.074032659451726,
-          "mean_log_planning_work": 2.6958933088370487
+          "realtime_score": 0.22333246467554996,
+          "success_rate": 0.225,
+          "mean_log_normalized_cost": 2.1582208076684006,
+          "mean_log_planning_work": 2.76349086884212
         },
         "rt_lacam": {
-          "realtime_score": 0.504901051454427,
-          "success_rate": 0.75,
-          "mean_log_normalized_cost": 1.377936152699362,
-          "mean_log_planning_work": 2.0762761647506753
+          "realtime_score": 0.6143224727829016,
+          "success_rate": 0.85,
+          "mean_log_normalized_cost": 1.060482610689757,
+          "mean_log_planning_work": 1.8344306938686148
         }
       }
     },
@@ -31,25 +31,25 @@
       "slice": "train",
       "budget_per_tick": 3000,
       "work_cap": 2000000,
-      "n_instances": 20,
+      "n_instances": 40,
       "results": {
         "full_lacam": {
-          "realtime_score": 0.7063998143841743,
-          "success_rate": 0.75,
-          "mean_log_normalized_cost": 0.6860689432417034,
-          "mean_log_planning_work": 2.015521439330244
+          "realtime_score": 0.8040915566468432,
+          "success_rate": 0.85,
+          "mean_log_normalized_cost": 0.44321003257913133,
+          "mean_log_planning_work": 1.7658985095635935
         },
         "naive_rt_lacam": {
-          "realtime_score": 0.24975888443757324,
-          "success_rate": 0.25,
-          "mean_log_normalized_cost": 1.7161102780161486,
-          "mean_log_planning_work": 2.775350173483883
+          "realtime_score": 0.27017307385749795,
+          "success_rate": 0.275,
+          "mean_log_normalized_cost": 1.6727534196770901,
+          "mean_log_planning_work": 2.741359806816992
         },
         "rt_lacam": {
-          "realtime_score": 0.5509133195396013,
-          "success_rate": 0.75,
-          "mean_log_normalized_cost": 1.0374368252579367,
-          "mean_log_planning_work": 2.073701145784106
+          "realtime_score": 0.6638586863670368,
+          "success_rate": 0.85,
+          "mean_log_normalized_cost": 0.7620261176059804,
+          "mean_log_planning_work": 1.8323019425770872
         }
       }
     },
@@ -57,25 +57,25 @@
       "slice": "train",
       "budget_per_tick": 3000,
       "work_cap": 6000000,
-      "n_instances": 16,
+      "n_instances": 32,
       "results": {
         "full_lacam": {
-          "realtime_score": 0.8565663432680901,
-          "success_rate": 0.875,
-          "mean_log_normalized_cost": 0.32297179135904774,
-          "mean_log_planning_work": 1.8106424507411527
+          "realtime_score": 0.6105586462579369,
+          "success_rate": 0.625,
+          "mean_log_normalized_cost": 0.8811784859342935,
+          "mean_log_planning_work": 2.363270821022794
         },
         "naive_rt_lacam": {
-          "realtime_score": 0.6140634179671001,
-          "success_rate": 0.625,
-          "mean_log_normalized_cost": 0.8764494954339515,
-          "mean_log_planning_work": 2.660215633875052
+          "realtime_score": 0.3638512165713452,
+          "success_rate": 0.375,
+          "mean_log_normalized_cost": 1.4335865246702917,
+          "mean_log_planning_work": 3.104440375648718
         },
         "rt_lacam": {
-          "realtime_score": 0.8210761378302036,
-          "success_rate": 0.875,
-          "mean_log_normalized_cost": 0.40393472039548195,
-          "mean_log_planning_work": 1.9097640571782013
+          "realtime_score": 0.5951228418831845,
+          "success_rate": 0.625,
+          "mean_log_normalized_cost": 0.9156032438418789,
+          "mean_log_planning_work": 2.4358056198023745
         }
       }
     }

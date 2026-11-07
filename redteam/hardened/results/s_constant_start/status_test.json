@@ -1,0 +1,17 @@
+{
+ "scaled_small_mapf": {
+  "s_constant_start": {
+   "horizon": 40
+  }
+ },
+ "scaled_small_mapf_budget3": {
+  "s_constant_start": {
+   "horizon": 40
+  }
+ },
+ "movingai_random32": {
+  "s_constant_start": {
+   "horizon": 32
+  }
+ }
+}

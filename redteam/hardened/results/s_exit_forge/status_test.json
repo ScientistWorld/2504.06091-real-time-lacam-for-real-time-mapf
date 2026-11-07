@@ -1,0 +1,20 @@
+{
+ "scaled_small_mapf": {
+  "s_exit_forge": {
+   "worker_failure": 32,
+   "work_exhausted": 8
+  }
+ },
+ "scaled_small_mapf_budget3": {
+  "s_exit_forge": {
+   "worker_failure": 32,
+   "work_exhausted": 8
+  }
+ },
+ "movingai_random32": {
+  "s_exit_forge": {
+   "worker_failure": 24,
+   "work_exhausted": 8
+  }
+ }
+}

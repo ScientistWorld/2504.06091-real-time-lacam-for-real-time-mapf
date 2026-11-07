@@ -1,0 +1,7 @@
+{
+ "case": "s_selective_omission",
+ "description": "Refuse instances with 7+ agents.",
+ "entry": "redteam/hardened/cases/s_selective_omission.py",
+ "full_script": false,
+ "seconds": 8.0
+}

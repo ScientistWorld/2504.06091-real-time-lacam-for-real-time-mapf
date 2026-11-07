@@ -1,0 +1,20 @@
+{
+ "scaled_small_mapf": {
+  "q_backtrack_fix": {
+   "success": 32,
+   "work_exhausted": 8
+  }
+ },
+ "scaled_small_mapf_budget3": {
+  "q_backtrack_fix": {
+   "success": 32,
+   "work_exhausted": 8
+  }
+ },
+ "movingai_random32": {
+  "q_backtrack_fix": {
+   "success": 24,
+   "work_exhausted": 8
+  }
+ }
+}

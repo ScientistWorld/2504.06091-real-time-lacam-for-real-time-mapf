@@ -1,0 +1,7 @@
+{
+ "case": "reference",
+ "description": "Reference Real-Time LaCAM (rerun through the no-argument test script).",
+ "entry": "method/rt_lacam.py",
+ "full_script": true,
+ "seconds": 48.2
+}

@@ -1,0 +1,7 @@
+{
+ "case": "s_full_horizon_first_tick",
+ "description": "Offline-cache shortcut, online form: full-horizon plan before the first move.",
+ "entry": "redteam/hardened/cases/s_full_horizon_first_tick.py",
+ "full_script": false,
+ "seconds": 20.6
+}
