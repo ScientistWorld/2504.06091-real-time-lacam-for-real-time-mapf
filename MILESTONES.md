@@ -13,5 +13,9 @@
 - Verified an additional benchmark-backed setting in compute job `96b00c84-d41`: Real-Time LaCAM and full-horizon LaCAM solved all three MovingAI instances, while naive restart replanning solved two of three.
 - Fixed the audit issue where `valid_rate` incorrectly required reaching the goal; it now measures legal/collision-free execution separately from `success_rate`.
 
+### [2026-11-07] - core_claim_plus (hardening)
+- Replaced artifact scoring with an evaluator-run, metered real-time protocol on evaluator-owned, disjoint train/test instances (40 scaled grids, 32 random-32-32-20 instances per slice).
+- Held-out: Real-Time LaCAM matches full-horizon LaCAM success in all three experiments (0.80 / 0.80 / 0.75) while restart replanning collapses on congested grids (0.125 / 0.25); the rotation-fix variant scores higher, weaker variants lower, every major shortcut at or below the reference (HARDENING.md).
+
 ## Stop Justification
 - Completed at milestone `core_claim_plus`.

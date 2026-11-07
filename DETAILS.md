@@ -13,11 +13,12 @@ its search every tick, on small congested grids at two per-tick budgets and on
 the MovingAI random-32-32-20 map.
 
 On the held-out slice the reproduction shows the paper's claim. The real-time
-planner matches full-horizon success on random-32-32-20 (0.875 for both). On
-the congested grids it comes within the full-horizon planner's success
-(0.75-0.80 vs 0.85), while restart replanning collapses (0.30). Tight budgets
-cost solution quality, the weakness the paper reports, which leaves clear
-headroom: realtime_score is 0.52 / 0.56 / 0.81, well below the bound of 1.
+planner solves exactly as many instances as the full-horizon planner in every
+experiment (success 0.80 / 0.80 / 0.75), with comparable total planning work,
+whereas restart replanning collapses on the congested grids (0.125 / 0.25) and
+trails on random-32-32-20 (0.69). Tight budgets cost solution quality, the
+weakness the paper reports, which leaves clear headroom: realtime_score is
+0.51 / 0.55 / 0.72, well below the bound of 1.
 
 ---
 
@@ -163,13 +164,15 @@ per-tick budget.
 
 | experiment | instances | budget B per tick | cumulative work cap |
 |---|---|---|---|
-| `scaled_small_mapf` | 20 small congested grids | 1,000 | 2,000,000 |
-| `scaled_small_mapf_budget3` | the same 20 grids | 3,000 | 2,000,000 |
-| `movingai_random32` | 16 random-32-32-20 instances, 6-12 agents | 3,000 | 6,000,000 |
+| `scaled_small_mapf` | 40 small congested grids (10 corridors, 8 crossings, 22 dense) | 1,000 | 2,000,000 |
+| `scaled_small_mapf_budget3` | the same 40 grids | 3,000 | 2,000,000 |
+| `movingai_random32` | 32 random-32-32-20 instances, 8 each with 6/8/10/12 agents | 3,000 | 6,000,000 |
 
 The train slice and the held-out test slice use the same generators and
-operating points with different instances; the test instances exist only
-inside the held-out evaluator.
+operating points with different seeds. They are disjoint by construction: an
+instance belongs to one slice according to a hash of its
+agent-order-invariant form, and duplicates within a slice are rejected. The
+test instances exist only inside the held-out evaluator.
 
 ## Metrics (per experiment, means over instances)
 

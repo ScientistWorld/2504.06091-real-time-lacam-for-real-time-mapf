@@ -1,5 +1,9 @@
 # Verification Report
 
+> Superseded: this note describes the artifact-based evaluator replaced in
+> iteration 11. See HARDENING.md and briefing/evaluation.md for the current gym.
+
+
 ## Initial Assessment
 
 The workspace started at `core_claim_plus` with a working Real-Time MAPF

@@ -13,8 +13,9 @@ its search every tick, on small congested grids at two per-tick budgets and on
 the MovingAI random-32-32-20 map.
 
 On the held-out slice the reproduction shows the paper's claim. The real-time
-planner matches full-horizon success on random-32-32-20 (0.875 for both). On
-the congested grids it comes within the full-horizon planner's success
-(0.75-0.80 vs 0.85), while restart replanning collapses (0.30). Tight budgets
-cost solution quality, the weakness the paper reports, which leaves clear
-headroom: realtime_score is 0.52 / 0.56 / 0.81, well below the bound of 1.
+planner solves exactly as many instances as the full-horizon planner in every
+experiment (success 0.80 / 0.80 / 0.75), with comparable total planning work,
+whereas restart replanning collapses on the congested grids (0.125 / 0.25) and
+trails on random-32-32-20 (0.69). Tight budgets cost solution quality, the
+weakness the paper reports, which leaves clear headroom: realtime_score is
+0.51 / 0.55 / 0.72, well below the bound of 1.

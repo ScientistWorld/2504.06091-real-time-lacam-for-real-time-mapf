@@ -1,5 +1,26 @@
 # Progress
 
+## Iteration 11 (hardening) -- current state
+
+- Evaluation is now an evaluator-run real-time protocol (see HARDENING.md and
+  briefing/evaluation.md). Planners are registered in `outputs/planners/`;
+  `eval/train` and `eval/test` run them online, meter planning work in Python
+  line events, charge over-budget decisions as waiting ticks, and score the
+  executed paths. The comparison rows (`full_lacam`, `naive_rt_lacam`) are
+  frozen evaluator copies.
+- Held-out results (job `3994e88c-bcd`): `rt_lacam` realtime_score 0.508 /
+  0.548 / 0.724, success 0.80 / 0.80 / 0.75 -- identical to full-horizon
+  LaCAM's success in every experiment; restart replanning 0.125 / 0.25 / 0.69.
+- The hardening suite in `redteam/hardened/` reruns the better and weaker
+  variants and every shortcut through the final evaluator.
+- `scripts/run.sh` reproduces the reference end to end and runs any hardening
+  case without saved results; `python validate.py` (and `--post-design`)
+  pass.
+
+The sections below describe earlier iterations and the old artifact-based
+evaluator; they are kept for history.
+
+
 ## What Works
 
 - Pure-Python Real-Time LaCAM implementation in `method/rt_lacam.py`.
