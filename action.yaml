@@ -1,2 +1,8 @@
-action: done
-notes: "Audit complete: 31 executed cases, zero reference seed spread, genuine rotation improvement, saturated primary success, and confirmed artifact/data/work-reporting shortcuts. Report and evidence committed in 5765b7b; gym restored."
+# Once you set action to 'submit' or 'done', STOP immediately.
+# Do NOT sleep, poll, or wait for jobs. The system reads this file
+# only after your turn ends.
+action: pending
+gpus: 0
+test: false
+milestone: core_claim_plus
+notes: ""
