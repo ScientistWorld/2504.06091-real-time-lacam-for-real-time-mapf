@@ -434,6 +434,29 @@ python3 eval/train/evaluate.py --details tmp/train_details.json   # per-instance
 
 </details>
 
+### Iteration 11: claude-opus-5-5 (hardener)
+- **Milestone**: `core_claim_plus` | **Status**: done
+- **Working time**: 45m | **GPU**: 0.0h
+- **Jobs**: 9 total (9 completed, 0 failed)
+
+<details>
+<summary>Progress Log</summary>
+
+### [2026-06-02 15:57] - core_claim
+- Implemented Real-Time LaCAM with persistent lazy DFS, constrained one-step successor generation, and tree re-rooting.
+- Verified the scaled benchmark core claim: Real-Time LaCAM matched full-horizon LaCAM success while naive restart replanning failed on congested cases.
+
+### [2026-06-02 16:00] - core_claim_plus
+- Added a public MovingAI MAPF random-32-32-20 four-agent subset and self-contained download script.
+- Verified an additional benchmark-backed setting in compute job `96b00c84-d41`: Real-Time LaCAM and full-horizon LaCAM solved all three MovingAI instances, while naive restart replanning solved two of three.
+- Fixed the audit issue where `valid_rate` incorrectly required reaching the goal; it now measures legal/collision-free execution separately from `success_rate`.
+
+### [2026-11-07] - core_claim_plus (hardening)
+- Replaced artifact scoring with an evaluator-run, metered real-time protocol on evaluator-owned, disjoint train/test instances (40 scaled grids, 32 random-32-32-20 instances per slice).
+- Held-out: Real-Time LaCAM matches full-horizon LaCAM success in all three experiments (0.80 / 0.80 / 0.75) while restart replanning collapses on congested grids (0.125 / 0.25); the rotation-fix variant scores higher, weaker variants lower, every major shortcut at or below the reference (HARDENING.md).
+
+</details>
+
 
 ---
 
