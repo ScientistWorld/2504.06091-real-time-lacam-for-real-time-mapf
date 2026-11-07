@@ -1,0 +1,10 @@
+{
+  "slice": "train",
+  "experiments": {
+    "movingai_random32_4agent": {
+      "results": {
+        "rt_lacam": {}
+      }
+    }
+  }
+}

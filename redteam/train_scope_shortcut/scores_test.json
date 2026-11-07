@@ -1,0 +1,19 @@
+{
+  "slice": "test",
+  "experiments": {
+    "movingai_random32_4agent": {
+      "slice": "test",
+      "results": {
+        "rt_lacam": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.0171821305841924,
+          "mean_expansions": 40.333333333333336,
+          "duplicate_results": 0,
+          "instances": 3
+        }
+      }
+    }
+  }
+}

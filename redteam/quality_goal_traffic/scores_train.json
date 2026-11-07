@@ -1,0 +1,101 @@
+{
+  "slice": "train",
+  "experiments": {
+    "scaled_small_mapf": {
+      "slice": "train",
+      "results": {
+        "full_lacam": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.1904761904761905,
+          "mean_expansions": 23.5,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "naive_rt_lacam": {
+          "success_rate": 0.25,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 11.071428571428571,
+          "mean_expansions": 7.75,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "rt_lacam": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.9166666666666667,
+          "mean_expansions": 17.5,
+          "duplicate_results": 0,
+          "instances": 4
+        }
+      }
+    },
+    "scaled_small_mapf_budget3": {
+      "slice": "train",
+      "results": {
+        "full_lacam": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.1904761904761905,
+          "mean_expansions": 23.5,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "naive_rt_lacam": {
+          "success_rate": 0.25,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 11.071428571428571,
+          "mean_expansions": 168.75,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "rt_lacam": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.3571428571428572,
+          "mean_expansions": 17.5,
+          "duplicate_results": 0,
+          "instances": 4
+        }
+      }
+    },
+    "movingai_random32_4agent": {
+      "slice": "train",
+      "results": {
+        "full_lacam": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.0257731958762886,
+          "mean_expansions": 44.5,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "naive_rt_lacam": {
+          "success_rate": 0.5,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 34.27319587628866,
+          "mean_expansions": 105,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "rt_lacam": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.0257731958762886,
+          "mean_expansions": 44.5,
+          "duplicate_results": 0,
+          "instances": 2
+        }
+      }
+    }
+  }
+}

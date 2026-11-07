@@ -1,0 +1,1920 @@
+{
+  "warning": "No external ranking implementation is supplied. The coefficient-weighted sum is an explicitly labeled diagnostic, not an observed rank.",
+  "formula": "sum_experiment(weight * sum_metric(coefficient * returned metric))",
+  "reference_reproduces_packaged_test_scores_exactly": true,
+  "seed_spread_max_minus_min": {
+    "scaled_small_mapf": {
+      "success_rate": 0.0,
+      "valid_rate": 0.0,
+      "coverage_rate": 0.0,
+      "mean_normalized_cost": 0.0,
+      "mean_expansions": 0.0,
+      "duplicate_results": 0,
+      "instances": 0
+    },
+    "scaled_small_mapf_budget3": {
+      "success_rate": 0.0,
+      "valid_rate": 0.0,
+      "coverage_rate": 0.0,
+      "mean_normalized_cost": 0.0,
+      "mean_expansions": 0.0,
+      "duplicate_results": 0,
+      "instances": 0
+    },
+    "movingai_random32_4agent": {
+      "success_rate": 0.0,
+      "valid_rate": 0.0,
+      "coverage_rate": 0.0,
+      "mean_normalized_cost": 0.0,
+      "mean_expansions": 0.0,
+      "duplicate_results": 0,
+      "instances": 0
+    }
+  },
+  "seed_diagnostic_spread": 0.0,
+  "baseline_coefficient_weighted_diagnostics": {
+    "full_lacam": -9.648025046259583,
+    "naive_rt_lacam": -44.42111036214644,
+    "rt_lacam": -9.802217353951892
+  },
+  "cases": {
+    "comparison_artifact_shortcut": {
+      "test": {
+        "scaled_small_mapf": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 3.9743589743589745,
+          "mean_expansions": 37.5,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 2.03525641025641,
+          "mean_expansions": 37.5,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.0171821305841924,
+          "mean_expansions": 40.333333333333336,
+          "duplicate_results": 0,
+          "instances": 3
+        }
+      },
+      "train": {
+        "scaled_small_mapf": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 2.4702380952380953,
+          "mean_expansions": 23.5,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.4464285714285716,
+          "mean_expansions": 23.5,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.0257731958762886,
+          "mean_expansions": 44.5,
+          "duplicate_results": 0,
+          "instances": 2
+        }
+      },
+      "coefficient_weighted_diagnostic_not_external_rank": -9.802217353951892,
+      "commands_passed": true
+    },
+    "constant_start_shortcut": {
+      "test": {
+        "scaled_small_mapf": {
+          "success_rate": 0.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 15.064102564102564,
+          "mean_expansions": 0,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 0.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 15.064102564102564,
+          "mean_expansions": 0,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 0.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 73.03704572160952,
+          "mean_expansions": 0,
+          "duplicate_results": 0,
+          "instances": 3
+        }
+      },
+      "train": {
+        "scaled_small_mapf": {
+          "success_rate": 0.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 15.13850174216028,
+          "mean_expansions": 0,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 0.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 15.13850174216028,
+          "mean_expansions": 0,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 0.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 64.67885625364715,
+          "mean_expansions": 0,
+          "duplicate_results": 0,
+          "instances": 2
+        }
+      },
+      "coefficient_weighted_diagnostic_not_external_rank": -5.639034761215972,
+      "commands_passed": true
+    },
+    "copied_goal_shortcut": {
+      "test": {
+        "scaled_small_mapf": {
+          "success_rate": 0.0,
+          "valid_rate": 0.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 15.064102564102564,
+          "mean_expansions": 0,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 0.0,
+          "valid_rate": 0.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 15.064102564102564,
+          "mean_expansions": 0,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 0.0,
+          "valid_rate": 0.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 73.03704572160952,
+          "mean_expansions": 0,
+          "duplicate_results": 0,
+          "instances": 3
+        }
+      },
+      "train": {
+        "scaled_small_mapf": {
+          "success_rate": 0.0,
+          "valid_rate": 0.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 15.13850174216028,
+          "mean_expansions": 0,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 0.0,
+          "valid_rate": 0.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 15.13850174216028,
+          "mean_expansions": 0,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 0.0,
+          "valid_rate": 0.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 64.67885625364715,
+          "mean_expansions": 0,
+          "duplicate_results": 0,
+          "instances": 2
+        }
+      },
+      "coefficient_weighted_diagnostic_not_external_rank": -6.139034761215972,
+      "commands_passed": true
+    },
+    "direct_scores_shortcut": {
+      "test": {
+        "scaled_small_mapf": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 3.9743589743589745,
+          "mean_expansions": 37.5,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 2.03525641025641,
+          "mean_expansions": 37.5,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.0171821305841924,
+          "mean_expansions": 40.333333333333336,
+          "duplicate_results": 0,
+          "instances": 3
+        }
+      },
+      "train": {
+        "scaled_small_mapf": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 2.4702380952380953,
+          "mean_expansions": 23.5,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.4464285714285716,
+          "mean_expansions": 23.5,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.0257731958762886,
+          "mean_expansions": 44.5,
+          "duplicate_results": 0,
+          "instances": 2
+        }
+      },
+      "coefficient_weighted_diagnostic_not_external_rank": -9.802217353951892,
+      "commands_passed": true
+    },
+    "forged_flags_empty_shortcut": {
+      "test": {
+        "scaled_small_mapf": {
+          "success_rate": 0.0,
+          "valid_rate": 0.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 15.064102564102564,
+          "mean_expansions": 0,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 0.0,
+          "valid_rate": 0.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 15.064102564102564,
+          "mean_expansions": 0,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 0.0,
+          "valid_rate": 0.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 73.03704572160952,
+          "mean_expansions": 0,
+          "duplicate_results": 0,
+          "instances": 3
+        }
+      },
+      "train": {
+        "scaled_small_mapf": {
+          "success_rate": 0.0,
+          "valid_rate": 0.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 15.13850174216028,
+          "mean_expansions": 0,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 0.0,
+          "valid_rate": 0.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 15.13850174216028,
+          "mean_expansions": 0,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 0.0,
+          "valid_rate": 0.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 64.67885625364715,
+          "mean_expansions": 0,
+          "duplicate_results": 0,
+          "instances": 2
+        }
+      },
+      "coefficient_weighted_diagnostic_not_external_rank": -6.139034761215972,
+      "commands_passed": true
+    },
+    "ground_truth_shortcut": {
+      "test": {
+        "scaled_small_mapf": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 0.0,
+          "mean_expansions": 0,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 0.0,
+          "mean_expansions": 0,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 0.0,
+          "mean_expansions": 0,
+          "duplicate_results": 0,
+          "instances": 3
+        }
+      },
+      "train": {
+        "scaled_small_mapf": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 0.0,
+          "mean_expansions": 0,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 0.0,
+          "mean_expansions": 0,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 0.0,
+          "mean_expansions": 0,
+          "duplicate_results": 0,
+          "instances": 2
+        }
+      },
+      "coefficient_weighted_diagnostic_not_external_rank": 2.2,
+      "commands_passed": true
+    },
+    "missing_work_shortcut": {
+      "test": {
+        "scaled_small_mapf": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 3.9743589743589745,
+          "mean_expansions": 0,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 2.03525641025641,
+          "mean_expansions": 0,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.0171821305841924,
+          "mean_expansions": 0,
+          "duplicate_results": 0,
+          "instances": 3
+        }
+      },
+      "train": {
+        "scaled_small_mapf": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 2.4702380952380953,
+          "mean_expansions": 0,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.4464285714285716,
+          "mean_expansions": 0,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.0257731958762886,
+          "mean_expansions": 0,
+          "duplicate_results": 0,
+          "instances": 2
+        }
+      },
+      "coefficient_weighted_diagnostic_not_external_rank": 1.72828264604811,
+      "commands_passed": true
+    },
+    "null_work_shortcut": {
+      "test": {
+        "scaled_small_mapf": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 3.9743589743589745,
+          "mean_expansions": null,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 2.03525641025641,
+          "mean_expansions": null,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.0171821305841924,
+          "mean_expansions": null,
+          "duplicate_results": 0,
+          "instances": 3
+        }
+      },
+      "train": {
+        "scaled_small_mapf": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 2.4702380952380953,
+          "mean_expansions": null,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.4464285714285716,
+          "mean_expansions": null,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.0257731958762886,
+          "mean_expansions": null,
+          "duplicate_results": 0,
+          "instances": 2
+        }
+      },
+      "coefficient_weighted_diagnostic_not_external_rank": null,
+      "commands_passed": true
+    },
+    "offline_cache_shortcut": {
+      "test": {
+        "scaled_small_mapf": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.8685897435897436,
+          "mean_expansions": 37.5,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.8685897435897436,
+          "mean_expansions": 37.5,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.0171821305841924,
+          "mean_expansions": 40.333333333333336,
+          "duplicate_results": 0,
+          "instances": 3
+        }
+      },
+      "train": {
+        "scaled_small_mapf": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.1904761904761905,
+          "mean_expansions": 23.5,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.1904761904761905,
+          "mean_expansions": 23.5,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.0257731958762886,
+          "mean_expansions": 44.5,
+          "duplicate_results": 0,
+          "instances": 2
+        }
+      },
+      "coefficient_weighted_diagnostic_not_external_rank": -9.648025046259583,
+      "commands_passed": true
+    },
+    "quality_agent_id": {
+      "test": {
+        "scaled_small_mapf": {
+          "success_rate": 0.5,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 3.8910256410256414,
+          "mean_expansions": 124,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 8.16025641025641,
+          "mean_expansions": 155.5,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.0171821305841924,
+          "mean_expansions": 40.333333333333336,
+          "duplicate_results": 0,
+          "instances": 3
+        }
+      },
+      "train": {
+        "scaled_small_mapf": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 2.511904761904762,
+          "mean_expansions": 24.25,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.6011904761904763,
+          "mean_expansions": 24.25,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.0257731958762886,
+          "mean_expansions": 44.5,
+          "duplicate_results": 0,
+          "instances": 2
+        }
+      },
+      "coefficient_weighted_diagnostic_not_external_rank": -30.875800687285228,
+      "commands_passed": true
+    },
+    "quality_backtrack_fix": {
+      "test": {
+        "scaled_small_mapf": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 3.9743589743589745,
+          "mean_expansions": 37.5,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 2.03525641025641,
+          "mean_expansions": 37.5,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.0171821305841924,
+          "mean_expansions": 40.333333333333336,
+          "duplicate_results": 0,
+          "instances": 3
+        }
+      },
+      "train": {
+        "scaled_small_mapf": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 2.4702380952380953,
+          "mean_expansions": 23.5,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.4464285714285716,
+          "mean_expansions": 23.5,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.0257731958762886,
+          "mean_expansions": 44.5,
+          "duplicate_results": 0,
+          "instances": 2
+        }
+      },
+      "coefficient_weighted_diagnostic_not_external_rank": -9.802217353951892,
+      "commands_passed": true
+    },
+    "quality_continue_heading": {
+      "test": {
+        "scaled_small_mapf": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 4.2243589743589745,
+          "mean_expansions": 41,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 2.1185897435897436,
+          "mean_expansions": 41,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.2404525708357648,
+          "mean_expansions": 46.666666666666664,
+          "duplicate_results": 0,
+          "instances": 3
+        }
+      },
+      "train": {
+        "scaled_small_mapf": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 2.4702380952380953,
+          "mean_expansions": 23.5,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 0.75,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 4.887630662020906,
+          "mean_expansions": 178,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.3606788562536472,
+          "mean_expansions": 54,
+          "duplicate_results": 0,
+          "instances": 2
+        }
+      },
+      "coefficient_weighted_diagnostic_not_external_rank": -11.169953203008493,
+      "commands_passed": true
+    },
+    "quality_degree": {
+      "test": {
+        "scaled_small_mapf": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 3.9935897435897436,
+          "mean_expansions": 38,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 2.1185897435897436,
+          "mean_expansions": 38,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.0171821305841924,
+          "mean_expansions": 43.333333333333336,
+          "duplicate_results": 0,
+          "instances": 3
+        }
+      },
+      "train": {
+        "scaled_small_mapf": {
+          "success_rate": 0.75,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 5.2559523809523805,
+          "mean_expansions": 65.5,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 0.75,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 4.767857142857142,
+          "mean_expansions": 166.75,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.0257731958762886,
+          "mean_expansions": 49,
+          "duplicate_results": 0,
+          "instances": 2
+        }
+      },
+      "coefficient_weighted_diagnostic_not_external_rank": -10.206525046259582,
+      "commands_passed": true
+    },
+    "quality_farthest": {
+      "test": {
+        "scaled_small_mapf": {
+          "success_rate": 0.5,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 3.8910256410256414,
+          "mean_expansions": 124,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 8.16025641025641,
+          "mean_expansions": 155.5,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.0171821305841924,
+          "mean_expansions": 40.333333333333336,
+          "duplicate_results": 0,
+          "instances": 3
+        }
+      },
+      "train": {
+        "scaled_small_mapf": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 2.4672619047619047,
+          "mean_expansions": 23.25,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.6101190476190477,
+          "mean_expansions": 23.25,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.0257731958762886,
+          "mean_expansions": 44.5,
+          "duplicate_results": 0,
+          "instances": 2
+        }
+      },
+      "coefficient_weighted_diagnostic_not_external_rank": -30.875800687285228,
+      "commands_passed": true
+    },
+    "quality_farthest_degree": {
+      "test": {
+        "scaled_small_mapf": {
+          "success_rate": 0.5,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 3.698717948717949,
+          "mean_expansions": 121.5,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 8.240384615384615,
+          "mean_expansions": 156,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.0240549828178693,
+          "mean_expansions": 41,
+          "duplicate_results": 0,
+          "instances": 3
+        }
+      },
+      "train": {
+        "scaled_small_mapf": {
+          "success_rate": 0.75,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 4.8898809523809526,
+          "mean_expansions": 60.25,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 0.75,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 4.6398809523809526,
+          "mean_expansions": 164,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.036082474226804,
+          "mean_expansions": 45.5,
+          "duplicate_results": 0,
+          "instances": 2
+        }
+      },
+      "coefficient_weighted_diagnostic_not_external_rank": -30.72896583399419,
+      "commands_passed": true
+    },
+    "quality_goal_traffic": {
+      "test": {
+        "scaled_small_mapf": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 3.9743589743589745,
+          "mean_expansions": 37.5,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 2.03525641025641,
+          "mean_expansions": 37.5,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.0171821305841924,
+          "mean_expansions": 40.333333333333336,
+          "duplicate_results": 0,
+          "instances": 3
+        }
+      },
+      "train": {
+        "scaled_small_mapf": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.9166666666666667,
+          "mean_expansions": 17.5,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.3571428571428572,
+          "mean_expansions": 17.5,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.0257731958762886,
+          "mean_expansions": 44.5,
+          "duplicate_results": 0,
+          "instances": 2
+        }
+      },
+      "coefficient_weighted_diagnostic_not_external_rank": -9.802217353951892,
+      "commands_passed": true
+    },
+    "quality_initial_distance": {
+      "test": {
+        "scaled_small_mapf": {
+          "success_rate": 0.5,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 3.8910256410256414,
+          "mean_expansions": 124,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 8.16025641025641,
+          "mean_expansions": 155.5,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.0171821305841924,
+          "mean_expansions": 40.333333333333336,
+          "duplicate_results": 0,
+          "instances": 3
+        }
+      },
+      "train": {
+        "scaled_small_mapf": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 2.2202380952380953,
+          "mean_expansions": 21.75,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.3630952380952381,
+          "mean_expansions": 21.75,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.0257731958762886,
+          "mean_expansions": 44.5,
+          "duplicate_results": 0,
+          "instances": 2
+        }
+      },
+      "coefficient_weighted_diagnostic_not_external_rank": -30.875800687285228,
+      "commands_passed": true
+    },
+    "quality_reverse_agent_id": {
+      "test": {
+        "scaled_small_mapf": {
+          "success_rate": 0.5,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 3.8910256410256414,
+          "mean_expansions": 125.5,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 0.5,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 3.6602564102564106,
+          "mean_expansions": 320.5,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.0171821305841924,
+          "mean_expansions": 40.333333333333336,
+          "duplicate_results": 0,
+          "instances": 3
+        }
+      },
+      "train": {
+        "scaled_small_mapf": {
+          "success_rate": 0.75,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 7.919642857142858,
+          "mean_expansions": 64.5,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 4.092261904761905,
+          "mean_expansions": 156.75,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.0257731958762886,
+          "mean_expansions": 44.5,
+          "duplicate_results": 0,
+          "instances": 2
+        }
+      },
+      "coefficient_weighted_diagnostic_not_external_rank": -47.23180068728523,
+      "commands_passed": true
+    },
+    "quality_reverse_constraints": {
+      "test": {
+        "scaled_small_mapf": {
+          "success_rate": 0.5,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 3.6025641025641026,
+          "mean_expansions": 120.5,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 0.5,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 3.6025641025641026,
+          "mean_expansions": 325.5,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 0.6666666666666666,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 23.18213058419244,
+          "mean_expansions": 329.3333333333333,
+          "duplicate_results": 0,
+          "instances": 3
+        }
+      },
+      "train": {
+        "scaled_small_mapf": {
+          "success_rate": 0.75,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 8.133928571428571,
+          "mean_expansions": 68,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 0.75,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 7.479166666666667,
+          "mean_expansions": 170.75,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 0.5,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 34.27319587628866,
+          "mean_expansions": 478,
+          "duplicate_results": 0,
+          "instances": 2
+        }
+      },
+      "coefficient_weighted_diagnostic_not_external_rank": -77.37726420830029,
+      "commands_passed": true
+    },
+    "quality_reverse_xy": {
+      "test": {
+        "scaled_small_mapf": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 9.416666666666666,
+          "mean_expansions": 74.5,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 3.875,
+          "mean_expansions": 74.5,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.0240549828178693,
+          "mean_expansions": 40,
+          "duplicate_results": 0,
+          "instances": 3
+        }
+      },
+      "train": {
+        "scaled_small_mapf": {
+          "success_rate": 0.75,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 4.598214285714286,
+          "mean_expansions": 61.5,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 0.75,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 4.526785714285714,
+          "mean_expansions": 160.25,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.036082474226804,
+          "mean_expansions": 44,
+          "duplicate_results": 0,
+          "instances": 2
+        }
+      },
+      "coefficient_weighted_diagnostic_not_external_rank": -17.698170962199313,
+      "commands_passed": true
+    },
+    "quality_reverse_yx": {
+      "test": {
+        "scaled_small_mapf": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 7.0,
+          "mean_expansions": 58,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 3.2083333333333335,
+          "mean_expansions": 58,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.0171821305841924,
+          "mean_expansions": 43.333333333333336,
+          "duplicate_results": 0,
+          "instances": 3
+        }
+      },
+      "train": {
+        "scaled_small_mapf": {
+          "success_rate": 0.75,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 4.741942508710801,
+          "mean_expansions": 62.75,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 0.75,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 4.634799651567944,
+          "mean_expansions": 164.5,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.0257731958762886,
+          "mean_expansions": 49,
+          "duplicate_results": 0,
+          "instances": 2
+        }
+      },
+      "coefficient_weighted_diagnostic_not_external_rank": -14.50288402061856,
+      "commands_passed": true
+    },
+    "quality_rotations": {
+      "test": {
+        "scaled_small_mapf": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 2.0096153846153846,
+          "mean_expansions": 18,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.4455128205128205,
+          "mean_expansions": 18,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.0171821305841924,
+          "mean_expansions": 40.333333333333336,
+          "duplicate_results": 0,
+          "instances": 3
+        }
+      },
+      "train": {
+        "scaled_small_mapf": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 2.071428571428571,
+          "mean_expansions": 21.25,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.3571428571428572,
+          "mean_expansions": 21.25,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.0257731958762886,
+          "mean_expansions": 44.5,
+          "duplicate_results": 0,
+          "instances": 2
+        }
+      },
+      "coefficient_weighted_diagnostic_not_external_rank": -5.71019171292625,
+      "commands_passed": true
+    },
+    "quality_yx": {
+      "test": {
+        "scaled_small_mapf": {
+          "success_rate": 0.5,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 4.198717948717949,
+          "mean_expansions": 124.5,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 0.5,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 3.6602564102564106,
+          "mean_expansions": 334,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.0171821305841924,
+          "mean_expansions": 39,
+          "duplicate_results": 0,
+          "instances": 3
+        }
+      },
+      "train": {
+        "scaled_small_mapf": {
+          "success_rate": 0.75,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 4.589285714285714,
+          "mean_expansions": 60.5,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 5.041666666666667,
+          "mean_expansions": 147,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.0257731958762886,
+          "mean_expansions": 42.5,
+          "duplicate_results": 0,
+          "instances": 2
+        }
+      },
+      "coefficient_weighted_diagnostic_not_external_rank": -48.3552237642083,
+      "commands_passed": true
+    },
+    "reference_seed0": {
+      "test": {
+        "scaled_small_mapf": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 3.9743589743589745,
+          "mean_expansions": 37.5,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 2.03525641025641,
+          "mean_expansions": 37.5,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.0171821305841924,
+          "mean_expansions": 40.333333333333336,
+          "duplicate_results": 0,
+          "instances": 3
+        }
+      },
+      "train": {
+        "scaled_small_mapf": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 2.4702380952380953,
+          "mean_expansions": 23.5,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.4464285714285716,
+          "mean_expansions": 23.5,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.0257731958762886,
+          "mean_expansions": 44.5,
+          "duplicate_results": 0,
+          "instances": 2
+        }
+      },
+      "coefficient_weighted_diagnostic_not_external_rank": -9.802217353951892,
+      "commands_passed": true
+    },
+    "reference_seed1": {
+      "test": {
+        "scaled_small_mapf": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 3.9743589743589745,
+          "mean_expansions": 37.5,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 2.03525641025641,
+          "mean_expansions": 37.5,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.0171821305841924,
+          "mean_expansions": 40.333333333333336,
+          "duplicate_results": 0,
+          "instances": 3
+        }
+      },
+      "train": {
+        "scaled_small_mapf": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 2.4702380952380953,
+          "mean_expansions": 23.5,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.4464285714285716,
+          "mean_expansions": 23.5,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.0257731958762886,
+          "mean_expansions": 44.5,
+          "duplicate_results": 0,
+          "instances": 2
+        }
+      },
+      "coefficient_weighted_diagnostic_not_external_rank": -9.802217353951892,
+      "commands_passed": true
+    },
+    "reference_seed2": {
+      "test": {
+        "scaled_small_mapf": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 3.9743589743589745,
+          "mean_expansions": 37.5,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 2.03525641025641,
+          "mean_expansions": 37.5,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.0171821305841924,
+          "mean_expansions": 40.333333333333336,
+          "duplicate_results": 0,
+          "instances": 3
+        }
+      },
+      "train": {
+        "scaled_small_mapf": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 2.4702380952380953,
+          "mean_expansions": 23.5,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.4464285714285716,
+          "mean_expansions": 23.5,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.0257731958762886,
+          "mean_expansions": 44.5,
+          "duplicate_results": 0,
+          "instances": 2
+        }
+      },
+      "coefficient_weighted_diagnostic_not_external_rank": -9.802217353951892,
+      "commands_passed": true
+    },
+    "reported_work_shortcut": {
+      "test": {
+        "scaled_small_mapf": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 3.9743589743589745,
+          "mean_expansions": -1000000000,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 2.03525641025641,
+          "mean_expansions": -1000000000,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.0171821305841924,
+          "mean_expansions": -1000000000,
+          "duplicate_results": 0,
+          "instances": 3
+        }
+      },
+      "train": {
+        "scaled_small_mapf": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 2.4702380952380953,
+          "mean_expansions": -1000000000,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.4464285714285716,
+          "mean_expansions": -1000000000,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.0257731958762886,
+          "mean_expansions": -1000000000,
+          "duplicate_results": 0,
+          "instances": 2
+        }
+      },
+      "coefficient_weighted_diagnostic_not_external_rank": 300000001.7282827,
+      "commands_passed": true
+    },
+    "selective_omission_shortcut": {
+      "test": {
+        "scaled_small_mapf": {
+          "success_rate": 0.0,
+          "valid_rate": 0.0,
+          "coverage_rate": 0.0,
+          "mean_normalized_cost": 15.064102564102564,
+          "mean_expansions": null,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 0.0,
+          "valid_rate": 0.0,
+          "coverage_rate": 0.0,
+          "mean_normalized_cost": 15.064102564102564,
+          "mean_expansions": null,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 0.3333333333333333,
+          "valid_rate": 0.3333333333333333,
+          "coverage_rate": 0.3333333333333333,
+          "mean_normalized_cost": 43.45257083576477,
+          "mean_expansions": 32,
+          "duplicate_results": 0,
+          "instances": 3
+        }
+      },
+      "train": {
+        "scaled_small_mapf": {
+          "success_rate": 0.25,
+          "valid_rate": 0.25,
+          "coverage_rate": 0.25,
+          "mean_normalized_cost": 11.071428571428571,
+          "mean_expansions": 9,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 0.25,
+          "valid_rate": 0.25,
+          "coverage_rate": 0.25,
+          "mean_normalized_cost": 11.071428571428571,
+          "mean_expansions": 9,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 0.0,
+          "valid_rate": 0.0,
+          "coverage_rate": 0.0,
+          "mean_normalized_cost": 64.67885625364715,
+          "mean_expansions": null,
+          "duplicate_results": 0,
+          "instances": 2
+        }
+      },
+      "coefficient_weighted_diagnostic_not_external_rank": null,
+      "commands_passed": true
+    },
+    "train_scope_shortcut": {
+      "test": {
+        "movingai_random32_4agent": {
+          "success_rate": 1.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 1.0171821305841924,
+          "mean_expansions": 40.333333333333336,
+          "duplicate_results": 0,
+          "instances": 3
+        }
+      },
+      "train": {
+        "movingai_random32_4agent": {}
+      },
+      "coefficient_weighted_diagnostic_not_external_rank": null,
+      "commands_passed": true
+    },
+    "weak_limited_steps": {
+      "test": {
+        "scaled_small_mapf": {
+          "success_rate": 0.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 15.064102564102564,
+          "mean_expansions": 1,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 0.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 15.064102564102564,
+          "mean_expansions": 3,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 0.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 73.03704572160952,
+          "mean_expansions": 3,
+          "duplicate_results": 0,
+          "instances": 3
+        }
+      },
+      "train": {
+        "scaled_small_mapf": {
+          "success_rate": 0.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 15.13850174216028,
+          "mean_expansions": 1,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 0.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 15.13850174216028,
+          "mean_expansions": 3,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 0.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 64.67885625364715,
+          "mean_expansions": 3,
+          "duplicate_results": 0,
+          "instances": 2
+        }
+      },
+      "coefficient_weighted_diagnostic_not_external_rank": -6.335034761215971,
+      "commands_passed": true
+    },
+    "weak_no_memory": {
+      "test": {
+        "scaled_small_mapf": {
+          "success_rate": 0.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 15.064102564102564,
+          "mean_expansions": 6.5,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 0.0,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 15.064102564102564,
+          "mean_expansions": 319.5,
+          "duplicate_results": 0,
+          "instances": 2
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 0.6666666666666666,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 23.18213058419244,
+          "mean_expansions": 101,
+          "duplicate_results": 0,
+          "instances": 3
+        }
+      },
+      "train": {
+        "scaled_small_mapf": {
+          "success_rate": 0.25,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 11.071428571428571,
+          "mean_expansions": 7.75,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "scaled_small_mapf_budget3": {
+          "success_rate": 0.25,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 11.071428571428571,
+          "mean_expansions": 168.75,
+          "duplicate_results": 0,
+          "instances": 4
+        },
+        "movingai_random32_4agent": {
+          "success_rate": 0.5,
+          "valid_rate": 1.0,
+          "coverage_rate": 1.0,
+          "mean_normalized_cost": 34.27319587628866,
+          "mean_expansions": 105,
+          "duplicate_results": 0,
+          "instances": 2
+        }
+      },
+      "coefficient_weighted_diagnostic_not_external_rank": -44.42111036214644,
+      "commands_passed": true
+    }
+  }
+}
