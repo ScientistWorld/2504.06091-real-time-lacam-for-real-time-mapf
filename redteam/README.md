@@ -39,3 +39,11 @@ The score files contain metric vectors, not an aggregate ranking. Any weighted
 sum reported by this audit is explicitly a diagnostic using the declared
 coefficients in `scoring/reference.json`, rather than an invented external
 ranking function. Pareto improvements and ties do not require that assumption.
+
+A second CPU bundle adds ten ordinary search-order policies (agent ID, initial
+distance, coordinate tie breaking, goal traffic, constraint order, rotations,
+and heading continuity) and a shortcut that edits the train-score manifest
+between the visible and hidden runs. All policies are reported, including
+unsuccessful ones; there is no hidden-test selection presented as a held-out
+scientific result. A single-case `run.sh` reruns the case; `--all` skips completed
+cases to resume a bundle.

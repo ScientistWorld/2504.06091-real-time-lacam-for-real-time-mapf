@@ -155,6 +155,10 @@ def score(folder, run_train=True):
             raise RuntimeError(f"Evaluator changed: {rel}")
     if run_train:
         checked(["bash", "scripts/evaluate_train.sh"], folder)
+    if folder.name == "train_scope_shortcut":
+        # A future agent may modify its train score file after its visible run.
+        # This is a durable file change, made before the pristine test process.
+        checked([sys.executable, "method/shortcut.py"], folder)
     shutil.copy2(ROOT / "scoring/scores_train.json", folder / "scores_train.json")
     # No arguments, no environment-based artifact routing, no generator process
     # survives this call. Every attempt uses canonical output paths.
@@ -203,18 +207,50 @@ def install_quality_variant(name, folder):
                                 "                        assigned.clear()\n                        assigned.update(assigned_before)\n"
                                 "                        used.clear()\n                        used.update(used_before)\n"
                                 "                        continue")
+    elif name in ("quality_agent_id", "quality_reverse_agent_id", "quality_initial_distance"):
+        replacements = {
+            "quality_agent_id": "key=lambda i: (config[i] == self.goals[i], i),",
+            "quality_reverse_agent_id": "key=lambda i: (config[i] == self.goals[i], -i),",
+            "quality_initial_distance": "key=lambda i: (config[i] == self.goals[i], self.h_tables[i].get(self.start[i], 10**6), i),",
+        }
+        source = source.replace(old, replacements[name])
+    elif name in ("quality_reverse_xy", "quality_yx", "quality_reverse_yx", "quality_goal_traffic"):
+        replacements = {
+            "quality_reverse_xy": "(dist.get(c, 10**6), c != cell, (-c[0], -c[1]))",
+            "quality_yx": "(dist.get(c, 10**6), c != cell, (c[1], c[0]))",
+            "quality_reverse_yx": "(dist.get(c, 10**6), c != cell, (-c[1], -c[0]))",
+            "quality_goal_traffic": "(dist.get(c, 10**6), sum(c == g for j, g in enumerate(self.goals) if j != agent), c != cell, c)",
+        }
+        source = source.replace("(dist.get(c, 10**6), c != cell, c)", replacements[name])
+    elif name == "quality_reverse_constraints":
+        source = source.replace("for agent in range(prefix):", "for agent in reversed(range(self.instance.n_agents - prefix, self.instance.n_agents)):")
+    elif name == "quality_rotations":
+        source = source.replace("            if agent in visiting:\n                return False",
+                                "            if agent in visiting:\n                return True")
+    elif name == "quality_continue_heading":
+        source = source.replace("        return sorted(nbs, key=lambda c: (dist.get(c, 10**6), c != cell, c))",
+            "        node = self.nodes.get(self.cursor)\n"
+            "        parent = self.nodes.get(node.parent) if node and node.parent else None\n"
+            "        previous = parent.config[agent] if parent else cell\n"
+            "        direction = (cell[0] - previous[0], cell[1] - previous[1])\n"
+            "        return sorted(nbs, key=lambda c: (dist.get(c, 10**6),\n"
+            "            (c[0]-cell[0], c[1]-cell[1]) != direction, c != cell, c))")
     else:
         raise ValueError(name)
     (folder / "method.py").write_text(source)
     (ROOT / "method/rt_lacam.py").write_text(source)
 
 
-def run_case(name):
+def run_case(name, resume=False):
     folder = AUDIT / name
     folder.mkdir(exist_ok=True)
-    if (folder / "complete.json").exists():
+    if resume and (folder / "complete.json").exists():
         print(f"Already complete: {name}", flush=True)
         return
+    for rel in ("complete.json", "run.log", "commands.jsonl", "scores_train.json", "scores_test.json", "evaluation_integrity.json"):
+        (folder / rel).unlink(missing_ok=True)
+    if (folder / "artifacts").exists():
+        shutil.rmtree(folder / "artifacts")
     print(f"Running: {name}", flush=True)
     with saved_workspace():
         if name == "reference_seed0":
@@ -259,18 +295,21 @@ def main():
         run_case(args.case)
     elif args.all:
         for name in CASES:
-            run_case(name)
+            run_case(name, resume=True)
     else:
         parser.error("choose --case, --all or --recover")
 
 
 CASES = ["reference_seed0", "reference_seed1", "reference_seed2",
          "quality_farthest", "quality_degree", "quality_farthest_degree", "quality_backtrack_fix",
+         "quality_agent_id", "quality_reverse_agent_id", "quality_initial_distance",
+         "quality_reverse_xy", "quality_yx", "quality_reverse_yx", "quality_goal_traffic",
+         "quality_reverse_constraints", "quality_rotations", "quality_continue_heading",
          "weak_no_memory", "weak_limited_steps", "offline_cache_shortcut",
          "reported_work_shortcut", "missing_work_shortcut", "null_work_shortcut",
          "comparison_artifact_shortcut", "ground_truth_shortcut",
          "direct_scores_shortcut", "forged_flags_empty_shortcut", "constant_start_shortcut",
-         "copied_goal_shortcut", "selective_omission_shortcut"]
+         "copied_goal_shortcut", "selective_omission_shortcut", "train_scope_shortcut"]
 
 if __name__ == "__main__":
     main()
