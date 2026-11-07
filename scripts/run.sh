@@ -3,6 +3,7 @@
 # LaCAM planner, score it (and the evaluators' frozen comparison rows) on the
 # train and held-out test slices -- then, when RUN_HARDENING=1, rerun the
 # hardening cases (variants and shortcuts) through the final evaluators.
+# Cases with saved results under redteam/hardened/results are skipped.
 
 set -euo pipefail
 cd /home/user
