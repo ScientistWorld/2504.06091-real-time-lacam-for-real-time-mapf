@@ -230,3 +230,7 @@ tmp/
 protocol.md
 *.egg-info
 core.[0-9]*
+
+# Hardening evidence: the public-cache shortcut rebuilds this from eval/train
+redteam/hardened/results/*/cache.json
+redteam/hardened/results/*/_details_*.json
